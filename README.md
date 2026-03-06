@@ -56,6 +56,12 @@
 
 ---
 
+## 六、docs 目录下的文件是怎么生成的单文件文档的？
+
+使用 [merge-text-file](https://github.com/qeggs-dev/merge-text-file)
+
+---
+
 ## 六、本文档使用什么许可证？
 
 本文档使用 [MIT License](./LICENSE) 许可证。
