@@ -387,15 +387,17 @@ Repeater 还有一个自动化客户端，负责生成日记
 
 #### 主要仓库
 
-[Repeater Server](https://github.com/qeggs-dev/repeater-ai-chatbot) Repeater 主服务器
-[Nonebot Repeater Client](https://github.com/qeggs-dev/repeater-nonebot-onebot-v11-client) 基于 Nonebot OneBot v11 的 Repeater 客户端
+[Repeater Server](https://github.com/qeggs-dev/repeater-ai-chatbot) Repeater 主服务
+[Nonebot Repeater Client](https://github.com/qeggs-dev/repeater-nonebot-onebot-v11-client) 基于 Nonebot OneBot v11 的 Repeater 客户端实现
 [Repeater Nexus](https://github.com/qeggs-dev/repeater-nexus) Repeater 数据共享服务
 [Repeater Notes Client](https://github.com/qeggs-dev/repeater-notes-client) Repeater 自动化日记客户端
 [Auto Backup](https://github.com/qeggs-dev/auto-backup) 自动数据备份程序
+[Repeater Single File Docs](https://github.com/qeggs-dev/repeater-single-file-docs) Repeater 单文件版 LLM 文档兼综合文档库
 
 #### 辅助仓库
 
 [Sloves Starter](https://github.com/qeggs-dev/Sloves_Starter) 单文件的 Python venv 启动器兼守护进程
+[merge text file](https://github.com/qeggs-dev/merge_text_file) 使用 Jinja2 模板引擎将多个 Markdown 文件合并为一个单文件以方便交以 LLM 阅读
 
 ### 开发群(QQ)
 
