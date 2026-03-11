@@ -27,7 +27,7 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 ## Version
 
 Adaptation Repeater v4.3.22.6
-Last Update Time: 2026-03-10 22:53:54
+Last Update Time: 2026-03-11 18:10:23
 
 ---
 
@@ -491,14 +491,7 @@ Repeater 在使用方面门槛与其他机器人一样
         - other
           - jady.md
       - peppermint
-        - peppermint-2.md
-        - peppermint.md
-        - YDW-dead-2.md
-        - YDW似了.md
-        - YDW又似了.md
       - wicked
-        - Echo_Relay.md
-        - Fade_in.md
   - server-docs
     - docs
       - api_table
@@ -719,14 +712,7 @@ Repeat公寓 -> Repeater 微服务系统
       - other
         - jady.md
     - peppermint
-      - peppermint-2.md
-      - peppermint.md
-      - YDW-dead-2.md
-      - YDW似了.md
-      - YDW又似了.md
     - wicked
-      - Echo_Relay.md
-      - Fade_in.md
 
 #### 正式剧情
 
@@ -9312,13 +9298,13 @@ PS: 名称仅负责显示，对运行无影响，此处名称中标记有该模�
         "url": "https://api.deepseek.com",
         "models": [
             {
-                "name": "Deepseek-Think-Model(681B/A37B/128K Context)",
+                "name": "Deepseek-Think-Model(685.4B/A37B/128K Context)",
                 "id": "deepseek-reasoner",
                 "uid": "deepseek-reasoner",
                 "type": "chat"
             },
             {
-                "name": "Deepseek-Chat-Model(681B/A37B/128K Context)",
+                "name": "Deepseek-Chat-Model(685.4B/A37B/128K Context)",
                 "id": "deepseek-chat",
                 "uid": "deepseek-chat",
                 "type": "chat"
@@ -9373,60 +9359,6 @@ PS: 名称仅负责显示，对运行无影响，此处名称中标记有该模�
         "api_key_env": "QIANFAN_API_KEY",
         "url": "https://qianfan.baidubce.com/v2",
         "models": [
-            {
-                "name": "Deepseek-R1(671B/A37B/144K Context)",
-                "id": "deepseek-r1",
-                "uid": "deepseek-r1",
-                "type": "chat"
-            },
-            {
-                "name": "Deepseek-R1-250528(671B/A37B/144K Context)",
-                "id": "deepseek-r1-250528",
-                "uid": "deepseek-r1-250528",
-                "type": "chat"
-            },
-            {
-                "name": "Deepseek-V3(671B/A37B/128K Context)",
-                "id": "deepseek-v3",
-                "uid": "deepseek-v3",
-                "type": "chat"
-            },
-            {
-                "name": "DeepSeek-V3.2-Think(681B/A37B/144K Context)",
-                "id": "deepseek-v3.2-think",
-                "uid": "deepseek-v3.2-think",
-                "type": "chat"
-            },
-            {
-                "name": "DeepSeek-V3.2(681B/A37B/128K Context)",
-                "id": "deepseek-v3.2",
-                "uid": "deepseek-v3.2",
-                "type": "chat"
-            },
-            {
-                "name": "DeepSeek-V3.1-250821(681B/A37B/128K Context)",
-                "id": "deepseek-v3.1-250821",
-                "uid": "deepseek-v3.1-250821",
-                "type": "chat"
-            },
-            {
-                "name": "DeepSeek-V3.1-Think-250821(681B/A37B/144K Context)",
-                "id": "deepseek-v3.1-think-250821",
-                "uid": "deepseek-v3.1-think-250821",
-                "type": "chat"
-            },
-            {
-                "name": "DeepSeek-R1-Distill-Qwen-32B(32K Context)",
-                "id": "deepseek-r1-distill-qwen-32b",
-                "uid": "deepseek-r1-distill-qwen-32b",
-                "type": "chat"
-            },
-            {
-                "name": "DeepSeek-R1-Distill-Qwen-14B(32K Context)",
-                "id": "deepseek-r1-distill-qwen-14b",
-                "uid": "deepseek-r1-distill-qwen-14b",
-                "type": "chat"
-            },
             {
                 "name": "ERNIE-4.5-Turbo(400B+/A28B/128K Context)",
                 "id": "ernie-4.5-turbo-128k",
@@ -9630,6 +9562,42 @@ PS: 名称仅负责显示，对运行无影响，此处名称中标记有该模�
                 "name": "Qwen-Omni-Turbo(32K Context/Omnimodal)",
                 "id": "qwen-omni-turbo",
                 "uid": "qwen-omni-turbo",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek R1(684.53B/A37B/128K Context)",
+                "id": "deepseek-r1",
+                "uid": "deepseek-r1",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek V3(684.53B/A37B/64K Context)",
+                "id": "deepseek-v3",
+                "uid": "deepseek-v3",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek R1(684.53B/A37B/163.84K Context)",
+                "id": "deepseek-r1-0528",
+                "uid": "deepseek-r1-0528",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek V3.1(684.53B/A37B/128K Context)",
+                "id": "deepseek-v3.1",
+                "uid": "deepseek-v3.1",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek V3.2-Exp(685.4B/A37B/128K Context)",
+                "id": "deepseek-v3.2-exp",
+                "uid": "deepseek-v3.2-exp",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek V3.2(685.4B/A37B/128K Context)",
+                "id": "deepseek-v3.2",
+                "uid": "deepseek-v3.2",
                 "type": "chat"
             }
         ]
