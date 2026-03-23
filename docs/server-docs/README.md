@@ -1,4 +1,4 @@
-<center>
+<div align="center">
 
 # @复读机Repeater
 
@@ -6,7 +6,7 @@
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue.svg?logo=python)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-63b9ff.svg)](https://opensource.org/licenses/MIT) [![Model Protocol](https://img.shields.io/badge/Model%20Protocol-OpenAI%20Completions%20API-brightgreen.svg)](https://platform.openai.com/docs/overview)
 
-</center>
+</div>
 
 ---
 
@@ -61,6 +61,8 @@
 | python-box        | 7.3.2    | MIT License                          | [MIT](https://github.com/cdgriffith/Box/blob/master/LICENSE)                        | `core.Global_Config_Manager`        | Mixed configuration files             |
 | jinja2            | 3.1.6    | BSD-3-Clause license                 | [BSD-3-Clause](https://github.com/pallets/jinja/blob/main/LICENSE.txt)              | `core.Text_Template_Processer`      | Render text templates                 |
 | tzdata            | 2025.3   | Apache Software License              | [Apache-2.0](https://github.com/python/tzdata/blob/master/LICENSE)                  | `core.Text_Template_Processer`      | Get timezone information              |
+| yarl              | 1.23.0   | MIT License                          | [MIT](https://github.com/aio-libs/yarl/blob/master/LICENSE)                         | *Entire Project*                    | URL parsing                           |
+| bleach            | 6.3.0    | Apache-2.0                           | [Apache-2.0](https://github.com/mozilla/bleach/blob/main/LICENSE)                   | `core.Markdown_Render`              | Clean HTML                            |
 
 具体依赖的License请查看[LICENSES](./LICENSES/index.md)
 
@@ -133,3 +135,5 @@ Repeater 的功能拓展主要靠编写对应领域的 Client
 
 [Sloves_Starter](https://github.com/qeggs-dev/Sloves_Starter)
 [Repeater Nexus](https://github.com/qeggs-dev/repeater-nexus)
+[Repeater Modelinfo Server](https://github.com/qeggs-dev/repeater-modelinfo-server)
+[Static Resources Server](https://github.com/qeggs-dev/static-resources-server)
