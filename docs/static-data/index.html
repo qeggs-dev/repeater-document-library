@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Resource Server · Index</title>
+    <style>
+        /* 极简风格，干净的灰白背景，无多余装饰 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 780px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02);
+            padding: 3rem 2rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #111827;
+            margin-bottom: 0.3rem;
+            text-align: center;
+        }
+
+        .sub {
+            text-align: center;
+            color: #6B7280;
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #E5E7EB;
+            padding-bottom: 1.2rem;
+        }
+
+        .sub code {
+            background: #F3F4F6;
+            padding: 0.2rem 0.5rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #1F2937;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .field label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: #4B5563;
+            margin-left: 0.2rem;
+        }
+
+        .path-row {
+            display: flex;
+            align-items: center;
+            background-color: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 60px;
+            padding: 0.2rem 0.2rem 0.2rem 1.8rem;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        .path-row:focus-within {
+            border-color: #9CA3AF;
+            box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
+        }
+
+        .path-prefix {
+            color: #6B7280;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            user-select: none;
+            font-weight: 350;
+        }
+
+        .path-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 0.9rem 0.5rem 0.9rem 0.2rem;
+            font-size: 1rem;
+            color: #1F2937;
+            outline: none;
+            min-width: 0;
+        }
+
+        .path-input::placeholder {
+            color: #9CA3AF;
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        /* 第一行按钮布局：直接跳转 + 下载 */
+        .actions-row {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+
+        /* 第二行：文本跳转组合控件单独一行 */
+        .text-skip-row {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .btn {
+            border: none;
+            background: transparent;
+            font-size: 0.95rem;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 480;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: #1F2937;
+            color: white;
+            border-color: #1F2937;
+        }
+
+        .btn-primary:hover {
+            background-color: #111827;
+            border-color: #111827;
+        }
+
+        .btn-secondary {
+            background-color: white;
+            border-color: #D1D5DB;
+            color: #374151;
+        }
+
+        .btn-secondary:hover {
+            background-color: #F9FAFB;
+            border-color: #9CA3AF;
+        }
+
+        .btn-download {
+            background-color: white;
+            border-color: #D1D5DB;
+            color: #374151;
+        }
+
+        .btn-download:hover {
+            background-color: #F3F4F6;
+            border-color: #9CA3AF;
+        }
+
+        /* 组合控件：文本跳转按钮 + 编码输入框 (单独一行，右对齐但保持整体视觉) */
+        .text-skip-group {
+            display: inline-flex;  /* 改为 inline-flex 使其宽度根据内容收缩 */
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid #D1D5DB;
+            border-radius: 40px;
+            padding: 0.2rem 0.2rem 0.2rem 1rem;
+            transition: border-color 0.15s, box-shadow 0.15s;
+            max-width: 100%;
+        }
+
+        .text-skip-group:focus-within {
+            border-color: #9CA3AF;
+            box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
+        }
+
+        .text-skip-group .btn {
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            background-color: #f3f4f6;
+            border-color: #D1D5DB;
+            color: #1F2937;
+            white-space: nowrap;
+            font-weight: 480;
+            margin-left: 0.3rem;
+        }
+
+        .text-skip-group .btn:hover {
+            background-color: #e5e7eb;
+            border-color: #9CA3AF;
+        }
+
+        .encoding-input {
+            border: none;
+            background: transparent;
+            padding: 0.6rem 0.5rem;
+            font-size: 0.95rem;
+            color: #1F2937;
+            outline: none;
+            width: 110px;
+            min-width: 90px;
+            font-family: 'SF Mono', 'Menlo', monospace;
+        }
+
+        .encoding-input::placeholder {
+            color: #9CA3AF;
+            font-size: 0.85rem;
+        }
+
+        .encoding-label {
+            font-size: 0.85rem;
+            color: #6B7280;
+            white-space: nowrap;
+            margin-right: 0.2rem;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            color: #9CA3AF;
+            font-size: 0.8rem;
+            margin: 0.8rem 0 0.2rem;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: #E5E7EB;
+        }
+
+        .divider-text {
+            padding: 0 1rem;
+        }
+
+        .helper-note {
+            background-color: #F3F4F6;
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 2.2rem;
+            color: #4B5563;
+            font-size: 0.9rem;
+        }
+
+        .helper-note p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .helper-note .example {
+            font-family: 'SF Mono', 'Menlo', 'Monaco', 'Cascadia Code', 'Consolas', monospace;
+            background: #E5E7EB;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #1F2937;
+            cursor: pointer;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #9CA3AF;
+            font-size: 0.8rem;
+        }
+
+        .footer a {
+            color: #4B5563;
+            text-decoration: none;
+            border-bottom: 1px dotted #D1D5DB;
+        }
+
+        .footer a:hover {
+            color: #111827;
+            border-bottom-color: #111827;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            .actions-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .text-skip-row {
+                justify-content: stretch;
+            }
+            .text-skip-group {
+                width: 100%;
+            }
+            .btn {
+                text-align: center;
+            }
+            .path-row {
+                padding-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Static Resource Server</h1>
+        <div class="sub">
+            <code>GET /{path}</code> — Simple jump and download
+        </div>
+
+        <div class="input-group">
+            <div class="field">
+                <label for="resourcePath">Resource Path</label>
+                <div class="path-row">
+                    <span class="path-prefix">/</span>
+                    <input type="text" id="resourcePath" class="path-input" placeholder="Jump To Resource" autofocus>
+                </div>
+            </div>
+
+            <!-- 第一行：直接跳转 + 下载按钮 -->
+            <div class="actions-row">
+                <button type="button" class="btn btn-primary" id="jumpDirectBtn">Skip</button>
+                <button type="button" class="btn btn-download" id="downloadBtn">Download</button>
+            </div>
+
+            <!-- 第二行：文本跳转组合控件 (单独一行) -->
+            <div class="text-skip-row">
+                <div class="text-skip-group" id="textSkipGroup">
+                    <span class="encoding-label">?text_encoding=</span>
+                    <input type="text" class="encoding-input" id="encodingInput" placeholder="utf-8" value="utf-8">
+                    <button type="button" class="btn" id="jumpTextCustomBtn">Go</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 简约分隔 + 提示 -->
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-text">⚡︎</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <div class="helper-note">
+            <p>
+                <span>Direct jump — regular request, browser renders according to file type.</span>
+            </p>
+            <p>
+                <span>Text jump — <span class="example">?text_encoding=<em>Text Coding</em></span> like: <code>gb2312</code>, <code>utf-8</code></span>
+            </p>
+            <p>
+                <span>Download — download files directly from the same interface (no rendering)</span>
+            </p>
+            <div style="margin-top: 0.8rem; background: #E5E7EB; height: 1px; opacity: 0.4;"></div>
+            <p style="margin-top: 0.8rem; font-size: 0.85rem;">
+                <span>Example:</span>
+                <span class="example">images/photo.jpg</span>
+                <span class="example">doc/manual.pdf</span>
+                <span class="example">README.md</span>
+            </p>
+        </div>
+
+        <div class="footer">
+            <span> Static Resource </span>
+            <a href="https://fastapi.tiangolo.com" target="_blank">Powered by FastAPI</a> · <span>Simple Index</span>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // 使用内置 URL 和 URLSearchParams 进行安全处理，防止注入
+            const baseUrl = window.location.origin;
+
+            const pathInput = document.getElementById('resourcePath');
+            const encodingInput = document.getElementById('encodingInput');
+
+            // 安全地规范化路径: 去除开头可能存在的 / 或 \ 并 trim
+            function getCleanPath() {
+                let rawPath = pathInput.value.trim();
+                if (rawPath === '') {
+                    alert('请输入资源路径');
+                    return null;
+                }
+                // 移除开头的斜杠或反斜杠
+                let clean = rawPath.replace(/^[\\/]+/, '');
+                
+                // 额外安全：检测可疑的路径遍历，但仅作为用户提示，不阻断（后端应负责）
+                if (clean.includes('..') || clean.includes('//') || clean.includes('\\\\')) {
+                    alert('警告：路径包含可疑字符 (.. 或双斜杠)，请确认。');
+                }
+                return clean;
+            }
+
+            // 构建安全的 URL 对象
+            function buildBaseUrlObject(cleanPath) {
+                // 对路径进行 encodeURI 以安全嵌入 URL 路径段
+                const encodedPath = encodeURI(cleanPath);
+                const urlStr = `${baseUrl}/${encodedPath}`;
+                try {
+                    return new URL(urlStr);
+                } catch (e) {
+                    alert('无法生成合法的URL，请检查路径');
+                    return null;
+                }
+            }
+
+            // 1. 直接跳转
+            document.getElementById('jumpDirectBtn').addEventListener('click', function() {
+                const cleanPath = getCleanPath();
+                if (cleanPath === null) return;
+                
+                const urlObj = buildBaseUrlObject(cleanPath);
+                if (!urlObj) return;
+                
+                window.location.href = urlObj.toString();
+            });
+
+            // 2. 文本跳转 - 使用 URLSearchParams
+            function handleTextJump() {
+                const cleanPath = getCleanPath();
+                if (cleanPath === null) return;
+
+                const urlObj = buildBaseUrlObject(cleanPath);
+                if (!urlObj) return;
+
+                // 获取编码，默认为 utf-8
+                let encoding = encodingInput.value.trim();
+                if (encoding === '') {
+                    encoding = 'utf-8';
+                }
+
+                // 使用 URLSearchParams 安全地设置查询参数
+                urlObj.searchParams.set('text_encoding', encoding);
+
+                window.location.href = urlObj.toString();
+            }
+
+            document.getElementById('jumpTextCustomBtn').addEventListener('click', handleTextJump);
+
+            // 编码输入框按回车触发文本跳转
+            encodingInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleTextJump();
+                }
+            });
+
+            // 3. 直接下载
+            function downloadFile(cleanPath) {
+                if (!cleanPath) return;
+
+                const urlObj = buildBaseUrlObject(cleanPath);
+                if (!urlObj) return;
+
+                const a = document.createElement('a');
+                a.href = urlObj.toString();
+                a.download = '';
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+                const cleanPath = getCleanPath();
+                if (cleanPath === null) return;
+                downloadFile(cleanPath);
+            });
+
+            // 资源路径输入框按回车触发直接跳转
+            pathInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    document.getElementById('jumpDirectBtn').click();
+                }
+            });
+
+            // 点击示例填充路径
+            const examples = document.querySelectorAll('.example');
+            examples.forEach(el => {
+                el.addEventListener('click', function() {
+                    const text = this.innerText;
+                    if (text && !text.includes('?')) {
+                        pathInput.value = text;
+                    }
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>
