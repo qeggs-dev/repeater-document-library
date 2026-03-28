@@ -14,6 +14,11 @@
         <div class="title-bar"></div>
         {{html_content}}
     </main>
+    {% if document_bottom_comment %}
+    <p>
+        {{document_bottom_comment}}
+    </p>
+    {% endif %}
     <script>
         // 生成几何背景
         document.addEventListener('DOMContentLoaded', function() {

@@ -473,6 +473,23 @@ Repeater 在使用方面门槛与其他机器人一样
 直接@就可以聊天
 但精通和部署的门槛比较高
 
+### 文本渲染
+
+Repeater 使用了 Markdown 语法进行文本渲染
+首先 Markdown 会转换成 HTML
+然后与选择的 CSS / HTML Template 组合进行渲染
+这里可以拿一个文件举个例子
+
+{{merge_text("./static-data/html_templates/standard.html")}}
+
+其中 html_content 是输入的 Markdown 转换后的内容
+而 `document_bottom_comment` 在 `NoneBot Repeater Client` 中
+会用于显示 Fast Statistics 内容
+用户也可以自定义 Fast Statistics 模板以自定义统计的内容
+这个值在用户配置 `request_statistics_template` 和全局配置 `text_template.request_statistics_template` 中定义
+这个模板其他变量与默认变量表一致，只是增加了一个 `request_log` 变量，用于导出统计信息
+这个可以参考一下 [Request Log Object](./docs/server-docs/docs/api_table/request_log/request_log_object.md)
+
 ### 文档目录结构
 
 {{tree("./")}}
