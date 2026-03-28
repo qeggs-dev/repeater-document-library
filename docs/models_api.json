@@ -62,6 +62,128 @@
         ]
     },
     {
+        "name": "BigModel",
+        "api_key_env": "BIGMODEL_API_KEY",
+        "url": "https://open.bigmodel.cn/api/paas/v4/",
+        "models": [
+            {
+                "name": "GLM-5(744B/A40B/200K Context)",
+                "id": "glm-5",
+                "uid": "glm-5",
+                "type": "chat"
+            },
+            {
+                "name": "GLM-5-Turbo(744B/A40B/200K Context)",
+                "id": "glm-5-turbo",
+                "uid": "glm-5-turbo",
+                "type": "chat"
+            },
+            {
+                "name": "GLM-4.7(355B/A32B/200K Context)",
+                "id": "glm-4.7",
+                "uid": "glm-4.7",
+                "type": "chat"
+            },
+            {
+                "name": "GLM-4.6(355B/A32B/200K Context)",
+                "id": "glm-4.6",
+                "uid": "glm-4.6",
+                "type": "chat"
+            },
+            {
+                "name": "GLM-4.6V(106B/128K Context/MultiModal)",
+                "id": "glm-4.6v",
+                "uid": "glm-4.6v",
+                "type": "chat"
+            },
+            {
+                "name": "GLM-4.5(355B/A32B/128K Context)",
+                "id": "glm-4.5",
+                "uid": "glm-4.5",
+                "type": "chat"
+            }
+        ]
+    },
+    {
+        "name": "Dashscope",
+        "api_key_env": "DASHSCOPE_API_KEY",
+        "url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "models": [
+            {
+                "name": "Qwen3.5-Plus (1M Context)",
+                "id": "qwen3.5-plus",
+                "uid": "qwen3.5-plus",
+                "type": "chat"
+            },
+            {
+                "name": "Qwen3.5-397B-A17B (256K Context)",
+                "id": "qwen3.5-397b-a17b",
+                "uid": "qwen3.5-397b-a17b",
+                "type": "chat"
+            },
+            {
+                "name": "Qwen3-Max (1T/A100B/256K Context)",
+                "id": "qwen3-max",
+                "uid": "qwen3-max",
+                "type": "chat"
+            },
+            {
+                "name": "Qwen-Plus (1M Context)",
+                "id": "qwen-plus",
+                "uid": "qwen-plus",
+                "type": "chat"
+            },
+            {
+                "name": "Qwen3-VL-Plus (256K Context/MultiModal)",
+                "id": "qwen3-vl-plus",
+                "uid": "qwen3-vl-plus",
+                "type": "chat"
+            },
+            {
+                "name": "Qwen-Omni-Turbo (32K Context/Omnimodal)",
+                "id": "qwen-omni-turbo",
+                "uid": "qwen-omni-turbo",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek R1 (684.53B/A37B/128K Context)",
+                "id": "deepseek-r1",
+                "uid": "deepseek-r1",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek V3 (684.53B/A37B/64K Context)",
+                "id": "deepseek-v3",
+                "uid": "deepseek-v3",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek R1 (684.53B/A37B/163.84K Context)",
+                "id": "deepseek-r1-0528",
+                "uid": "deepseek-r1-0528",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek V3.1 (684.53B/A37B/128K Context)",
+                "id": "deepseek-v3.1",
+                "uid": "deepseek-v3.1",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek V3.2-Exp (685.4B/A37B/128K Context)",
+                "id": "deepseek-v3.2-exp",
+                "uid": "deepseek-v3.2-exp",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek V3.2 (685.4B/A37B/128K Context)",
+                "id": "deepseek-v3.2",
+                "uid": "deepseek-v3.2",
+                "type": "chat"
+            }
+        ]
+    },
+    {
         "name": "Baidu Qianfan",
         "api_key_env": "QIANFAN_API_KEY",
         "url": "https://qianfan.baidubce.com/v2",
@@ -226,85 +348,6 @@
                 "name": "Qwen2.5-VL-7B-Instruct (16K Context/MultiModal)",
                 "id": "qwen2.5-vl-7b-instruct",
                 "uid": "qwen2.5-vl-7b-instruct",
-                "type": "chat"
-            }
-        ]
-    },
-    {
-        "name": "Dashscope",
-        "api_key_env": "DASHSCOPE_API_KEY",
-        "url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "models": [
-            {
-                "name": "Qwen3.5-Plus (1M Context)",
-                "id": "qwen3.5-plus",
-                "uid": "qwen3.5-plus",
-                "type": "chat"
-            },
-            {
-                "name": "Qwen3.5-397B-A17B (256K Context)",
-                "id": "qwen3.5-397b-a17b",
-                "uid": "qwen3.5-397b-a17b",
-                "type": "chat"
-            },
-            {
-                "name": "Qwen3-Max (1T/A100B/256K Context)",
-                "id": "qwen3-max",
-                "uid": "qwen3-max",
-                "type": "chat"
-            },
-            {
-                "name": "Qwen-Plus (1M Context)",
-                "id": "qwen-plus",
-                "uid": "qwen-plus",
-                "type": "chat"
-            },
-            {
-                "name": "Qwen3-VL-Plus (256K Context/MultiModal)",
-                "id": "qwen3-vl-plus",
-                "uid": "qwen3-vl-plus",
-                "type": "chat"
-            },
-            {
-                "name": "Qwen-Omni-Turbo (32K Context/Omnimodal)",
-                "id": "qwen-omni-turbo",
-                "uid": "qwen-omni-turbo",
-                "type": "chat"
-            },
-            {
-                "name": "Deepseek R1 (684.53B/A37B/128K Context)",
-                "id": "deepseek-r1",
-                "uid": "deepseek-r1",
-                "type": "chat"
-            },
-            {
-                "name": "Deepseek V3 (684.53B/A37B/64K Context)",
-                "id": "deepseek-v3",
-                "uid": "deepseek-v3",
-                "type": "chat"
-            },
-            {
-                "name": "Deepseek R1 (684.53B/A37B/163.84K Context)",
-                "id": "deepseek-r1-0528",
-                "uid": "deepseek-r1-0528",
-                "type": "chat"
-            },
-            {
-                "name": "Deepseek V3.1 (684.53B/A37B/128K Context)",
-                "id": "deepseek-v3.1",
-                "uid": "deepseek-v3.1",
-                "type": "chat"
-            },
-            {
-                "name": "Deepseek V3.2-Exp (685.4B/A37B/128K Context)",
-                "id": "deepseek-v3.2-exp",
-                "uid": "deepseek-v3.2-exp",
-                "type": "chat"
-            },
-            {
-                "name": "Deepseek V3.2 (685.4B/A37B/128K Context)",
-                "id": "deepseek-v3.2",
-                "uid": "deepseek-v3.2",
                 "type": "chat"
             }
         ]
