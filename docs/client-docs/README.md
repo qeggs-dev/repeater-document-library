@@ -218,12 +218,14 @@ main_api.json
 
     // 在用户输入图片的时候，是否将其下载为 Base64 以防止链接失效
     "use_base64_image_url": false,
-
-    // 限制发送消息的频率
-    // 降低风控风险
-    // 默认 100 次/分钟
-    // 如果想关闭可以设置为 null
-    "send_msg_limit_speed_per_minute": 100,
+    
+    // 伪装选项，可能会有一定的反风控效果
+    "camouflage": {
+        // 限制发送消息的频率
+        // 默认 100 次/分钟
+        // 如果想关闭可以设置为 null
+        "send_msg_limit_speed_per_minute": 100
+    },
 
     // 下载图片的超时时间
     "download_image_timeout": 600.0,
@@ -398,6 +400,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `generateCandidateReason`  | `gcr`    | `GenerateCandidateReason` | `CHAT`      | 4.3.23.1       | 生成候选推理                 | 无                                        | 生成候选回答并开启推理（生成内容不保存） |
 | `setModelTimeout`          | `smto`   | `SetModelTimeout`         | `CONFIG`    | 4.3.25.0       | 设置模型超时时间             | 超时秒数                                   | 设置模型超时时间 |
 | `removeReasoningPrompt`    | `rrp`    | `RemoveReasoningPrompt`   | `CONFIG`    | 4.3.26.0       | 删除推理内容                 | 删除推理内容 |                             | 设置是否在提交时移除模型输出的思考内容（不影响保存） |
+| `breakChatTask`            | `bct`    | `BreakChatTask`           | `STATUS`    | 4.4.4.0        | 中止当前所有生成任务         | 无                                         | 中止当前所有生成任务，中止后模型已生成内容将不会保存和显示 |
 
 PS：`CHAT`类型命令大部分都做到了支持视觉输入
 默认命令已支持全模态输入
