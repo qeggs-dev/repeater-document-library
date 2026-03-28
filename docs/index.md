@@ -104,13 +104,13 @@ NoneBot + FastAPI + OpenAI SDK
 所有组件全部使用 Python 编写，并且几乎全部使用异步编程
 包含 7 个服务，官方的全运行需要 11 个服务，最小运行 5 个服务
 其中：
-- Repeater Server(16k+ Code) 是核心服务，提供 API 接口，有状态
-- NoneBot Repeater Client(8k+ Code) 是 NoneBot 插件，用于将 Repeater API 安全的对接到群聊中，无状态
-- Repeater Nexus(0.9k+ Code) 用于进行数据的跨用户、跨实例分享，状态由文件系统决定
-- Notes Client(2k+ Code) 是一个增值服务，用于自动生成一些内容，这写内容可以当作机器人的日记，可多后端
-- Auto Backup(0.3k+ Code) 是一个增值服务，用于自动备份用户数据，防止数据丢失，无网络
-- Static Resources Server(0.3k+ Code) 静态资源服务器，用于提供静态资源，如图片、CSS、JS、HTML、人设提示词等内容
-- ModelAPI INFO Server(0.7k+ Code) 用于提供模型信息，如模型名称、模型 API Key 等信息，以在多实例中方便集中管理
+- Repeater Server(16k+ Code) 是核心服务，提供 API 接口，有状态，必须部署
+- ModelAPI INFO Server(0.7k+ Code) 用于提供模型信息，如模型名称、模型 API Key 等信息，以在多实例中方便集中管理，必须部署
+- NoneBot Repeater Client(8k+ Code) 是 NoneBot 插件，用于将 Repeater API 安全的对接到群聊中，无状态，可选部署
+- Repeater Nexus(0.9k+ Code) 用于进行数据的跨用户、跨实例分享，状态由文件系统决定，可选部署
+- Notes Client(2k+ Code) 是一个增值服务，用于自动生成一些内容，这写内容可以当作机器人的日记，可多后端，可选部署
+- Auto Backup(0.3k+ Code) 是一个增值服务，用于自动备份用户数据，防止数据丢失，无网络，可选部署
+- Static Resources Server(0.3k+ Code) 静态资源服务器，用于提供静态资源，如图片、CSS、JS、HTML、人设提示词等内容，可选部署，可用 Repeater Server 内置静态服务替代
 因为分体，各种功能可以直接通过网络去操作程序执行，而不需要插件 Hook
 
 ### 架构图
