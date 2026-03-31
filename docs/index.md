@@ -691,7 +691,7 @@ AI 机器人叛变，作为机器人的复读机们将会怎么办呢
 
 {{merge_text("./static-data/prompt/presets/official/april-fools-day/lies")}}
 
-##### 《猫娘模因》 `nekomatas`
+##### 《猫娘模因》 `catgirls`
 
 大家都变成猫猫了？
 
