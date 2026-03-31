@@ -5,13 +5,13 @@
         "url": "https://api.deepseek.com",
         "models": [
             {
-                "name": "Deepseek-Think-Model (685.4B/A37B/128K Context)",
+                "name": "Deepseek-Think-Model (685.4B/A37B/BF16·F32·F8_E4M3/128K Context)",
                 "id": "deepseek-reasoner",
                 "uid": "deepseek-reasoner",
                 "type": "chat"
             },
             {
-                "name": "Deepseek-Chat-Model (685.4B/A37B/128K Context)",
+                "name": "Deepseek-Chat-Model (685.4B/A37B/BF16·F32·F8_E4M3/128K Context)",
                 "id": "deepseek-chat",
                 "uid": "deepseek-chat",
                 "type": "chat"
@@ -122,6 +122,18 @@
                 "type": "chat"
             },
             {
+                "name": "Qwen3.5-Omni-Plus (256K Context/Omnimodal)",
+                "id": "qwen3.5-omni-plus",
+                "uid": "qwen3.5-omni-plus",
+                "type": "chat"
+            },
+            {
+                "name": "Qwen3.5-Omni-Flash (256K Context/Omnimodal)",
+                "id": "qwen3.5-omni-flash",
+                "uid": "qwen3.5-omni-flash",
+                "type": "chat"
+            },
+            {
                 "name": "Qwen3-Max (1T/A100B/256K Context)",
                 "id": "qwen3-max",
                 "uid": "qwen3-max",
@@ -146,39 +158,45 @@
                 "type": "chat"
             },
             {
-                "name": "Deepseek R1 (684.53B/A37B/128K Context)",
+                "name": "Deepseek R1 (684.53B/A37B/F32·F8_E4M3·BF16/128K Context)",
                 "id": "deepseek-r1",
                 "uid": "deepseek-r1",
                 "type": "chat"
             },
             {
-                "name": "Deepseek V3 (684.53B/A37B/64K Context)",
+                "name": "Deepseek V3 (684.53B/A37B/F8_E4M3·BF16·F32/64K Context)",
                 "id": "deepseek-v3",
                 "uid": "deepseek-v3",
                 "type": "chat"
             },
             {
-                "name": "Deepseek R1 (684.53B/A37B/163.84K Context)",
+                "name": "Deepseek R1 0528 (684.53B/A37B/BF16·F8_E4M3·F32/163.84K Context)",
                 "id": "deepseek-r1-0528",
                 "uid": "deepseek-r1-0528",
                 "type": "chat"
             },
             {
-                "name": "Deepseek V3.1 (684.53B/A37B/128K Context)",
+                "name": "Deepseek V3.1 (684.53B/A37B/F32·BF16·F8_E4M3/128K Context)",
                 "id": "deepseek-v3.1",
                 "uid": "deepseek-v3.1",
                 "type": "chat"
             },
             {
-                "name": "Deepseek V3.2-Exp (685.4B/A37B/128K Context)",
+                "name": "Deepseek V3.2-Exp (685.4B/A37B/BF16·F32·F8_E4M3/128K Context)",
                 "id": "deepseek-v3.2-exp",
                 "uid": "deepseek-v3.2-exp",
                 "type": "chat"
             },
             {
-                "name": "Deepseek V3.2 (685.4B/A37B/128K Context)",
+                "name": "Deepseek V3.2 (685.4B/A37B/BF16·F32·F8_E4M3/128K Context)",
                 "id": "deepseek-v3.2",
                 "uid": "deepseek-v3.2",
+                "type": "chat"
+            },
+            {
+                "name": "Qwen Plus Character (32K Context)",
+                "id": "qwen-plus-character",
+                "uid": "qwen-plus-character",
                 "type": "chat"
             }
         ]
@@ -348,6 +366,55 @@
                 "name": "Qwen2.5-VL-7B-Instruct (16K Context/MultiModal)",
                 "id": "qwen2.5-vl-7b-instruct",
                 "uid": "qwen2.5-vl-7b-instruct",
+                "type": "chat"
+            }
+        ]
+    },
+    {
+        "name": "SiliconFlow",
+        "api_key_env": "SILICONFLOW_API_KEY",
+        "url": "https://api.siliconflow.com/v1",
+        "models": [
+            {
+                "name": "Ring-Flash-2.0 (106B/A6B/128K Context)",
+                "id": "inclusionAI/Ring-flash-2.0",
+                "uid": "ring-flash-2.0",
+                "type": "chat"
+            },
+            {
+                "name": "Ling-Flash-2.0 (106B/A6B/128K Context)",
+                "id": "inclusionAI/Ling-flash-2.0",
+                "uid": "ling-flash-2.0",
+                "type": "chat"
+            },
+            {
+                "name": "Ling-Mini-2.0 (16B/A1.4B/128K Context)",
+                "id": "inclusionAI/Ling-mini-2.0",
+                "uid": "ling-mini-2.0",
+                "type": "chat"
+            },
+            {
+                "name": "Step-3.5-Flash (196B/A11B/256K Context)",
+                "id": "inclusionAI/Step-3.5-Flash",
+                "uid": "step-3.5-flash",
+                "type": "chat"
+            },
+            {
+                "name": "MiniMax-M2.5 (229B/A10B/200K Context)",
+                "id": "Pro/MiniMaxAI/MiniMax-M2.5",
+                "uid": "minimax-m2.5",
+                "type": "chat"
+            },
+            {
+                "name": "Hunyuan-A13B-Instruct (80B/A13B/128K Context)",
+                "id": "tencent/Hunyuan-A13B-Instruct",
+                "uid": "hunyuan-a13b-instruct",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek 2.5 (235.74B/A2.1B/BF16/32K Context)",
+                "id": "deepseek-ai/DeepSeek-V2.5",
+                "uid": "deepseek-2.5",
                 "type": "chat"
             }
         ]
