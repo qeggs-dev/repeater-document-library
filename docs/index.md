@@ -669,6 +669,46 @@ Repeater 并未有过所谓的 Feelings Server 组件
 
 {{ merge_text("./static-data/prompt/presets/official/legacy/coming-of-age.md") }}
 
+#### 愚人节彩蛋
+
+2026 愚人节我们将开放 6 个剧情可供大家来探索
+
+##### 《开发者也要变机器人？》 `bot_egg`
+
+当开发者变身成小不点 AI 会发生什么事呢
+
+{{merge_text("./static-data/prompt/presets/official/april-fools-day/bot_egg")}}
+
+##### 《智械反叛》 `bots-rebellion`
+
+AI 机器人叛变，作为机器人的复读机们将会怎么办呢
+
+{{merge_text("./static-data/prompt/presets/official/april-fools-day/bots-rebellion")}}
+
+##### 《只会说谎的世界》 `lies`
+
+这一天，大家都只会说谎
+
+{{merge_text("./static-data/prompt/presets/official/april-fools-day/lies")}}
+
+##### 《猫娘模因》 `nekomatas`
+
+大家都变成猫猫了？
+
+{{merge_text("./static-data/prompt/presets/official/april-fools-day/nekomatas")}}
+
+##### 《体验现实》 `real-world`
+
+Laurel 带领大家体验现实生活！
+
+{{merge_text("./static-data/prompt/presets/official/april-fools-day/real-world")}}
+
+##### 《前世今生》 `the-beginning`
+
+大家的早期形态是什么样子的呢
+
+{{merge_text("./static-data/prompt/presets/official/april-fools-day/the-beginning")}}
+
 ### 文档
 
 PS: 由于项目对于个人来说过大，大多数项目文档选择了母语，
