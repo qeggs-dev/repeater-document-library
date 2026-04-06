@@ -113,10 +113,10 @@ NoneBot + FastAPI + OpenAI SDK
 - ModelAPI INFO Server(0.7k+ Code) 用于提供模型信息，如模型名称、模型 API Key 等信息，以在多实例中方便集中管理，必须部署
 - Repeater Render Server(3k+ Code) 用于进行内容渲染，无状态，可选部署，如果你不需要 Markdown 渲染功能的话
 - NoneBot Repeater Client(9k+ Code) 是 NoneBot 插件，用于将 Repeater API 安全的对接到群聊中，无状态，可选部署
-- Repeater Nexus(0.9k+ Code) 用于进行数据的跨用户、跨实例分享，状态由文件系统决定，可选部署
+- Repeater Nexus(0.9k+ Code) 用于进行数据的跨用户、跨实例分享，无状态，可选部署
 - Notes Client(2k+ Code) 是一个增值服务，用于自动生成一些内容，这写内容可以当作机器人的日记，可多后端，可选部署
 - Auto Backup(0.3k+ Code) 是一个增值服务，用于自动备份用户数据，防止数据丢失，无网络，可选部署
-- Static Resources Server(0.3k+ Code) 静态资源服务器，用于提供静态资源，如图片、CSS、JS、HTML、人设提示词等内容，可选部署，可用 Repeater Server 内置静态服务替代
+- Static Resources Server(0.3k+ Code) 静态资源服务器，用于提供静态资源，如图片、CSS、JS、HTML、人设提示词等内容，无状态，可选部署，可用 Repeater Server 内置静态服务替代
 因为分体，各种功能可以直接通过网络去操作程序执行，而不需要插件 Hook
 
 ### 架构图
