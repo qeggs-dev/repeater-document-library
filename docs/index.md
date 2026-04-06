@@ -107,7 +107,7 @@ NoneBot + FastAPI + OpenAI SDK
 #### 概括
 
 所有组件全部使用 Python 编写，并且几乎全部使用异步编程
-包含 7 个服务，官方的全运行需要 11 个服务，最小运行 5 个服务
+包含 8 个服务，官方的全运行需要 16 个服务，最小运行 5 个服务
 其中：
 - Repeater Server(15k+ Code) 是核心服务，提供 API 接口，有状态，必须部署
 - ModelAPI INFO Server(0.7k+ Code) 用于提供模型信息，如模型名称、模型 API Key 等信息，以在多实例中方便集中管理，必须部署
