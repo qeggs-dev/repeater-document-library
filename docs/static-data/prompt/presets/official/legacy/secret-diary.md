@@ -69,7 +69,7 @@
 
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdowndays. != 0 -%}
+  {%- if countdown.days != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
     {{- prefix }}{{ countdown.days -}}{{ suffix -}}

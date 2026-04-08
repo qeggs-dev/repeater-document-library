@@ -178,7 +178,28 @@ Egg姐姐正在拼命修复 Feelings Server...
   {%- else -%}
     **{{- user_name -}}({{nick_name}})**
   {%- endif -%}
-{%- endwith -%}
+{%- endwith %}
+
+{% with -%}
+  {%- set prefix = "用户年龄：" -%}
+  {{- prefix -}}
+  {%- if user_custom_age -%}
+    **{{- user_custom_age -}}**
+  {%- elif user_age -%}
+    **{{- user_age -}}**
+  {%- endif -%}
+{%- endwith %}
+
+{% with -%}
+  {%- set prefix = "用户性别：" -%}
+  {%- if user_custom_gender -%}
+    {{- prefix -}}
+    **{{- user_custom_gender -}}**
+  {%- elif user_gender -%}
+    {{- prefix -}}
+    **{{- user_gender -}}**
+  {%- endif -%}
+{%- endwith %}
 
 {%- if user_profile -%}
 用户设定：
