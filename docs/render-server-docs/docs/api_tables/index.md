@@ -9,3 +9,8 @@
 
 获取指定图片
 [详情](./get_image_api.md)
+
+## Alived API
+
+查看服务是否存活
+[详情](./alived.md)
