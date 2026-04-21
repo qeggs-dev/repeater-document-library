@@ -44,34 +44,41 @@ python run.py
 
 ```json
 {
+    // 监听地址
     "host": "0.0.0.0",
+
+    // 监听端口
     "port": 8000,
+
+    // 静态资源根目录
     "base_path": "./static",
+
+    // 日志配置
     "logger": {
+
+        // 日志文件路径
         "file_path": "./logs/file-server-log-{time:YYYY-MM-DD_HH-mm-ss.SSS}.log",
+
+        // 日志级别
         "level": "DEBUG",
+
+        // 日志轮转时间
         "rotation": "1 days",
+
+        // 日志保留时间
         "retention": "7 days",
+
+        // 控制台日志格式
         "console_format": "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <8}</level> - <level>{message}</level>",
+
+        // 文件日志格式
         "file_format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level: <8} - {message}",
+
+        // 日志压缩格式
         "compression": "zip"
     }
 }
 ```
-
-#### 配置说明
-
-| 配置项 | 说明 | 默认值 |
-|--------|------|--------|
-| `host` | 服务器监听地址 | `0.0.0.0` |
-| `port` | 服务器端口 | `8000` |
-| `base_path` | 静态文件根目录 | `./static` |
-| `logger.file_path` | 日志文件路径 | `./logs/file-server-log-{time:...}.log` |
-| `logger.level` | 日志级别 | `DEBUG` |
-| `logger.rotation` | 日志轮转周期 | `1 days` |
-| `logger.retention` | 日志保留时间 | `7 days` |
-| `logger.compression` | 日志压缩格式 | `zip` |
-
 ### 使用示例
 
 #### 获取文件
