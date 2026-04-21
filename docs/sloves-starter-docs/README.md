@@ -54,17 +54,18 @@ python Sloves_Starter.py
     },
     "requirements": [], // Contents to write into requirements.txt
     "requirements_file": "requirements.txt", // Name of the requirements file
-    "cwd": "D:\\Projects\\Python\\Sloves_Starter", // Working directory of the launcher
-    "work_directory": "D:\\Projects\\Python\\Sloves_Starter", // Working Directory of the object program
+    "cwd": "./", // Working directory of the launcher
+    "work_directory": "./", // Working Directory of the object program
     "use_venv": true, // Warning: functionality with this option turned off has not been tested for availability
-    "venv_prompt": "venv",
+    "venv_prompt": "venv", // Virtual Environment Prompt
     "script_name": null, // Automatic Search
-    "argument": null, // Pass through using starter parameters
+    "arguments": null, // Pass through using starter parameters
+    "python_arguments": null, // Pass through using python parameters
     "restart": false, // Automatic restart after program exit
     "reselect": false, // Automatic restart requires the user to reselect the script to execute
     "run_cmd_need_to_ask": true, // Asked when running an external command
     "ask_default_values": {}, // ASK options that are automatically populated at run time (ID reference [AskID](#AskID)) 
-    "divider_line_char": "=",
+    "divider_line_char": "=", // Divider Line Character
     "inject_environment_variables": {}, // Inject sub-process environment variables
     "text_encoding": "utf-8", // Text File Encoding
     "print_return_code": true, // Whether to print the child process return value
