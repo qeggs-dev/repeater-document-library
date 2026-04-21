@@ -471,14 +471,18 @@ PS：`CHAT`类型命令大部分都做到了支持视觉输入
 - `UpperCamelCase`
 - `snake_case`
 - `Upper_Snake_Case`
+- `UPPER_CASE`
 - `abr` (Abridge)
+- `ABR` (UPPER ABRIDGE)
 
 而单个单词的命令有些特殊：
 
 - `lowercase`
 - `Uppercase`
 - `s` (Single Character)
+- `S` (UPPER SINGLE CHARACTER)
 - `slbc` (Syllabic abbreviations)
+- `SLBC` (UPPER SYLLABIC ABBREVIATIONS)
 
 通常来说，如果一个新命令
 缩写与旧命令有冲突
