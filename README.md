@@ -1,67 +1,45 @@
-# Repeater Single File Docs
+<div align="center">
 
-用于长上下文 LLM 的单文件 Repeater 前置知识库
+# Repeater Document Library
+## Repeater 文档库
 
----
+一站式汇总阅览的 Repeater 文档库
 
-## 一、本文档是什么？
+[![Document](https://img.shields.io/badge/Repeater-Document%20Library-blue.svg)](./docs) [![GitHub](https://img.shields.io/badge/Repeater-AI%20Single%20File%20Document-yellow.svg)](./Repeater_Single_File_Docs.md)
 
-本文档是一个**面向 LLM 的 Repeater 平台知识库单文件版本**。
-
-它将原本分散在数十个 Markdown 文件中的 Repeater 平台文档（包括项目介绍、架构说明、配置文件参考、API 文档、模板引擎说明、内置剧情提示词等）**合并为一个单一的长文档**，旨在方便 LLM 在一次上下文中完整加载和理解整个 Repeater 平台的全貌。
-
----
-
-## 二、本文档不是什么？
-
-*   **不是用户操作手册：** 本文档不用于手动查询，你应该尝试将其放入 LLM 中，并让 LLM 成为你的互动式说明书
-*   **不是代码库：** 本文档是自然语言描述，不包含实际代码。
-*   **不是剧情小说：** 虽然包含了大量内置剧情的提示词，但其核心目的是展示平台功能以及告知 LLM 内置提示词的内容，而非提供纯粹的文学阅读体验。
+</div>
 
 ---
 
-## 三、本文档的目标受众
+一站式汇总阅览的 Repeater 文档库
 
-*   **主要受众：大语言模型 (LLM)**
-    *   当开发者或用户希望让 LLM 理解、操作或为 Repeater 平台生成内容（如代码、配置、提示词）时，可以将本文档作为上下文输入给 LLM。
-    *   文档开头的“Attention！”部分已明确指出，这是为 LLM 设计的，人类阅读需要极大的耐心。
+如果你是人类开发者，请访问 [Repeater 文档库](./docs) 以获取结构化的阅读体验
+如果正在尝试将文档交给 LLM 处理，请访问 [Repeater 单文件文档](./Repeater_Single_File_Docs.md) 以获取单文件版本
 
-*   **次要受众：深度开发者和贡献者**
-    *   虽然文档很长，但对于需要可能需要 Repeater 单文件解释架构、所有配置项、所有 API 端点的某些开发者来说，本文档可以作为一份离线参考资料。
-
----
-
-## 四、本文档的内容结构与导航
-
-本文档按照从宏观到微观、从概念到实操的逻辑进行组织：
-
-1.  **项目总览**：开头的简介、主旨、架构、历史、许可证等，帮助 LLM 快速建立对项目定位和设计哲学的宏观认知。
-2.  **核心概念**：权限、命令、触发、用户数据分支、缓存模式等，解释 Repeater 工作方式的关键机制。
-3.  **生态系统**：介绍官方实例、Nexus、其他组件、计划寿命等，描绘 Repeater 的整体生态。
-4.  **内置剧情与提示词库**：这是文档的**核心数据部分**，完整嵌入了 `repeater.md`、`night-light.md`、`laurel.md` 及其反转版本、旧版等所有预设提示词。这部分对于 LLM 理解 Repeater 的角色扮演玩法至关重要。
-5.  **完整技术文档**：从 `Server-README.md` 开始，依次嵌入所有配置文档 (`envs.md`, `main.md`, `model_api.md` 等)、API 文档 (`chat_api.md`, `userdata_api/*` 等)、模板引擎文档和客户端文档。这是平台的技术基石，供 LLM 进行技术查询和代码生成。
-6.  **运营参考**：官方实例的模型列表、完整日志示例等，为 LLM 提供实际的运行参考。
+我们使用 [Merge Text](https://github.com/qeggs-dev/merge-text-file) 对文档库的 [index.md](./docs/index.md) 进行处理，
+以生成 [Repeater 单文件文档](./Repeater_Single_File_Docs.md)
 
 ---
 
-## 五、如何向 LLM 提问以使用本文档？
+## 文档库目录
 
-为了最高效地利用本文档，您可以尝试以下提问模式：
+如果你想要开始阅读文档，
+从此处开始，选择你感兴趣的部分进行阅读
 
-*   **查询概念：** “根据 Repeater 文档，什么是‘用户数据分支’？它有什么作用？”
-*   **配置生成：** “请帮我生成一份 Repeater Server 的最小配置，使用 Deepseek 模型，并开启 INFO 级别的日志。”
-*   **API 使用指导：** “我想让机器人撤回最后一轮对话。文档中说有一个 `withdraw` 命令，请告诉我这个命令的完整用法，并说明它在后端调用了哪个 API？”
-*   **提示词创作辅助：** “基于文档中描述的‘复读机’人设，帮我写一个简短的番外剧情，描述她第一次见到‘夜灯’的场景。”
-*   **故障排查：** “如果我在日志中看到 `Cross user data flow is not allowed` 警告，是什么原因？如何解决？”
+- [Repeater 主服务文档](./docs/server-docs/README.md)
+- [基于 NoneBot 的 Repeater 客户端实现文档](./docs/client-docs/README.md)
+- [模型信息服务](./docs/modelapi-info-server-docs/README.md)
+- [Nexus](./docs/nexus-docs/README.md)
+- [HTML 渲染服务](./docs/render-server-docs/README.md)
+- [静态资源服务](./docs/static-resources-server-docs/README.md)
+- [Repeater 静态资源备份](./docs/static-data)
+- [Repeater 静态资源](https://github.com/qeggs-dev/repeater-static-data)
+- [Sloves Starter 守护进程文档](./docs/sloves-starter-docs/README.md)
+- [Notes 日记生成器](./docs/notes-client-docs/README.md)
+- [自动备份程序](./docs/auto-backup-docs/README.md)
 
 ---
 
-## 六、docs 目录下的文件是怎么生成的单文件文档的？
+## 文档库许可证
 
-使用 [merge-text-file](https://github.com/qeggs-dev/merge-text-file)
-
----
-
-## 六、本文档使用什么许可证？
-
-本文档使用 [MIT License](./LICENSE) 许可证。
+本文档库使用 [MIT License](./LICENSE) 许可证
