@@ -447,7 +447,7 @@ Repeater 还有一个自动化客户端，负责生成日记
 - [Repeater Nexus](https://github.com/qeggs-dev/repeater-nexus) Repeater 数据共享服务
 - [Repeater Notes Client](https://github.com/qeggs-dev/repeater-notes-client) Repeater 自动化日记客户端
 - [Auto Backup](https://github.com/qeggs-dev/auto-backup) 自动数据备份程序
-- [Repeater Single File Docs](https://github.com/qeggs-dev/repeater-single-file-docs) Repeater 单文件版 LLM 文档兼综合文档库
+- [Repeater Document Library](https://github.com/qeggs-dev/repeater-document-library) Repeater 综合文档库
 - [Repeater ModelAPI INFO Server](https://github.com/qeggs-dev/repeater-modelinfo-server) Repeater 模型信息服务，集中化管理模型与 API Key 并对 Repeater 开放接口
 - [Static Resources Server](https://github.com/qeggs-dev/static-resources-server) 静态资源服务器，用于存放 Repeater 的静态资源
 - [Repeater Static Resources Data](https://github.com/qeggs-dev/repeater-static-data) Repeater 静态资源数据存储库
