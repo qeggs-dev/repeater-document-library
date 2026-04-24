@@ -5,15 +5,27 @@
         "url": "https://api.deepseek.com",
         "models": [
             {
-                "name": "Deepseek-Think-Model (685.4B/A37B/BF16·F32·F8_E4M3/128K Context)",
-                "id": "deepseek-reasoner",
-                "uid": "deepseek-reasoner",
+                "name": "Deepseek V4 Pro (1.6T/A49B/F8_E4M3·BF16·I64·I8/1M Context)",
+                "id": "deepseek-v4-pro",
+                "uid": "deepseek-v4-pro",
                 "type": "chat"
             },
             {
-                "name": "Deepseek-Chat-Model (685.4B/A37B/BF16·F32·F8_E4M3/128K Context)",
+                "name": "Deepseek V4 Flash (292.02B/A13B/I64·F8_E8M0·I8·F8_E4M3/1M Context)",
+                "id": "deepseek-v4-flash",
+                "uid": "deepseek-v4-flash",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek V4 Flash (292.02B/A13B/I64·F8_E8M0·I8·F8_E4M3/1M Context)",
                 "id": "deepseek-chat",
                 "uid": "deepseek-chat",
+                "type": "chat"
+            },
+            {
+                "name": "Deepseek V4 Flash Thinking (292.02B/A13B/I64·F8_E8M0·I8·F8_E4M3/1M Context)",
+                "id": "deepseek-reasoner",
+                "uid": "deepseek-reasoner",
                 "type": "chat"
             }
         ]
@@ -58,6 +70,12 @@
                 "id": "kimi-k2.5",
                 "uid": "kimi-k2.5",
                 "type": "chat"
+            },
+            {
+                "name": "Kimi-K2.6 (1T/A32B/256K Context/Omnimodal)",
+                "id": "kimi-k2.6",
+                "uid": "kimi-k2.6",
+                "type": "chat"
             }
         ]
     },
@@ -67,9 +85,21 @@
         "url": "https://open.bigmodel.cn/api/paas/v4/",
         "models": [
             {
+                "name": "GLM-5.1(744B/A40B/200K Context)",
+                "id": "glm-5.1",
+                "uid": "glm-5.1",
+                "type": "chat"
+            },
+            {
                 "name": "GLM-5(744B/A40B/200K Context)",
                 "id": "glm-5",
                 "uid": "glm-5",
+                "type": "chat"
+            },
+            {
+                "name": "GLM-5V(744B/A40B/200K Context)",
+                "id": "glm-5v-turbo",
+                "uid": "glm-5v-turbo",
                 "type": "chat"
             },
             {
@@ -110,13 +140,25 @@
         "url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
         "models": [
             {
-                "name": "Qwen3.5-Plus (1M Context)",
+                "name": "Qwen3.6-Plus (1M Context/MultiModal)",
+                "id": "qwen3.6-plus",
+                "uid": "qwen3.6-plus",
+                "type": "chat"
+            },
+            {
+                "name": "Qwen3.6-Max (256K Context)",
+                "id": "qwen3.6-max-preview",
+                "uid": "qwen3.6-max-preview",
+                "type": "chat"
+            },
+            {
+                "name": "Qwen3.5-Plus (1M Context/MultiModal)",
                 "id": "qwen3.5-plus",
                 "uid": "qwen3.5-plus",
                 "type": "chat"
             },
             {
-                "name": "Qwen3.5-397B-A17B (256K Context)",
+                "name": "Qwen3.5-397B-A17B (256K Context/MultiModal)",
                 "id": "qwen3.5-397b-a17b",
                 "uid": "qwen3.5-397b-a17b",
                 "type": "chat"
@@ -461,12 +503,6 @@
                 "type": "chat"
             },
             {
-                "name": "Gemini 3.1 Pro Preview (1M Context/MultiModal)",
-                "id": "google/gemini-3.1-pro-preview",
-                "uid": "gemini-3.1-pro-preview",
-                "type": "chat"
-            },
-            {
                 "name": "Gemini 3 Pro Preview (1M Context/MultiModal)",
                 "id": "google/gemini-3-pro-preview",
                 "uid": "gemini-3-pro-preview",
@@ -476,6 +512,128 @@
                 "name": "GLM 4.7 Flash (free/200K Context)",
                 "id": "z-ai/glm-4.7-flash:free",
                 "uid": "glm-4.7-flash",
+                "type": "chat"
+            }
+        ]
+    },
+    {
+        "name": "OpenRouter",
+        "api_key_env": "OPEN_ROUTER_API_KEY",
+        "url": "https://openrouter.ai/api/v1",
+        "models": [
+            {
+                "name": "OpenAI: GPT-3.5 Turbo v0301 (175B/4K Context)",
+                "id": "openai/gpt-3.5-turbo-0301",
+                "uid": "gpt-3.5-turbo-0301",
+                "type": "chat"
+            },
+            {
+                "name": "OpenAI: GPT-3.5 Turbo 16K (175B/16K Context)",
+                "id": "openai/gpt-3.5-turbo-16k",
+                "uid": "gpt-3.5-turbo-16k",
+                "type": "chat"
+            },
+            {
+                "name": "OpenAI: GPT-3.5 Turbo 1106 (175B/16K Context)",
+                "id": "openai/gpt-3.5-turbo-1106",
+                "uid": "gpt-3.5-turbo-1106",
+                "type": "chat"
+            },
+            {
+                "name": "Anthropic: Claude Opus 4.6 (1M Context)",
+                "id": "anthropic/claude-opus-4.6",
+                "uid": "claude-opus-4.6",
+                "type": "chat"
+            },
+            {
+                "name": "OpenAI: GPT-4 (32K Context)",
+                "id": "openai/gpt-4-32k-0314",
+                "uid": "gpt-4-32k-0314",
+                "type": "chat"
+            },
+            {
+                "name": "OpenAI: GPT-4 Vision (32K Context/MultiModal)",
+                "id": "openai/gpt-4-vision-preview",
+                "uid": "gpt-4-vision-preview",
+                "type": "chat"
+            },
+            {
+                "name": "Google: Gemini 1.5 Pro (2M Context)",
+                "id": "google/gemini-pro-1.5",
+                "uid": "gemini-pro-1.5",
+                "type": "chat"
+            },
+            {
+                "name": "OpenAI: ChatGPT-4o (128K Context/Omnimodal)",
+                "id": "openai/chatgpt-4o-latest",
+                "uid": "gpt-4o",
+                "type": "chat"
+            },
+            {
+                "name": "OpenAI: o1-preview (128K Context)",
+                "id": "openai/o1-preview-2024-09-12",
+                "uid": "o1-preview",
+                "type": "chat"
+            },
+            {
+                "name": "xAI: Grok 2 (32K Context)",
+                "id": "x-ai/grok-2",
+                "uid": "grok-2",
+                "type": "chat"
+            },
+            {
+                "name": "xAI: Grok Beta (32K Context)",
+                "id": "x-ai/grok-beta",
+                "uid": "grok-beta",
+                "type": "chat"
+            },
+            {
+                "name": "xAI: Grok 4.20 (2M Context)",
+                "id": "x-ai/grok-4.20-beta",
+                "uid": "grok-beta",
+                "type": "chat"
+            },
+            {
+                "name": "xAI: Grok Vision Beta (32K Context/MultiModal)",
+                "id": "x-ai/grok-vision-beta",
+                "uid": "grok-vision-beta",
+                "type": "chat"
+            },
+            {
+                "name": "Gemini 3.1 Pro Preview(1.05M Context/Omnimodal)",
+                "id": "google/gemini-3.1-pro-preview",
+                "uid": "gemini-3.1-pro-preview",
+                "type": "chat"
+            },
+            {
+                "name": "MiMo V2 Omni(1T/A42B/262K Context/Omnimodal)",
+                "id": "xiaomi/mimo-v2-omni",
+                "uid": "mimo-v2-omni",
+                "type": "chat"
+            }
+        ]
+    },
+    {
+        "name": "Metaso",
+        "api_key_env": "METASO_API_KEY",
+        "url": "https://metaso.cn/api/v1",
+        "models": [
+            {
+                "name": "Metaso: Fast",
+                "id": "metaso/fast",
+                "uid": "metaso-fast",
+                "type": "chat"
+            },
+            {
+                "name": "Metaso: Fast Thinking",
+                "id": "metaso/fast_thinking",
+                "uid": "metaso-fast_thinking",
+                "type": "chat"
+            },
+            {
+                "name": "Metaso: Deepseek R1",
+                "id": "metaso/deepseek_r1",
+                "uid": "metaso-deepseek_r1",
                 "type": "chat"
             }
         ]
