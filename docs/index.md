@@ -10,7 +10,7 @@
 
 ## Version
 
-Adaptation Repeater v4.5.5.0
+Adaptation Repeater v4.5.6.0
 Last Update Time: {{ now.strftime("%Y-%m-%d %H:%M:%S") }}
 
 ---
@@ -157,8 +157,17 @@ Repeater 3.0 的所有代码与用户数据丢失
 
 ### 权限
 
-Repeater 没有权限模型，所有命令对所有用户全部公开
-因为是分体架构，管理员命令可以直接靠 API 实现，还更灵活
+Repeater 只有两种权限角色
+Deployer 和 User
+
+权限仅对于 NoneBot Repeater Client 有意义
+其他组件并未包含权限管理部分
+
+Deployer 的定义是可以直接对其他组件进行 HTTP 请求的人员
+User 的定义是使用 NoneBot Repeater Client 的用户
+
+由于 NoneBot Repeater Client 的用途是将用户命令转换成 API 请求
+所以 User 的能力是 Deployer 的子集
 
 ### 命令
 
