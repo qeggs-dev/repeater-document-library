@@ -151,6 +151,9 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 是否记录所有异常(比如 KeyboardInterrupt)
         "record_all_exceptions": true,
 
+        // 是否记录非 500 的 HTTP 异常的 Traceback
+        "record_warn_http_exception": false,
+
         // 代码读取器配置
         // 通常是为了更直观的显示错误位置
         "code_reader": {
@@ -329,7 +332,15 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
 
         // 默认模型 ID
         // 如果填写为列表，则每次请求从列表中随机选择一个
-        "default_model_uid": "chat"
+        "default_model_uid": "chat",
+
+        // Ping 服务提供方配置
+        "ping_provider":{
+            "timeout": 5.0,
+            "times": 4,
+            "size": 32,
+            "interval": 0.0
+        }
     },
 
     // Nexus Client 配置
@@ -540,7 +551,13 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         "debonce_save_wait_time": 1200.0,
 
         // 请求日志缓存的队列最大长度
-        "max_cache_size": 1000
+        "max_cache_size": 1000,
+
+        // 全量缓存的存活时间
+        "cache_keep_time": 1200.0,
+
+        // 是否开启全量内存缓存
+        "full_memory_cache": false
     },
 
     // 服务器配置
