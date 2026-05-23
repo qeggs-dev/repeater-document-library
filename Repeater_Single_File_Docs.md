@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adaptation Repeater v4.6.4.0
-Last Update Time: 2026-05-22 14:07:49
+Adaptation Repeater v4.6.5.0
+Last Update Time: 2026-05-23 16:39:11
 
 ---
 
@@ -7167,8 +7167,11 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
   - **Request**
     - ***method:** `GET`
   - **Response**
-    - `reasoning` (str): 推理内容
-    - `content` (str): AI回复内容
+    - `user_id`
+    - `buffers` (dict[str, dict[str, str]]): 缓冲区内容
+      - *\*task_id* (str): 任务ID
+        - `reasoning` (str): 推理内容
+        - `content` (str): AI回复内容
 [file content end]
 
 [file: "./server-docs/docs/api_table/generate_api/chat_api/index.md"]
@@ -7690,9 +7693,12 @@ Repeater 提供了如下对接 Nexus 的接口：
   - **Request**
     - **method**: `GET`
   - **Response**
-    - **type**: `JSON List`
+    - **type**: `JSON`
     - **Content:**
-      - *\*当前执行阶段的任务栈列表*
+      - `contains` (bool): 当前用户是否存在任务
+      - `tasks` (dict[str, list[str]]): 每个 task_id 对应的执行栈状态
+      - *\*List*
+      
 
 目前任务结构树如下:
 
@@ -7722,10 +7728,13 @@ Repeater 提供了如下对接 Nexus 的接口：
     - `Check context`
     - `Make extra body`
       - `thinking`
+      - `reasoning_effort`
+      - `user_id`
     - `Send Request`
     - `Processing Response`
     - `Logging Response Content`
     - `Fast Statistics`
+  - `Calling Tools`
   - `PostProcessing`
     - `Template Expanding`
     - `Saving Context`
@@ -7736,7 +7745,6 @@ Repeater 提供了如下对接 Nexus 的接口：
 - `Tasking`
   - `Prepareing`
     - `Checking Blacklist`
-    - `Getting Config`
     - `Processing Cross User Data Access`
     - `Getting model`
     - `Mapping user name`
@@ -7757,9 +7765,12 @@ Repeater 提供了如下对接 Nexus 的接口：
     - `Check context`
     - `Make extra body`
       - `thinking`
+      - `reasoning_effort`
+      - `user_id`
     - `Streaming`
     - `Logging Response Content`
     - `Fast Statistics`
+  - `Calling Tools`
   - `PostProcessing`
     - `Template Expanding`
     - `Saving Context`
@@ -9057,7 +9068,18 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 用于在某些 API 下告诉服务方
         // 自己是否需要返回 Usage 信息
         // 默认值：true，因为 Fast Statistics 需要这部分数据
-        "include_usage": true
+        "include_usage": true,
+
+        // 最大重新生成次数
+        // 通常用于模型进行 Tool Calls 时
+        // 限制其最大重复次数，防止模型陷入死循环
+        "max_regenerate_times": 10,
+
+        // 是否发送用户 ID 到服务端
+        // 默认值：false
+        // 如果为 true，则 Repeater 会讲 user_id 进行 sha256 后填充到 `user_id` 字段中
+        // 需要服务端明确支持 `user_id` 字段
+        "send_user_id": false,
     },
 
     // Context 配置
@@ -9754,6 +9776,16 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // 但某些 API 可能会因此调用失败
     "remove_reasoning_prompt": null,
 
+    // (list[str]) 允许调用的工具列表
+    "allowed_tool_calls": null,
+
+    // (bool) 是否发送用户 ID 到服务端
+    // 如果为 true，则 Repeater 会讲 user_id 进行 sha256 后填充到 `user_id` 字段中
+    // 需要服务端明确支持 `user_id` 字段
+    "send_user_id": null,
+
+    // ----------------------------------------------
+
     // (str) Request Statistics Message 模板
     // 用于生成一段自定义的统计文本
     "request_statistics_template": null,
@@ -9774,6 +9806,8 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // 在生成图片的最下方添加一小段独立文本
     "render_document_bottom_comment": null,
 
+    // ------------------------------------------------
+
     // (bool) 是否加载提示词
     // 此选项会被API接口中传入的 load_prompt 参数覆盖
     "load_prompt": null,
@@ -9788,6 +9822,16 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
 
     // (bool) 是否在保存时丢弃非文本数据
     "save_text_only": null,
+
+    // (bool) 是否构建多模态请求
+    // 如果为 false 则多模态内容将以文本的形式发送
+    "make_multimodal_message": null,
+
+    // (dict[str, list[str]]) 设置 Prompt Directives
+    // 键为基础类型，值为激活的 Prompt Directives 名称
+    "prompt_directives": null,
+
+    // -------------------------------------------------
 
     // (str) 用户名
     // 这个值在模板中为 `user_custom_name`
@@ -9810,6 +9854,8 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // 用于控制模板展开器中的时间变量
     "timezone": null,
 
+    // -------------------------------------------------
+
     // (bool) 是否允许跨用户数据访问
     // 如果为true, 则使用请求里指定的的用户进行加载和保存
     // 如果为false, 则只能对当前用户操作
@@ -9817,13 +9863,6 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // 如果要访问的目标用户也设置了该值
     // 且对方该值为false, 则请求将会自动回退到当前用户的上下文中
     "cross_user_data_access": null,
-
-    // (bool) 是否构建多模态请求
-    // 如果为 false 则多模态内容将以文本的形式发送
-    "make_multimodal_message": null,
-
-    // (list[str]) 允许调用的工具列表
-    "allowed_tool_calls": null,
 
     // (dict[str, Any]) 用户附加配置数据
     // 用于存储某些与用户相关的数据
@@ -11392,8 +11431,9 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
-| `seeCmd`                   | `sc`     | `SeeCmd`                  | `SEE_CMD`   | 4.6.4.0        | 显示命令                       | 命令名称                                   | 显示指定命令的详细帮助信息 |
-| `cmdTypes`                 | `ct`     | `CmdTypes`                | `SEE_CMD`   | 4.6.4.0        | 列出命令类型                   | 无                                        | 列出所有命令类型 |
+| `seeCmd`                   | `sc`     | `SeeCmd`                  | `SEE_CMD`   | 4.6.4.0        | 显示命令                       | 命令名称                                  | 显示指定命令的详细帮助信息 |
+| `cmdTypesList`             | `ctl`    | `CmdTypesList`            | `SEE_CMD`   | 4.6.4.0        | 列出命令类型                   | 无                                        | 列出所有命令类型 |
+| `cmdType`                  | `ct`     | `CmdType`                 | `SEE_CMD`   | 4.6.5.0        | 列出命令类型下的所有命令        | 无                                        | 列出命令类型下的所有命令 |
 
 ### Version Command
 
