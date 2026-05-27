@@ -275,25 +275,55 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 默认模型超时时间，单位为秒
         "default_timeout": 600.0,
 
+        // 默认模型种子
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_seed": null,
+
         // 默认模型温度，更高的温度意味着下一个词更高的不确定性
-        "default_temperature": 1.0,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_temperature": null,
+
+        // 默认模型 Top_A
+        // 筛选出所有概率不低于 最高概率的token × A 的 token
+        // 然后归一化重新采样
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_top_a": null,
 
         // 默认模型 Top_P ，值越大在采样时考虑的词汇越多
-        "default_top_p": 1.0,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_top_p": null,
+
+        // 默认模型 Top_K
+        // 从概率最高的 K 个 token 中抽样，其余 token 的概率被直接置为零
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_top_k": null,
 
         // 默认模型最大生成长度(兼容)
-        "default_max_tokens": 4096,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_max_tokens": null,
 
         // 默认模型最大生成长度
-        "default_max_completion_tokens": 4096,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_max_completion_tokens": null,
+
+        // 默认模型重复惩罚，值越高模型越不容易出现重复内容
+        // 惩罚程度按照重复次数增加，该值不允许为负
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_repetition_penalty": null,
 
         // 默认模型频率惩罚，值越高模型越不容易出现重复内容
         // 惩罚程度按照频率增加，如果该值为负则是奖励模型输出重复内容
-        "default_frequency_penalty": 0.0,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_frequency_penalty": null,
 
         // 默认模型存在惩罚，值越高模型越不容易出现重复内容
         // 惩罚程度只要存在就一直不变，如果该值为负则是奖励模型输出重复内容
-        "default_presence_penalty": 0.0,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_presence_penalty": null,
+
+        // 默认在 FIM 模式下，模型是否重复用户输入
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_fim_echo": null,
 
         // 默认模型停止符
         // 当模型输出到停止符内容时，停止生成
@@ -315,6 +345,15 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // - "max"
         // - null
         "default_reasoning_effort": null,
+
+        // 控制模型是否输出 logprobs
+        // 如果这里为 null，则使用提供方的默认值
+        "logprobs": null,
+
+        // 默认模型返回的 logprobs 数量
+        // 如果这里为 null，则使用提供方的默认值
+        "top_logprobs": null,
+
 
         // 默认模型是否流式输出
         // 注意：这里只是在告诉 Repeater 应该使用什么方式调用模型接口
