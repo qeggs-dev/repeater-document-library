@@ -806,9 +806,7 @@ PS: 模型为自动获取，配置中不存在模型列表。
 
 ## 日志示例
 
-此处展示了一个从启动、请求到退出的完整日志内容
-
-{{merge_text("./example.log", wrap_file=get_markdown_code_block_wrap("log"))}}
+{{merge_text("./example_logs")}}
 
 通常在部署时，日志的级别将会调高到INFO，以过滤掉无用信息。
 一般来说，上下文越长，缓存命中率越高，因为未命中在整体中的占比变小了。
