@@ -1,0 +1,24 @@
+2026-05-29 07:31:18.649 | INFO     | Rendering image 52830df9-7c37-4fa9-9a55-aa91b796238c.png
+2026-05-29 07:31:18.649 | INFO     | Starting render: format=png, output=workspace\rendered_images\52830df9-7c37-4fa9-9a55-aa91b796238c.png
+2026-05-29 07:31:20.464 | SUCCESS  | Render completed in 1815ms
+2026-05-29 07:31:20.493 | INFO     | Created image 52830df9-7c37-4fa9-9a55-aa91b796238c.png
+2026-05-29 07:31:20.495 | INFO     | [脱敏处理] - "POST /render HTTP/1.1" 200
+2026-05-29 07:31:20.509 | INFO     | [脱敏处理] - "GET /files/render/e2004097-f751-4ceb-94e1-63360bd0d91e.png HTTP/1.1" 200
+2026-05-29 07:31:20.511 | INFO     | [脱敏处理] - "GET /files/render/52830df9-7c37-4fa9-9a55-aa91b796238c.png HTTP/1.1" 200
+2026-05-29 07:31:37.773 | INFO     | Deleted image 4c3b3a1f-320d-47a2-a7c1-ff06cbcf3779.png
+2026-05-29 07:32:18.618 | INFO     | Deleted image e2004097-f751-4ceb-94e1-63360bd0d91e.png
+2026-05-29 07:32:20.522 | INFO     | Deleted image 52830df9-7c37-4fa9-9a55-aa91b796238c.png
+2026-05-29 07:40:13.998 | INFO     | Rendering image 8f9fa1fa-0394-4a2e-a41e-73311b34d4c9.png
+2026-05-29 07:40:13.999 | INFO     | Starting render: format=png, output=workspace\rendered_images\8f9fa1fa-0394-4a2e-a41e-73311b34d4c9.png
+2026-05-29 07:40:15.874 | SUCCESS  | Render completed in 1874ms
+2026-05-29 07:40:15.904 | INFO     | Created image 8f9fa1fa-0394-4a2e-a41e-73311b34d4c9.png
+2026-05-29 07:40:15.905 | INFO     | [脱敏处理] - "POST /render HTTP/1.1" 200
+2026-05-29 07:40:15.941 | INFO     | Rendering image 3c55f8e3-bc18-4aea-9c1c-f8b123a0984b.png
+2026-05-29 07:40:15.942 | INFO     | Starting render: format=png, output=workspace\rendered_images\3c55f8e3-bc18-4aea-9c1c-f8b123a0984b.png
+2026-05-29 07:40:17.791 | SUCCESS  | Render completed in 1849ms
+2026-05-29 07:40:17.820 | INFO     | Created image 3c55f8e3-bc18-4aea-9c1c-f8b123a0984b.png
+2026-05-29 07:40:17.821 | INFO     | [脱敏处理] - "POST /render HTTP/1.1" 200
+2026-05-29 07:40:17.837 | INFO     | [脱敏处理] - "GET /files/render/8f9fa1fa-0394-4a2e-a41e-73311b34d4c9.png HTTP/1.1" 200
+2026-05-29 07:40:17.839 | INFO     | [脱敏处理] - "GET /files/render/3c55f8e3-bc18-4aea-9c1c-f8b123a0984b.png HTTP/1.1" 200
+2026-05-29 07:41:15.924 | INFO     | Deleted image 8f9fa1fa-0394-4a2e-a41e-73311b34d4c9.png
+2026-05-29 07:41:17.839 | INFO     | Deleted image 3c55f8e3-bc18-4aea-9c1c-f8b123a0984b.png

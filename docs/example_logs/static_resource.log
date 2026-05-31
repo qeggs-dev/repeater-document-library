@@ -1,0 +1,28 @@
+2026-05-29 07:30:58.921 | INFO     - Getting file: static/prompt/presets/official/normal/repeater.md
+2026-05-29 07:30:58.924 | INFO     - [脱敏处理] - "GET /prompt/presets/official/normal/repeater.md?text_encoding=utf-8 HTTP/1.1" 200
+2026-05-29 07:30:58.945 | INFO     - Getting file: static/prompt/directives/specification/official/immersive.md
+2026-05-29 07:30:58.949 | INFO     - [脱敏处理] - "GET /prompt/directives/specification/official/immersive.md?text_encoding=utf-8 HTTP/1.1" 200
+2026-05-29 07:30:58.956 | INFO     - Getting file: static/prompt/directives/information/official/user_profile.md
+2026-05-29 07:30:58.959 | INFO     - [脱敏处理] - "GET /prompt/directives/information/official/user_profile.md?text_encoding=utf-8 HTTP/1.1" 200
+2026-05-29 07:31:16.801 | INFO     - Getting file: static/html_templates/standard-katex.html
+2026-05-29 07:31:16.804 | INFO     - [脱敏处理] - "GET /html_templates/standard-katex.html?text_encoding=utf-8 HTTP/1.1" 200
+2026-05-29 07:31:17.360 | INFO     - Getting file: static/styles/light.css
+2026-05-29 07:31:17.363 | INFO     - [脱敏处理] - "GET /styles/light.css HTTP/1.1" 200
+2026-05-29 07:31:18.635 | INFO     - Getting file: static/html_templates/standard-katex.html
+2026-05-29 07:31:18.638 | INFO     - [脱敏处理] - "GET /html_templates/standard-katex.html?text_encoding=utf-8 HTTP/1.1" 200
+2026-05-29 07:31:19.147 | INFO     - Getting file: static/styles/light.css
+2026-05-29 07:31:19.150 | INFO     - [脱敏处理] - "GET /styles/light.css HTTP/1.1" 200
+2026-05-29 07:39:55.579 | INFO     - Getting file: static/prompt/presets/official/normal/repeater.md
+2026-05-29 07:39:55.582 | INFO     - [脱敏处理] - "GET /prompt/presets/official/normal/repeater.md?text_encoding=utf-8 HTTP/1.1" 200
+2026-05-29 07:39:55.599 | INFO     - Getting file: static/prompt/directives/specification/official/immersive.md
+2026-05-29 07:39:55.602 | INFO     - [脱敏处理] - "GET /prompt/directives/specification/official/immersive.md?text_encoding=utf-8 HTTP/1.1" 200
+2026-05-29 07:39:55.606 | INFO     - Getting file: static/prompt/directives/information/official/user_profile.md
+2026-05-29 07:39:55.609 | INFO     - [脱敏处理] - "GET /prompt/directives/information/official/user_profile.md?text_encoding=utf-8 HTTP/1.1" 200
+2026-05-29 07:40:13.982 | INFO     - Getting file: static/html_templates/standard-katex.html
+2026-05-29 07:40:13.986 | INFO     - [脱敏处理] - "GET /html_templates/standard-katex.html?text_encoding=utf-8 HTTP/1.1" 200
+2026-05-29 07:40:14.537 | INFO     - Getting file: static/styles/light.css
+2026-05-29 07:40:14.539 | INFO     - [脱敏处理] - "GET /styles/light.css HTTP/1.1" 200
+2026-05-29 07:40:15.926 | INFO     - Getting file: static/html_templates/standard-katex.html
+2026-05-29 07:40:15.929 | INFO     - [脱敏处理] - "GET /html_templates/standard-katex.html?text_encoding=utf-8 HTTP/1.1" 200
+2026-05-29 07:40:16.502 | INFO     - Getting file: static/styles/light.css
+2026-05-29 07:40:16.504 | INFO     - [脱敏处理] - "GET /styles/light.css HTTP/1.1" 200

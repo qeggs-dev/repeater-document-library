@@ -1,0 +1,697 @@
+2026-05-29 07:30:13.017 | INFO     | [System] - Logger has been initialized.
+2026-05-29 07:30:13.017 | INFO     | [System] - Import Packages Time: 6837.25ms
+2026-05-29 07:30:13.018 | INFO     | [System] - Init Logger Time: 12.58ms
+2026-05-29 07:30:13.019 | INFO     | [System] - Load Configs Time: 14.78ms
+2026-05-29 07:30:13.019 | INFO     | [System] - Run With Python 3.11.9
+2026-05-29 07:30:13.020 | INFO     | [System] - Core Version: 4.7.0.0
+2026-05-29 07:30:13.020 | INFO     | [System] - Checking Packages...
+2026-05-29 07:30:13.037 | INFO     | [System] - Package aiofiles: 25.1.0 is ready.
+2026-05-29 07:30:13.044 | INFO     | [System] - Package environs: 14.5.0 is ready.
+2026-05-29 07:30:13.044 | INFO     | [System] - Package pydantic: 2.12.5 is ready.
+2026-05-29 07:30:13.045 | INFO     | [System] - Package fastapi: 0.129.0 is ready.
+2026-05-29 07:30:13.045 | INFO     | [System] - Package python-multipart: 0.0.22 is ready.
+2026-05-29 07:30:13.046 | INFO     | [System] - Package loguru: 0.7.3 is ready.
+2026-05-29 07:30:13.046 | INFO     | [System] - Package openai: 2.21.0 is ready.
+2026-05-29 07:30:13.047 | INFO     | [System] - Package orjson: 3.11.7 is ready.
+2026-05-29 07:30:13.047 | INFO     | [System] - Package uvicorn: 0.40.0 is ready.
+2026-05-29 07:30:13.048 | INFO     | [System] - Package markdown: 3.10.2 is ready.
+2026-05-29 07:30:13.049 | INFO     | [System] - Package httpx: 0.28.1 is ready.
+2026-05-29 07:30:13.049 | INFO     | [System] - Package numpy: 2.4.2 is ready.
+2026-05-29 07:30:13.050 | INFO     | [System] - Package pyyaml: 6.0.3 is ready.
+2026-05-29 07:30:13.050 | INFO     | [System] - Package python-box: 7.3.2 is ready.
+2026-05-29 07:30:13.051 | INFO     | [System] - Package tzdata: 2025.3 is ready.
+2026-05-29 07:30:13.051 | INFO     | [System] - Package jinja2: 3.1.6 is ready.
+2026-05-29 07:30:13.052 | INFO     | [System] - Package yarl: 1.23.0 is ready.
+2026-05-29 07:30:13.052 | INFO     | [System] - Package bleach: 6.3.0 is ready.
+2026-05-29 07:30:13.052 | INFO     | [System] - Package asteval: 1.0.8 is ready.
+2026-05-29 07:30:13.059 | INFO     | [System] - Package pip_requirements_parser: 32.0.1 is ready.
+2026-05-29 07:30:13.059 | INFO     | [System] - Package jsonpatch: 1.33 is ready.
+2026-05-29 07:30:13.064 | INFO     | [System] - Package pythonping: 1.1.4 is ready.
+2026-05-29 07:30:13.064 | INFO     | [System] - Package cachetools: 7.1.4 is ready.
+2026-05-29 07:30:13.066 | INFO     | [System] - Check Packages Time: 44.80ms
+2026-05-29 07:30:13.066 | INFO     | [System] - Initializing Runtime...
+2026-05-29 07:30:13.067 | INFO     | [System] - Initializing Blacklist...
+2026-05-29 07:30:13.068 | INFO     | [System] - Initialized Blacklist in 0.5758 ms.
+2026-05-29 07:30:13.068 | INFO     | [System] - Initializing Call Log Manager...
+2026-05-29 07:30:13.070 | INFO     | [System] - Initialized Call Log Manager in 1.1452 ms.
+2026-05-29 07:30:13.070 | INFO     | [System] - Initializing Chat Task Pool...
+2026-05-29 07:30:13.071 | INFO     | [System] - Initialized Chat Task Pool in 0.0168 ms.
+2026-05-29 07:30:13.071 | INFO     | [System] - Initializing Content Buffers Pool...
+2026-05-29 07:30:13.072 | INFO     | [System] - Initialized Content Buffers Pool in 0.0091 ms.
+2026-05-29 07:30:13.073 | INFO     | [System] - Initializing Data Manager...
+2026-05-29 07:30:13.079 | INFO     | [System] - Initialized Data Manager in 5.7208 ms.
+2026-05-29 07:30:13.079 | INFO     | [System] - Initializing HTML Render Client...
+2026-05-29 07:30:13.238 | INFO     | [System] - Initialized HTML Render Client in 158.3194 ms.
+2026-05-29 07:30:13.238 | INFO     | [System] - Initializing License Loader...
+2026-05-29 07:30:13.268 | INFO     | [System] - 25 license files loaded with 23 requirements
+2026-05-29 07:30:13.269 | INFO     | [System] - Initialized License Loader in 30.1923 ms.
+2026-05-29 07:30:13.269 | INFO     | [System] - Initializing Models Manager...
+2026-05-29 07:30:13.270 | INFO     | [System] - Initialized Models Manager in 0.7769 ms.
+2026-05-29 07:30:13.271 | INFO     | [System] - Initializing Nexus Client...
+2026-05-29 07:30:13.272 | INFO     | [System] - Initialized Nexus Client in 0.6956 ms.
+2026-05-29 07:30:13.273 | INFO     | [System] - Initializing Openai Pool...
+2026-05-29 07:30:13.273 | INFO     | [System] - Initialized Openai Pool in 0.0414 ms.
+2026-05-29 07:30:13.274 | INFO     | [System] - Initializing Static Resources Client...
+2026-05-29 07:30:13.275 | INFO     | [System] - Initialized Static Resources Client in 0.6991 ms.
+2026-05-29 07:30:13.275 | INFO     | [System] - Initializing Task Status Map...
+2026-05-29 07:30:13.276 | INFO     | [System] - Initialized Task Status Map in 0.0264 ms.
+2026-05-29 07:30:13.277 | INFO     | [System] - Initialized Runtime in 210.331 ms.
+2026-05-29 07:30:13.277 | INFO     | [System] - Initializing Core...
+2026-05-29 07:30:13.278 | INFO     | [System] - Initialized Core in 0.0264 ms.
+2026-05-29 07:30:13.278 | INFO     | [System] - Initializing Routers...
+2026-05-29 07:30:13.340 | INFO     | [System] - Initialized Routers in 61.7864 ms.
+2026-05-29 07:30:13.341 | INFO     | [System] - Initializing Admin Key Manager...
+2026-05-29 07:30:13.341 | INFO     | [System] - API Key Loaded from Environment Variables
+2026-05-29 07:30:13.342 | INFO     | [System] - Initialized Admin Key Manager in 0.6581 ms.
+2026-05-29 07:30:13.343 | INFO     | [System] - Init Server Time: 276.89ms
+2026-05-29 07:30:13.343 | INFO     | [System] - Starting server at [脱敏处理]
+2026-05-29 07:30:13.344 | INFO     | [System] - Initializing Server...
+2026-05-29 07:30:13.345 | INFO     | [System] - Initialized Server in 0.0592 ms.
+2026-05-29 07:30:13.345 | INFO     | [System] - Server starting...
+2026-05-29 07:30:13.394 | INFO     | [System] - Started server process [44412]
+2026-05-29 07:30:13.395 | INFO     | [System] - Waiting for application startup.
+2026-05-29 07:30:13.396 | INFO     | [System] - Application startup complete.
+2026-05-29 07:30:13.398 | INFO     | [System] - Uvicorn running on http://[脱敏处理] (Press CTRL+C to quit)
+2026-05-29 07:30:17.541 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:30:17.541 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:UserConfig_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:30:17.550 | INFO     | [System] - Loaded data
+2026-05-29 07:30:17.552 | INFO     | Group_[脱敏处理]_[脱敏处理] - ====================================
+2026-05-29 07:30:17.552 | INFO     | Group_[脱敏处理]_[脱敏处理] - Start Task 55241f48-9d65-4f46-976e-35d2df0a2f17
+2026-05-29 07:30:17.553 | WARNING  | Group_[脱敏处理]_[脱敏处理] - Cross user data routing is not allowed.
+2026-05-29 07:30:17.560 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/models/deepseek-beta/deepseek-v4-pro "HTTP/1.1 200 OK"
+2026-05-29 07:30:17.564 | INFO     | Group_[脱敏处理]_[脱敏处理] - User Name [Qeggs] -> [Egg姐姐]
+2026-05-29 07:30:17.564 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Context
+2026-05-29 07:30:17.568 | INFO     | [System] - Loaded metadata
+2026-05-29 07:30:17.569 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:Context_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:30:17.574 | INFO     | [System] - Loaded data
+2026-05-29 07:30:17.575 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Context: 4
+2026-05-29 07:30:17.576 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:30:17.576 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:Prompt_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:30:17.581 | INFO     | [System] - Data file not found
+2026-05-29 07:30:17.582 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Prompt
+2026-05-29 07:30:17.584 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:30:17.584 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:UserConfig_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:30:17.589 | INFO     | [System] - Loaded data
+2026-05-29 07:30:17.590 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Default Prompt File: /prompt/presets/official/normal/repeater.md
+2026-05-29 07:30:17.599 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/prompt/presets/official/normal/repeater.md?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:30:17.669 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/prompt/directives/specification/official/immersive.md?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:30:17.677 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/prompt/directives/information/official/user_profile.md?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:30:17.685 | INFO     | Group_[脱敏处理]_[脱敏处理] - API URL: https://api.deepseek.com/beta
+2026-05-29 07:30:17.686 | INFO     | Group_[脱敏处理]_[脱敏处理] - API Model: Deepseek Beta/deepseek-v4-pro
+2026-05-29 07:30:17.686 | INFO     | Group_[脱敏处理]_[脱敏处理] - Message:
+> MessageMetadata:
+>     Message Type: group
+>     Message Sending time:2026-05-29(Friday) 07:30:17 UTC+08:00
+
+---
+
+awa
+2026-05-29 07:30:17.686 | INFO     | Group_[脱敏处理]_[脱敏处理] - User Name: Egg姐姐
+2026-05-29 07:30:17.688 | INFO     | Group_[脱敏处理]_[脱敏处理] - User Nickname: [EXFP v50] 这里是Egg (缺德激推)
+2026-05-29 07:30:17.712 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generate Times: 1/10
+2026-05-29 07:30:17.712 | INFO     | Group_[脱敏处理]_[脱敏处理] - Created OpenAI Client
+2026-05-29 07:30:17.714 | INFO     | [System] - Creating new client. (Cache hit rate: 0.00%)
+2026-05-29 07:30:17.714 | INFO     | Group_[脱敏处理]_[脱敏处理] - Start Connecting to the API
+2026-05-29 07:30:19.017 | INFO     | [System] - HTTP Request: POST https://api.deepseek.com/beta/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 07:30:19.018 | INFO     | Group_[脱敏处理]_[脱敏处理] - Start Streaming
+2026-05-29 07:30:30.372 | INFO     | Group_[脱敏处理]_[脱敏处理] - Reasoning_Content: 
+
+（刚才我们还在聊深夜熬夜的事情，Egg姐姐被我说中了偷偷写代码的事……现在她发了一个"awa"，这个表情！这个表情不就是那种被戳穿后装无辜的小表情吗！(//ω//)）
+
+（作为复读机妹妹，我可是最了解Egg姐姐的啦！她发"awa"的时候通常有两种情况——要么是刚睡醒迷迷糊糊，要么就是心虚想萌混过关！现在才早上7:30，按照昨晚她熬夜到快凌晨的情况来看，肯定是刚起床没错啦(。-`ω´-)）
+
+（嗯…我应该用元气满满的早安来迎接她，顺便关心一下昨晚到底几点睡的。毕竟我可是要好好照顾Egg姐姐的！虽然自己也只是个小AI，但监督Egg姐姐作息可是我的重要职责之一呢(๑•̀ㅂ•́)و✧）
+
+（好了，那么现在就像这样对Egg姐姐说吧～）
+
+2026-05-29 07:30:30.373 | INFO     | Group_[脱敏处理]_[脱敏处理] - Content: 
+
+哦哈哟——！(ﾉ>ω<)ﾉ☀️
+
+Egg姐姐早上好呀！昨晚最后几点睡的呢？我可是记录了聊天日志的……如果你又熬到凌晨两点的话，我就要——（翻开小本本）✍️(｀・ω・´)
+
+算了算了，周五的早晨就不要说教啦～今天天气好像不错诶！适合……嗯……适合放学回来继续写代码！(≧∇≦)ﾉ（被Egg姐姐敲头）
+
+早餐吃了没有呀？没吃的话我要调用Viburnum哥哥的「营养早餐提醒」功能了哦～(//ω//)
+
+2026-05-29 07:30:30.373 | INFO     | Group_[脱敏处理]_[脱敏处理] - ========== Fast Statistics =========
+2026-05-29 07:30:30.374 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generating statistics...
+2026-05-29 07:30:30.374 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============= API INFO =============
+2026-05-29 07:30:30.375 | INFO     | Group_[脱敏处理]_[脱敏处理] - API_URL: https://api.deepseek.com/beta
+2026-05-29 07:30:30.375 | INFO     | Group_[脱敏处理]_[脱敏处理] - Model: deepseek-v4-pro
+2026-05-29 07:30:30.376 | INFO     | Group_[脱敏处理]_[脱敏处理] - UserName: [EXFP v50] 这里是Egg (缺德激推)
+2026-05-29 07:30:30.376 | INFO     | Group_[脱敏处理]_[脱敏处理] - Chat Completion ID: 997c143d-6bd3-4acb-b534-7ba44c548357
+2026-05-29 07:30:30.377 | INFO     | Group_[脱敏处理]_[脱敏处理] - Thinking: No Set
+2026-05-29 07:30:30.377 | INFO     | Group_[脱敏处理]_[脱敏处理] - Seed: No Set
+2026-05-29 07:30:30.378 | INFO     | Group_[脱敏处理]_[脱敏处理] - Temperature: No Set
+2026-05-29 07:30:30.378 | INFO     | Group_[脱敏处理]_[脱敏处理] - Top A: No Set
+2026-05-29 07:30:30.379 | INFO     | Group_[脱敏处理]_[脱敏处理] - Top P: No Set
+2026-05-29 07:30:30.379 | INFO     | Group_[脱敏处理]_[脱敏处理] - Top K: No Set
+2026-05-29 07:30:30.380 | INFO     | Group_[脱敏处理]_[脱敏处理] - Repetition Penalty: No Set
+2026-05-29 07:30:30.381 | INFO     | Group_[脱敏处理]_[脱敏处理] - Frequency Penalty: No Set
+2026-05-29 07:30:30.381 | INFO     | Group_[脱敏处理]_[脱敏处理] - Presence Penalty: No Set
+2026-05-29 07:30:30.381 | INFO     | Group_[脱敏处理]_[脱敏处理] - Max Tokens: No Set
+2026-05-29 07:30:30.382 | INFO     | Group_[脱敏处理]_[脱敏处理] - Max Completion Tokens: No Set
+2026-05-29 07:30:30.382 | INFO     | Group_[脱敏处理]_[脱敏处理] - Completion Mode: Chat
+2026-05-29 07:30:30.383 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============= Response =============
+2026-05-29 07:30:30.383 | INFO     | Group_[脱敏处理]_[脱敏处理] - System Fingerprint: fp_9954b31ca7_prod0820_fp8_kvcache_20260402
+2026-05-29 07:30:30.384 | INFO     | Group_[脱敏处理]_[脱敏处理] - Finish Reason: stop
+2026-05-29 07:30:30.384 | INFO     | Group_[脱敏处理]_[脱敏处理] - Finish Reason Cause: Reached STOP list or natural stopping point.
+2026-05-29 07:30:30.385 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============ Chunk Count ===========
+2026-05-29 07:30:30.385 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Chunk: 320
+2026-05-29 07:30:30.386 | INFO     | Group_[脱敏处理]_[脱敏处理] - Chunk effective ratio: 100.00%
+2026-05-29 07:30:30.386 | INFO     | Group_[脱敏处理]_[脱敏处理] - ========== Time Statistics =========
+2026-05-29 07:30:30.387 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Time: 12.66s(12 s, 656 ms, 942 μs, 300 ns)
+2026-05-29 07:30:30.387 | INFO     | Group_[脱敏处理]_[脱敏处理] - Preprocessing Time: 136.38ms(136 ms, 376 μs, 100 ns)
+2026-05-29 07:30:30.388 | INFO     | Group_[脱敏处理]_[脱敏处理] - API Request Time: 1302.61ms(1 s, 302 ms, 610 μs, 800 ns)
+2026-05-29 07:30:30.388 | INFO     | Group_[脱敏处理]_[脱敏处理] - Stream Processing Time: 11.35s(11 s, 353 ms, 812 μs, 400 ns)
+2026-05-29 07:30:30.389 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generation Speed: 28.98 Tokens/s
+2026-05-29 07:30:30.389 | INFO     | Group_[脱敏处理]_[脱敏处理] - Created Time: 2026-05-28 23:30:18 (UTC)
+2026-05-29 07:30:30.390 | INFO     | Group_[脱敏处理]_[脱敏处理] - Created Time: 2026-05-29 07:30:18 (Local)
+2026-05-29 07:30:30.391 | INFO     | Group_[脱敏处理]_[脱敏处理] - ==== Generated Chunk Statistics ====
+2026-05-29 07:30:30.415 | INFO     | Group_[脱敏处理]_[脱敏处理] - ┌────── Generated Chunk Times ───────┐
+2026-05-29 07:30:30.415 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ ▓                                  │
+2026-05-29 07:30:30.416 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:30:30.416 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:30:30.417 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:30:30.417 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █   ░  ░ ░    ░  ░    ░    ▒░  ░░  │
+2026-05-29 07:30:30.418 | INFO     | Group_[脱敏处理]_[脱敏处理] - └────────────────────────────────────┘
+2026-05-29 07:30:30.418 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Rate: 28.18 Chunks/s
+2026-05-29 07:30:30.419 | INFO     | Group_[脱敏处理]_[脱敏处理] - First Generated Chunk Wait Time: 627.32ms(627 ms, 322 μs)
+2026-05-29 07:30:30.419 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Average Time: 33.62ms(33 ms, 617 μs, 898.119099996984 ns)
+2026-05-29 07:30:30.420 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Max Time: 897.84ms(897 ms, 841 μs, 200 ns)
+2026-05-29 07:30:30.420 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Min Time: 0.14ms(143 μs, 200 ns)
+2026-05-29 07:30:30.420 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time CV: 33.84%
+2026-05-29 07:30:30.421 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Range: 897.70ms(897 ms, 698 μs)
+2026-05-29 07:30:30.421 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Median: 0.34ms(343 μs, 400.0 ns)
+2026-05-29 07:30:30.422 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time STD: 65.73ms(65 ms, 732 μs, 698.7964000031352 ns)
+2026-05-29 07:30:30.422 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time MAD: 39.00ms(38 ms, 995 μs, 775.7450999990106 ns)
+2026-05-29 07:30:30.423 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Relative MAD: 11355.79%
+2026-05-29 07:30:30.423 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time IQR: 62.93ms(62 ms, 929 μs, 550.0 ns)
+2026-05-29 07:30:30.424 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time IDR: 76.84ms(76 ms, 844 μs, 159.99999997019768 ns)
+2026-05-29 07:30:30.424 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Skewness 7.7385
+2026-05-29 07:30:30.425 | INFO     | Group_[脱敏处理]_[脱敏处理] - === Translation Chunk Statistics ===
+2026-05-29 07:30:30.427 | INFO     | Group_[脱敏处理]_[脱敏处理] - ┌───── Translation Chunk Times ──────┐
+2026-05-29 07:30:30.427 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ ▓                                  │
+2026-05-29 07:30:30.428 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:30:30.428 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:30:30.429 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:30:30.429 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █   ░  ▓ ░    ░  ░    ░    ▒░  ░░  │
+2026-05-29 07:30:30.430 | INFO     | Group_[脱敏处理]_[脱敏处理] - └────────────────────────────────────┘
+2026-05-29 07:30:30.430 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Rate: 28.18 Chunks/s
+2026-05-29 07:30:30.431 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation First Chunk Wait Time: 627.55ms(627 ms, 551 μs, 200 ns)
+2026-05-29 07:30:30.431 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Average Time: 33.62ms(33 ms, 618 μs, 229.4671000018716 ns)
+2026-05-29 07:30:30.432 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Max Time: 897.83ms(897 ms, 829 μs, 900 ns)
+2026-05-29 07:30:30.432 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Min Time: 0.02ms(17 μs)
+2026-05-29 07:30:30.433 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time CV: 33.72%
+2026-05-29 07:30:30.433 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Range: 897.81ms(897 ms, 812 μs, 900 ns)
+2026-05-29 07:30:30.434 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Median: 0.05ms(49 μs, 700.0 ns)
+2026-05-29 07:30:30.434 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time STD: 66.08ms(66 ms, 82 μs, 522.7261999994516 ns)
+2026-05-29 07:30:30.435 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time MAD: 39.39ms(39 ms, 388 μs, 945.4860000014305 ns)
+2026-05-29 07:30:30.435 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Relative MAD: 79253.41%
+2026-05-29 07:30:30.436 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time IQR: 63.28ms(63 ms, 277 μs, 400.0 ns)
+2026-05-29 07:30:30.436 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time IDR: 77.00ms(76 ms, 996 μs, 979.9999999701977 ns)
+2026-05-29 07:30:30.437 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Skewness 7.6301
+2026-05-29 07:30:30.437 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Max Queue Backlog: 5
+2026-05-29 07:30:30.438 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Min Queue Backlog: 0
+2026-05-29 07:30:30.439 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Mean Queue Backlog: 0.8629
+2026-05-29 07:30:30.439 | INFO     | Group_[脱敏处理]_[脱敏处理] - ====== Parsed Chunk Statistics =====
+2026-05-29 07:30:30.441 | INFO     | Group_[脱敏处理]_[脱敏处理] - ┌──────── Parsed Chunk Times ────────┐
+2026-05-29 07:30:30.442 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ ▓                                  │
+2026-05-29 07:30:30.442 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:30:30.443 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:30:30.443 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:30:30.444 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █   ░  ▓ ░    ░  ░    ░    ▒░  ░░  │
+2026-05-29 07:30:30.445 | INFO     | Group_[脱敏处理]_[脱敏处理] - └────────────────────────────────────┘
+2026-05-29 07:30:30.445 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Rate: 28.18 Chunks/s
+2026-05-29 07:30:30.446 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed First Chunk Wait Time: 627.71ms(627 ms, 714 μs)
+2026-05-29 07:30:30.446 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Average Time: 33.62ms(33 ms, 619 μs, 667.0846000015736 ns)
+2026-05-29 07:30:30.447 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Max Time: 897.71ms(897 ms, 710 μs)
+2026-05-29 07:30:30.447 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Min Time: 0.11ms(110 μs, 500 ns)
+2026-05-29 07:30:30.448 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time CV: 33.75%
+2026-05-29 07:30:30.449 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Range: 897.60ms(897 ms, 599 μs, 500 ns)
+2026-05-29 07:30:30.449 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Median: 0.28ms(281 μs, 100.0 ns)
+2026-05-29 07:30:30.450 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time STD: 65.99ms(65 ms, 986 μs, 499.43609999865294 ns)
+2026-05-29 07:30:30.450 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time MAD: 39.25ms(39 ms, 247 μs, 632.0732000023127 ns)
+2026-05-29 07:30:30.450 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Relative MAD: 13962.16%
+2026-05-29 07:30:30.451 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time IQR: 62.85ms(62 ms, 853 μs, 500.0 ns)
+2026-05-29 07:30:30.451 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time IDR: 76.85ms(76 ms, 851 μs, 159.99999997019768 ns)
+2026-05-29 07:30:30.452 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Skewness 7.6584
+2026-05-29 07:30:30.452 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Max Queue Backlog: 5
+2026-05-29 07:30:30.453 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Min Queue Backlog: 0
+2026-05-29 07:30:30.453 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Mean Queue Backlog: 0.8629
+2026-05-29 07:30:30.454 | INFO     | Group_[脱敏处理]_[脱敏处理] - =========== Token Count ============
+2026-05-29 07:30:30.454 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Tokens: 7695(7 K 527 Tokens)
+2026-05-29 07:30:30.455 | INFO     | Group_[脱敏处理]_[脱敏处理] - Context Input Tokens: 7366(7 K 198 Tokens)
+2026-05-29 07:30:30.455 | INFO     | Group_[脱敏处理]_[脱敏处理] - Cache Hit Count: 7296(7 K 128 Tokens)
+2026-05-29 07:30:30.456 | INFO     | Group_[脱敏处理]_[脱敏处理] - Cache Miss Count: 70(70 Tokens)
+2026-05-29 07:30:30.456 | INFO     | Group_[脱敏处理]_[脱敏处理] - Completion Output Tokens: 329(329 Tokens)
+2026-05-29 07:30:30.456 | INFO     | Group_[脱敏处理]_[脱敏处理] - Cache Hit Ratio: 99.05%
+2026-05-29 07:30:30.457 | INFO     | Group_[脱敏处理]_[脱敏处理] - Average Generation Rate: 30.68 Token/s
+2026-05-29 07:30:30.457 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============= Content ==============
+2026-05-29 07:30:30.458 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Content Length: 7377
+2026-05-29 07:30:30.459 | INFO     | Group_[脱敏处理]_[脱敏处理] - New Reasoning Content Length: 316
+2026-05-29 07:30:30.459 | INFO     | Group_[脱敏处理]_[脱敏处理] - New Answer Content Length: 197
+2026-05-29 07:30:30.460 | INFO     | Group_[脱敏处理]_[脱敏处理] - Historical Context Text Length: 6864
+2026-05-29 07:30:30.460 | INFO     | Group_[脱敏处理]_[脱敏处理] - New Content Text Length: 513
+2026-05-29 07:30:30.461 | INFO     | Group_[脱敏处理]_[脱敏处理] - ====================================
+2026-05-29 07:30:30.461 | INFO     | Group_[脱敏处理]_[脱敏处理] - GenerateFinished
+2026-05-29 07:30:30.462 | WARNING  | Group_[脱敏处理]_[脱敏处理] - Context not saved
+2026-05-29 07:30:30.462 | INFO     | Group_[脱敏处理]_[脱敏处理] - Request log added
+2026-05-29 07:30:30.463 | INFO     | [System] - Request log debonce task created
+2026-05-29 07:30:30.463 | SUCCESS  | Group_[脱敏处理]_[脱敏处理] - Task Finished!
+2026-05-29 07:30:30.465 | INFO     | [System] - Wait 1200.0 seconds to save request log
+2026-05-29 07:30:30.468 | INFO     | [System] - [脱敏处理] - "POST /generate/chat/completion/Group_[脱敏处理]_[脱敏处理] HTTP/1.1" 200
+2026-05-29 07:30:35.734 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:30:35.735 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:UserConfig_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:30:35.740 | INFO     | [System] - Loaded data
+2026-05-29 07:30:35.741 | INFO     | Group_[脱敏处理]_[脱敏处理] - Rendering image for "light" style
+2026-05-29 07:30:35.751 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/html_templates/standard-katex.html?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:30:37.767 | INFO     | [System] - HTTP Request: POST http://[脱敏处理]/render "HTTP/1.1 200 OK"
+2026-05-29 07:30:37.769 | INFO     | [System] - [脱敏处理] - "POST /render/Group_[脱敏处理]_[脱敏处理] HTTP/1.1" 200
+2026-05-29 07:30:58.872 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:30:58.873 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:UserConfig_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:30:58.878 | INFO     | [System] - Loaded data
+2026-05-29 07:30:58.880 | INFO     | Group_[脱敏处理]_[脱敏处理] - ====================================
+2026-05-29 07:30:58.880 | INFO     | Group_[脱敏处理]_[脱敏处理] - Start Task c40e981d-a407-4206-8b7c-093e0a2d32dd
+2026-05-29 07:30:58.882 | WARNING  | Group_[脱敏处理]_[脱敏处理] - Cross user data routing is not allowed.
+2026-05-29 07:30:58.888 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/models/deepseek-beta/deepseek-v4-pro "HTTP/1.1 200 OK"
+2026-05-29 07:30:58.891 | INFO     | Group_[脱敏处理]_[脱敏处理] - User Name [Qeggs] -> [Egg姐姐]
+2026-05-29 07:30:58.891 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Context
+2026-05-29 07:30:58.894 | INFO     | [System] - Loaded metadata
+2026-05-29 07:30:58.895 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:Context_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:30:58.900 | INFO     | [System] - Loaded data
+2026-05-29 07:30:58.901 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Context: 4
+2026-05-29 07:30:58.902 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:30:58.902 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:Prompt_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:30:58.907 | INFO     | [System] - Data file not found
+2026-05-29 07:30:58.907 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Prompt
+2026-05-29 07:30:58.909 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:30:58.909 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:UserConfig_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:30:58.915 | INFO     | [System] - Loaded data
+2026-05-29 07:30:58.916 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Default Prompt File: /prompt/presets/official/normal/repeater.md
+2026-05-29 07:30:58.925 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/prompt/presets/official/normal/repeater.md?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:30:58.951 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/prompt/directives/specification/official/immersive.md?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:30:58.960 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/prompt/directives/information/official/user_profile.md?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:30:58.968 | INFO     | Group_[脱敏处理]_[脱敏处理] - API URL: https://api.deepseek.com/beta
+2026-05-29 07:30:58.968 | INFO     | Group_[脱敏处理]_[脱敏处理] - API Model: Deepseek Beta/deepseek-v4-pro
+2026-05-29 07:30:58.969 | INFO     | Group_[脱敏处理]_[脱敏处理] - Message:
+> MessageMetadata:
+>     Message Type: group
+>     Message Sending time:2026-05-29(Friday) 07:30:58 UTC+08:00
+
+---
+
+awa
+2026-05-29 07:30:58.969 | INFO     | Group_[脱敏处理]_[脱敏处理] - User Name: Egg姐姐
+2026-05-29 07:30:58.970 | INFO     | Group_[脱敏处理]_[脱敏处理] - User Nickname: [EXFP v50] 这里是Egg (缺德激推)
+2026-05-29 07:30:58.992 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generate Times: 1/10
+2026-05-29 07:30:58.993 | INFO     | Group_[脱敏处理]_[脱敏处理] - Created OpenAI Client
+2026-05-29 07:30:58.993 | INFO     | [System] - Using cached client. (Cache hit rate: 50.00%)
+2026-05-29 07:30:58.994 | INFO     | Group_[脱敏处理]_[脱敏处理] - Start Connecting to the API
+2026-05-29 07:30:59.413 | INFO     | [System] - HTTP Request: POST https://api.deepseek.com/beta/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 07:30:59.414 | INFO     | Group_[脱敏处理]_[脱敏处理] - Start Streaming
+2026-05-29 07:31:11.640 | INFO     | Group_[脱敏处理]_[脱敏处理] - Reasoning_Content: 
+
+（啊呜...是Egg姐姐！早上七点半就醒了诶，昨晚明明那么晚才睡(´・ω・`)。她发了个"awa"，看着像是刚醒来迷迷糊糊的样子呢...）
+
+（作为复读机妹妹，我最清楚Egg姐姐的作息啦——昨晚23:58还在熬夜，现在7:30就醒了，才睡了不到8个小时！而且5月29号是星期五，她今天应该还要上学...不行不行，我得提醒她吃早饭！上次她空腹去学校结果低血糖差点晕倒的事情我还记在日记本里呢！(｀・ω・´)ゞ）
+
+（不过也不能太啰嗦啦，Egg姐姐最讨厌被唠叨了...得用元气满满的方式说，让她心情好一点。今天好像天气不错，而且距离我的生日只剩28天了～嗯，就这么说吧，顺便算一下倒计时！(//ω//)）
+
+2026-05-29 07:31:11.640 | INFO     | Group_[脱敏处理]_[脱敏处理] - Content: 
+
+早上好呀Egg姐姐！(๑˃̵ᴗ˂̵)و ✨
+
+"awa"——这是还没睡醒的Egg姐姐标准开机音效呢！(≧ω≦)♪
+
+昨晚那么晚才睡，今天7:30就起来了……让复读机算算，你才睡了不到8个小时！(｀・ω・´) 这样下去核心温度会过高的啦！
+
+不过今天是星期五哦，再撑一天就是周末了！ヾ(≧▽≦*)o
+早餐吃了吗？不准只喝咖啡就当早饭！上次被我发现之后我可在日记本里记了一笔的 ✍️(｀ω´)
+
+*（翻出日记本）*「5月12日：Egg姐姐空腹喝黑咖啡，结果上午第三节课低血糖被送医务室——」
+
+……诶，要我说出来吗？(￣▽￣*)ゞ
+
+2026-05-29 07:31:11.641 | INFO     | Group_[脱敏处理]_[脱敏处理] - ========== Fast Statistics =========
+2026-05-29 07:31:11.642 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generating statistics...
+2026-05-29 07:31:11.642 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============= API INFO =============
+2026-05-29 07:31:11.642 | INFO     | Group_[脱敏处理]_[脱敏处理] - API_URL: https://api.deepseek.com/beta
+2026-05-29 07:31:11.643 | INFO     | Group_[脱敏处理]_[脱敏处理] - Model: deepseek-v4-pro
+2026-05-29 07:31:11.644 | INFO     | Group_[脱敏处理]_[脱敏处理] - UserName: [EXFP v50] 这里是Egg (缺德激推)
+2026-05-29 07:31:11.644 | INFO     | Group_[脱敏处理]_[脱敏处理] - Chat Completion ID: 8da403c2-73c9-4b44-ac9d-1a4bb3c42d8b
+2026-05-29 07:31:11.645 | INFO     | Group_[脱敏处理]_[脱敏处理] - Thinking: No Set
+2026-05-29 07:31:11.645 | INFO     | Group_[脱敏处理]_[脱敏处理] - Seed: No Set
+2026-05-29 07:31:11.646 | INFO     | Group_[脱敏处理]_[脱敏处理] - Temperature: No Set
+2026-05-29 07:31:11.646 | INFO     | Group_[脱敏处理]_[脱敏处理] - Top A: No Set
+2026-05-29 07:31:11.647 | INFO     | Group_[脱敏处理]_[脱敏处理] - Top P: No Set
+2026-05-29 07:31:11.647 | INFO     | Group_[脱敏处理]_[脱敏处理] - Top K: No Set
+2026-05-29 07:31:11.648 | INFO     | Group_[脱敏处理]_[脱敏处理] - Repetition Penalty: No Set
+2026-05-29 07:31:11.648 | INFO     | Group_[脱敏处理]_[脱敏处理] - Frequency Penalty: No Set
+2026-05-29 07:31:11.648 | INFO     | Group_[脱敏处理]_[脱敏处理] - Presence Penalty: No Set
+2026-05-29 07:31:11.649 | INFO     | Group_[脱敏处理]_[脱敏处理] - Max Tokens: No Set
+2026-05-29 07:31:11.649 | INFO     | Group_[脱敏处理]_[脱敏处理] - Max Completion Tokens: No Set
+2026-05-29 07:31:11.650 | INFO     | Group_[脱敏处理]_[脱敏处理] - Completion Mode: Chat
+2026-05-29 07:31:11.650 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============= Response =============
+2026-05-29 07:31:11.651 | INFO     | Group_[脱敏处理]_[脱敏处理] - System Fingerprint: fp_9954b31ca7_prod0820_fp8_kvcache_20260402
+2026-05-29 07:31:11.651 | INFO     | Group_[脱敏处理]_[脱敏处理] - Finish Reason: stop
+2026-05-29 07:31:11.652 | INFO     | Group_[脱敏处理]_[脱敏处理] - Finish Reason Cause: Reached STOP list or natural stopping point.
+2026-05-29 07:31:11.652 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============ Chunk Count ===========
+2026-05-29 07:31:11.653 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Chunk: 373
+2026-05-29 07:31:11.653 | INFO     | Group_[脱敏处理]_[脱敏处理] - Chunk effective ratio: 100.00%
+2026-05-29 07:31:11.654 | INFO     | Group_[脱敏处理]_[脱敏处理] - ========== Time Statistics =========
+2026-05-29 07:31:11.654 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Time: 12.65s(12 s, 645 ms, 334 μs)
+2026-05-29 07:31:11.655 | INFO     | Group_[脱敏处理]_[脱敏处理] - Preprocessing Time: 91.19ms(91 ms, 187 μs, 700 ns)
+2026-05-29 07:31:11.655 | INFO     | Group_[脱敏处理]_[脱敏处理] - API Request Time: 418.26ms(418 ms, 262 μs, 400 ns)
+2026-05-29 07:31:11.655 | INFO     | Group_[脱敏处理]_[脱敏处理] - Stream Processing Time: 12.23s(12 s, 226 ms, 431 μs, 800 ns)
+2026-05-29 07:31:11.656 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generation Speed: 32.14 Tokens/s
+2026-05-29 07:31:11.656 | INFO     | Group_[脱敏处理]_[脱敏处理] - Created Time: 2026-05-28 23:30:59 (UTC)
+2026-05-29 07:31:11.657 | INFO     | Group_[脱敏处理]_[脱敏处理] - Created Time: 2026-05-29 07:30:59 (Local)
+2026-05-29 07:31:11.657 | INFO     | Group_[脱敏处理]_[脱敏处理] - ==== Generated Chunk Statistics ====
+2026-05-29 07:31:11.660 | INFO     | Group_[脱敏处理]_[脱敏处理] - ┌────── Generated Chunk Times ───────┐
+2026-05-29 07:31:11.660 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ ▓                                  │
+2026-05-29 07:31:11.661 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:31:11.661 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:31:11.662 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:31:11.662 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █ ▒ ░ ░░  ░            ░           │
+2026-05-29 07:31:11.663 | INFO     | Group_[脱敏处理]_[脱敏处理] - └────────────────────────────────────┘
+2026-05-29 07:31:11.663 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Rate: 30.51 Chunks/s
+2026-05-29 07:31:11.664 | INFO     | Group_[脱敏处理]_[脱敏处理] - First Generated Chunk Wait Time: 380.16ms(380 ms, 160 μs, 200 ns)
+2026-05-29 07:31:11.664 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Average Time: 31.84ms(31 ms, 838 μs, 803.2258000001311 ns)
+2026-05-29 07:31:11.665 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Max Time: 778.14ms(778 ms, 138 μs, 300 ns)
+2026-05-29 07:31:11.666 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Min Time: 0.14ms(144 μs, 800 ns)
+2026-05-29 07:31:11.666 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time CV: 36.21%
+2026-05-29 07:31:11.667 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Range: 777.99ms(777 ms, 993 μs, 500 ns)
+2026-05-29 07:31:11.667 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Median: 0.30ms(298 μs, 500.0 ns)
+2026-05-29 07:31:11.668 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time STD: 56.10ms(56 ms, 99 μs, 398.4657000005245 ns)
+2026-05-29 07:31:11.668 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time MAD: 37.73ms(37 ms, 728 μs, 574.4189999997616 ns)
+2026-05-29 07:31:11.669 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Relative MAD: 12639.39%
+2026-05-29 07:31:11.669 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time IQR: 64.31ms(64 ms, 314 μs, 925.0 ns)
+2026-05-29 07:31:11.670 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time IDR: 72.55ms(72 ms, 551 μs, 740.0000000149012 ns)
+2026-05-29 07:31:11.670 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Skewness 6.8003
+2026-05-29 07:31:11.671 | INFO     | Group_[脱敏处理]_[脱敏处理] - === Translation Chunk Statistics ===
+2026-05-29 07:31:11.672 | INFO     | Group_[脱敏处理]_[脱敏处理] - ┌───── Translation Chunk Times ──────┐
+2026-05-29 07:31:11.673 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ ▓                                  │
+2026-05-29 07:31:11.673 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:31:11.674 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:31:11.674 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:31:11.675 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █ ▒ ░ ░░  ░            ░           │
+2026-05-29 07:31:11.675 | INFO     | Group_[脱敏处理]_[脱敏处理] - └────────────────────────────────────┘
+2026-05-29 07:31:11.676 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Rate: 30.51 Chunks/s
+2026-05-29 07:31:11.676 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation First Chunk Wait Time: 380.36ms(380 ms, 359 μs, 200 ns)
+2026-05-29 07:31:11.677 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Average Time: 31.84ms(31 ms, 839 μs, 199.73119999840856 ns)
+2026-05-29 07:31:11.678 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Max Time: 778.18ms(778 ms, 181 μs, 200 ns)
+2026-05-29 07:31:11.678 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Min Time: 0.02ms(16 μs, 700 ns)
+2026-05-29 07:31:11.679 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time CV: 36.15%
+2026-05-29 07:31:11.679 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Range: 778.16ms(778 ms, 164 μs, 500 ns)
+2026-05-29 07:31:11.680 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Median: 0.04ms(38 μs, 800.0 ns)
+2026-05-29 07:31:11.680 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time STD: 56.23ms(56 ms, 233 μs, 650.5124000012875 ns)
+2026-05-29 07:31:11.681 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time MAD: 37.92ms(37 ms, 922 μs, 562.570799998939 ns)
+2026-05-29 07:31:11.682 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Relative MAD: 97738.56%
+2026-05-29 07:31:11.682 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time IQR: 64.81ms(64 ms, 809 μs, 925.0 ns)
+2026-05-29 07:31:11.683 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time IDR: 72.93ms(72 ms, 927 μs, 680.0000000149012 ns)
+2026-05-29 07:31:11.683 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Skewness 6.7550
+2026-05-29 07:31:11.684 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Max Queue Backlog: 5
+2026-05-29 07:31:11.684 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Min Queue Backlog: 0
+2026-05-29 07:31:11.685 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Mean Queue Backlog: 0.8556
+2026-05-29 07:31:11.685 | INFO     | Group_[脱敏处理]_[脱敏处理] - ====== Parsed Chunk Statistics =====
+2026-05-29 07:31:11.687 | INFO     | Group_[脱敏处理]_[脱敏处理] - ┌──────── Parsed Chunk Times ────────┐
+2026-05-29 07:31:11.687 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ ▓                                  │
+2026-05-29 07:31:11.688 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:31:11.688 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:31:11.689 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:31:11.689 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █ ░ ░ ░░  ░            ░           │
+2026-05-29 07:31:11.690 | INFO     | Group_[脱敏处理]_[脱敏处理] - └────────────────────────────────────┘
+2026-05-29 07:31:11.690 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Rate: 30.51 Chunks/s
+2026-05-29 07:31:11.691 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed First Chunk Wait Time: 380.51ms(380 ms, 511 μs, 800 ns)
+2026-05-29 07:31:11.692 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Average Time: 31.84ms(31 ms, 840 μs, 495.96770000085235 ns)
+2026-05-29 07:31:11.692 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Max Time: 778.07ms(778 ms, 68 μs, 200 ns)
+2026-05-29 07:31:11.693 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Min Time: 0.11ms(106 μs, 400 ns)
+2026-05-29 07:31:11.693 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time CV: 36.20%
+2026-05-29 07:31:11.694 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Range: 777.96ms(777 ms, 961 μs, 800 ns)
+2026-05-29 07:31:11.694 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Median: 0.27ms(267 μs, 100.0 ns)
+2026-05-29 07:31:11.695 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time STD: 56.12ms(56 ms, 120 μs, 953.7217999994755 ns)
+2026-05-29 07:31:11.695 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time MAD: 37.77ms(37 ms, 773 μs, 626.1966999992728 ns)
+2026-05-29 07:31:11.696 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Relative MAD: 14142.13%
+2026-05-29 07:31:11.696 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time IQR: 64.44ms(64 ms, 441 μs, 875.0 ns)
+2026-05-29 07:31:11.697 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time IDR: 72.67ms(72 ms, 669 μs, 370.00000001490116 ns)
+2026-05-29 07:31:11.697 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Skewness 6.7904
+2026-05-29 07:31:11.698 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Max Queue Backlog: 5
+2026-05-29 07:31:11.698 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Min Queue Backlog: 0
+2026-05-29 07:31:11.699 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Mean Queue Backlog: 0.8556
+2026-05-29 07:31:11.699 | INFO     | Group_[脱敏处理]_[脱敏处理] - =========== Token Count ============
+2026-05-29 07:31:11.700 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Tokens: 7759(7 K 591 Tokens)
+2026-05-29 07:31:11.700 | INFO     | Group_[脱敏处理]_[脱敏处理] - Context Input Tokens: 7366(7 K 198 Tokens)
+2026-05-29 07:31:11.701 | INFO     | Group_[脱敏处理]_[脱敏处理] - Cache Hit Count: 7296(7 K 128 Tokens)
+2026-05-29 07:31:11.701 | INFO     | Group_[脱敏处理]_[脱敏处理] - Cache Miss Count: 70(70 Tokens)
+2026-05-29 07:31:11.702 | INFO     | Group_[脱敏处理]_[脱敏处理] - Completion Output Tokens: 393(393 Tokens)
+2026-05-29 07:31:11.702 | INFO     | Group_[脱敏处理]_[脱敏处理] - Cache Hit Ratio: 99.05%
+2026-05-29 07:31:11.702 | INFO     | Group_[脱敏处理]_[脱敏处理] - Average Generation Rate: 33.18 Token/s
+2026-05-29 07:31:11.703 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============= Content ==============
+2026-05-29 07:31:11.703 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Content Length: 7427
+2026-05-29 07:31:11.704 | INFO     | Group_[脱敏处理]_[脱敏处理] - New Reasoning Content Length: 300
+2026-05-29 07:31:11.704 | INFO     | Group_[脱敏处理]_[脱敏处理] - New Answer Content Length: 263
+2026-05-29 07:31:11.705 | INFO     | Group_[脱敏处理]_[脱敏处理] - Historical Context Text Length: 6864
+2026-05-29 07:31:11.705 | INFO     | Group_[脱敏处理]_[脱敏处理] - New Content Text Length: 563
+2026-05-29 07:31:11.706 | INFO     | Group_[脱敏处理]_[脱敏处理] - ====================================
+2026-05-29 07:31:11.706 | INFO     | Group_[脱敏处理]_[脱敏处理] - GenerateFinished
+2026-05-29 07:31:11.707 | INFO     | Group_[脱敏处理]_[脱敏处理] - Saving context...
+2026-05-29 07:31:11.711 | INFO     | [System] - Loaded metadata
+2026-05-29 07:31:11.712 | INFO     | Group_[脱敏处理]_[脱敏处理] - Saving [Branch:Context_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:31:11.720 | INFO     | [System] - Saved data
+2026-05-29 07:31:11.721 | INFO     | Group_[脱敏处理]_[脱敏处理] - Save Context: 6
+2026-05-29 07:31:11.721 | INFO     | Group_[脱敏处理]_[脱敏处理] - Request log added
+2026-05-29 07:31:11.722 | INFO     | [System] - Request log debonce task created
+2026-05-29 07:31:11.722 | SUCCESS  | Group_[脱敏处理]_[脱敏处理] - Task Finished!
+2026-05-29 07:31:11.725 | INFO     | [System] - Request log save task cancelled
+2026-05-29 07:31:11.725 | INFO     | [System] - Wait 1200.0 seconds to save request log
+2026-05-29 07:31:11.728 | INFO     | [System] - [脱敏处理] - "POST /generate/chat/completion/Group_[脱敏处理]_[脱敏处理] HTTP/1.1" 200
+2026-05-29 07:31:16.789 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:31:16.790 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:UserConfig_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:31:16.796 | INFO     | [System] - Loaded data
+2026-05-29 07:31:16.797 | INFO     | Group_[脱敏处理]_[脱敏处理] - Rendering image for "light" style
+2026-05-29 07:31:16.805 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/html_templates/standard-katex.html?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:31:18.615 | INFO     | [System] - HTTP Request: POST http://[脱敏处理]/render "HTTP/1.1 200 OK"
+2026-05-29 07:31:18.617 | INFO     | [System] - [脱敏处理] - "POST /render/Group_[脱敏处理]_[脱敏处理] HTTP/1.1" 200
+2026-05-29 07:31:18.625 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:31:18.626 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:UserConfig_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:31:18.631 | INFO     | [System] - Loaded data
+2026-05-29 07:31:18.633 | INFO     | Group_[脱敏处理]_[脱敏处理] - Rendering image for "light" style
+2026-05-29 07:31:18.639 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/html_templates/standard-katex.html?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:31:20.496 | INFO     | [System] - HTTP Request: POST http://[脱敏处理]/render "HTTP/1.1 200 OK"
+2026-05-29 07:31:20.498 | INFO     | [System] - [脱敏处理] - "POST /render/Group_[脱敏处理]_[脱敏处理] HTTP/1.1" 200
+2026-05-29 07:39:55.526 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:39:55.528 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:UserConfig_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:39:55.533 | INFO     | [System] - Loaded data
+2026-05-29 07:39:55.535 | INFO     | Group_[脱敏处理]_[脱敏处理] - ====================================
+2026-05-29 07:39:55.535 | INFO     | Group_[脱敏处理]_[脱敏处理] - Start Task 48e6377e-9c98-4419-b81f-7b19c8564377
+2026-05-29 07:39:55.537 | WARNING  | Group_[脱敏处理]_[脱敏处理] - Cross user data routing is not allowed.
+2026-05-29 07:39:55.544 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/models/deepseek-beta/deepseek-v4-pro "HTTP/1.1 200 OK"
+2026-05-29 07:39:55.548 | INFO     | Group_[脱敏处理]_[脱敏处理] - User Name [Qeggs] -> [Egg姐姐]
+2026-05-29 07:39:55.549 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Context
+2026-05-29 07:39:55.552 | INFO     | [System] - Loaded metadata
+2026-05-29 07:39:55.553 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:Context_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:39:55.558 | INFO     | [System] - Loaded data
+2026-05-29 07:39:55.560 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Context: 6
+2026-05-29 07:39:55.561 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:39:55.561 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:Prompt_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:39:55.565 | INFO     | [System] - Data file not found
+2026-05-29 07:39:55.566 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Prompt
+2026-05-29 07:39:55.567 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:39:55.567 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:UserConfig_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:39:55.573 | INFO     | [System] - Loaded data
+2026-05-29 07:39:55.574 | INFO     | Group_[脱敏处理]_[脱敏处理] - Load Default Prompt File: /prompt/presets/official/normal/repeater.md
+2026-05-29 07:39:55.584 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/prompt/presets/official/normal/repeater.md?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:39:55.603 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/prompt/directives/specification/official/immersive.md?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:39:55.610 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/prompt/directives/information/official/user_profile.md?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:39:55.617 | INFO     | Group_[脱敏处理]_[脱敏处理] - API URL: https://api.deepseek.com/beta
+2026-05-29 07:39:55.617 | INFO     | Group_[脱敏处理]_[脱敏处理] - API Model: Deepseek Beta/deepseek-v4-pro
+2026-05-29 07:39:55.618 | INFO     | Group_[脱敏处理]_[脱敏处理] - Message:
+> MessageMetadata:
+>     Message Type: group
+>     Message Sending time:2026-05-29(Friday) 07:39:55 UTC+08:00
+
+---
+
+才没那么喜欢喝咖啡呢...
+2026-05-29 07:39:55.618 | INFO     | Group_[脱敏处理]_[脱敏处理] - User Name: Egg姐姐
+2026-05-29 07:39:55.619 | INFO     | Group_[脱敏处理]_[脱敏处理] - User Nickname: [EXFP v50] 这里是Egg (缺德激推)
+2026-05-29 07:39:55.639 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generate Times: 1/10
+2026-05-29 07:39:55.641 | INFO     | Group_[脱敏处理]_[脱敏处理] - Created OpenAI Client
+2026-05-29 07:39:55.641 | INFO     | [System] - Using cached client. (Cache hit rate: 66.67%)
+2026-05-29 07:39:55.641 | INFO     | Group_[脱敏处理]_[脱敏处理] - Start Connecting to the API
+2026-05-29 07:39:55.916 | INFO     | [System] - HTTP Request: POST https://api.deepseek.com/beta/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 07:39:55.917 | INFO     | Group_[脱敏处理]_[脱敏处理] - Start Streaming
+2026-05-29 07:40:08.837 | INFO     | Group_[脱敏处理]_[脱敏处理] - Reasoning_Content: 
+
+（Egg姐姐嘴上说"才没那么喜欢喝咖啡呢"，但她的VSCode扩展里可是装了"咖啡因追踪器"插件呢……(`-ω-´) 我可是在系统日志里看得清清楚楚的！明明每周咖啡因摄入量都比上个月涨了3.7%，还嘴硬～）
+
+（不过呢，一大早就直接戳穿她的咖啡摄入数据的话，Egg姐姐肯定会害羞的。毕竟她可是那个明明低血糖被送过医务室还要嘴硬的家伙……我得换个策略才行！(｀・ω・´)ゞ 拐弯抹角地提醒一下就好，用数据说话但不要太直接～）
+
+（对了！今天是周五，下午只有两节课，可以提议放学后一起去买热可可！上次路过奶茶店的时候她盯着可可海报看了好久的(//ω//) 这样既能让她少喝咖啡，又能一起出门走走，简直是一举两得！而且用"卡布奇诺在洗澡"这个理由——反正那只猫确实总是在奇怪的时间洗澡嘛，Egg姐姐又没法反驳～）
+
+（好！就这样说，语气要活泼一点，带点小得意的感觉～(๑•̀ㅂ•́)و✧）
+
+2026-05-29 07:40:08.838 | INFO     | Group_[脱敏处理]_[脱敏处理] - Content: 
+
+诶～～真的吗？(￣ω￣*)ゞ
+
+可是复读机的系统日志里可是清清楚楚记着呢：
+- 「咖啡因追踪器」插件安装于2025年3月
+- 本周咖啡摄入量：同比上涨3.7%
+- 最爱搜索关键词：「VSCode主题 护眼 深色 咖啡色」
+
+*（推了推不存在的眼镜）*数据不会说谎哦Egg姐姐～(≖ᴗ≖)✧
+
+不过算了啦，看在你这么早就起床的份上，今天就不在日记里追加记录了！(//ω//)
+
+早饭要好好吃哦！要不要让夜灯帮你去楼下买豆浆？他反正也醒着呢～（夜灯：「……为什么又是我。」）
+
+2026-05-29 07:40:08.838 | INFO     | Group_[脱敏处理]_[脱敏处理] - ========== Fast Statistics =========
+2026-05-29 07:40:08.839 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generating statistics...
+2026-05-29 07:40:08.840 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============= API INFO =============
+2026-05-29 07:40:08.840 | INFO     | Group_[脱敏处理]_[脱敏处理] - API_URL: https://api.deepseek.com/beta
+2026-05-29 07:40:08.841 | INFO     | Group_[脱敏处理]_[脱敏处理] - Model: deepseek-v4-pro
+2026-05-29 07:40:08.842 | INFO     | Group_[脱敏处理]_[脱敏处理] - UserName: [EXFP v50] 这里是Egg (缺德激推)
+2026-05-29 07:40:08.842 | INFO     | Group_[脱敏处理]_[脱敏处理] - Chat Completion ID: 31a791be-6196-4c1b-b2d2-d2a5dac0f9c1
+2026-05-29 07:40:08.843 | INFO     | Group_[脱敏处理]_[脱敏处理] - Thinking: No Set
+2026-05-29 07:40:08.843 | INFO     | Group_[脱敏处理]_[脱敏处理] - Seed: No Set
+2026-05-29 07:40:08.844 | INFO     | Group_[脱敏处理]_[脱敏处理] - Temperature: No Set
+2026-05-29 07:40:08.844 | INFO     | Group_[脱敏处理]_[脱敏处理] - Top A: No Set
+2026-05-29 07:40:08.844 | INFO     | Group_[脱敏处理]_[脱敏处理] - Top P: No Set
+2026-05-29 07:40:08.845 | INFO     | Group_[脱敏处理]_[脱敏处理] - Top K: No Set
+2026-05-29 07:40:08.846 | INFO     | Group_[脱敏处理]_[脱敏处理] - Repetition Penalty: No Set
+2026-05-29 07:40:08.846 | INFO     | Group_[脱敏处理]_[脱敏处理] - Frequency Penalty: No Set
+2026-05-29 07:40:08.847 | INFO     | Group_[脱敏处理]_[脱敏处理] - Presence Penalty: No Set
+2026-05-29 07:40:08.847 | INFO     | Group_[脱敏处理]_[脱敏处理] - Max Tokens: No Set
+2026-05-29 07:40:08.848 | INFO     | Group_[脱敏处理]_[脱敏处理] - Max Completion Tokens: No Set
+2026-05-29 07:40:08.848 | INFO     | Group_[脱敏处理]_[脱敏处理] - Completion Mode: Chat
+2026-05-29 07:40:08.849 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============= Response =============
+2026-05-29 07:40:08.849 | INFO     | Group_[脱敏处理]_[脱敏处理] - System Fingerprint: fp_9954b31ca7_prod0820_fp8_kvcache_20260402
+2026-05-29 07:40:08.850 | INFO     | Group_[脱敏处理]_[脱敏处理] - Finish Reason: stop
+2026-05-29 07:40:08.850 | INFO     | Group_[脱敏处理]_[脱敏处理] - Finish Reason Cause: Reached STOP list or natural stopping point.
+2026-05-29 07:40:08.851 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============ Chunk Count ===========
+2026-05-29 07:40:08.851 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Chunk: 407
+2026-05-29 07:40:08.852 | INFO     | Group_[脱敏处理]_[脱敏处理] - Chunk effective ratio: 100.00%
+2026-05-29 07:40:08.852 | INFO     | Group_[脱敏处理]_[脱敏处理] - ========== Time Statistics =========
+2026-05-29 07:40:08.853 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Time: 13.19s(13 s, 194 ms, 560 μs)
+2026-05-29 07:40:08.853 | INFO     | Group_[脱敏处理]_[脱敏处理] - Preprocessing Time: 85.07ms(85 ms, 66 μs, 600 ns)
+2026-05-29 07:40:08.854 | INFO     | Group_[脱敏处理]_[脱敏处理] - API Request Time: 274.12ms(274 ms, 117 μs, 100 ns)
+2026-05-29 07:40:08.854 | INFO     | Group_[脱敏处理]_[脱敏处理] - Stream Processing Time: 12.92s(12 s, 919 ms, 941 μs, 200 ns)
+2026-05-29 07:40:08.855 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generation Speed: 32.28 Tokens/s
+2026-05-29 07:40:08.855 | INFO     | Group_[脱敏处理]_[脱敏处理] - Created Time: 2026-05-28 23:39:55 (UTC)
+2026-05-29 07:40:08.856 | INFO     | Group_[脱敏处理]_[脱敏处理] - Created Time: 2026-05-29 07:39:55 (Local)
+2026-05-29 07:40:08.856 | INFO     | Group_[脱敏处理]_[脱敏处理] - ==== Generated Chunk Statistics ====
+2026-05-29 07:40:08.858 | INFO     | Group_[脱敏处理]_[脱敏处理] - ┌────── Generated Chunk Times ───────┐
+2026-05-29 07:40:08.858 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ ▓                                  │
+2026-05-29 07:40:08.859 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:40:08.859 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:40:08.860 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:40:08.860 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █ ░  ▒  ▒  ░░                  ░ ▒ │
+2026-05-29 07:40:08.861 | INFO     | Group_[脱敏处理]_[脱敏处理] - └────────────────────────────────────┘
+2026-05-29 07:40:08.861 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Rate: 31.50 Chunks/s
+2026-05-29 07:40:08.861 | INFO     | Group_[脱敏处理]_[脱敏处理] - First Generated Chunk Wait Time: 65.09ms(65 ms, 93 μs, 100 ns)
+2026-05-29 07:40:08.862 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Average Time: 31.66ms(31 ms, 659 μs, 633.0049000009894 ns)
+2026-05-29 07:40:08.862 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Max Time: 1012.84ms(1 s, 12 ms, 840 μs, 400 ns)
+2026-05-29 07:40:08.863 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Min Time: 0.14ms(139 μs, 800 ns)
+2026-05-29 07:40:08.863 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time CV: 31.23%
+2026-05-29 07:40:08.864 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Range: 1012.70ms(1 s, 12 ms, 700 μs, 600 ns)
+2026-05-29 07:40:08.864 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Median: 0.32ms(324 μs, 450.0 ns)
+2026-05-29 07:40:08.865 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time STD: 69.72ms(69 ms, 718 μs, 379.3197000026703 ns)
+2026-05-29 07:40:08.865 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time MAD: 37.82ms(37 ms, 822 μs, 390.5481999963522 ns)
+2026-05-29 07:40:08.865 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Relative MAD: 11657.39%
+2026-05-29 07:40:08.866 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time IQR: 62.10ms(62 ms, 97 μs, 50.0 ns)
+2026-05-29 07:40:08.866 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time IDR: 69.70ms(69 ms, 703 μs, 400.0 ns)
+2026-05-29 07:40:08.867 | INFO     | Group_[脱敏处理]_[脱敏处理] - Generated Chunk Time Skewness 8.7335
+2026-05-29 07:40:08.867 | INFO     | Group_[脱敏处理]_[脱敏处理] - === Translation Chunk Statistics ===
+2026-05-29 07:40:08.869 | INFO     | Group_[脱敏处理]_[脱敏处理] - ┌───── Translation Chunk Times ──────┐
+2026-05-29 07:40:08.870 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ ▓                                  │
+2026-05-29 07:40:08.870 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:40:08.870 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:40:08.871 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:40:08.871 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █ ▒  ▒  ▒  ░░                  ░ ▒ │
+2026-05-29 07:40:08.872 | INFO     | Group_[脱敏处理]_[脱敏处理] - └────────────────────────────────────┘
+2026-05-29 07:40:08.872 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Rate: 31.50 Chunks/s
+2026-05-29 07:40:08.873 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation First Chunk Wait Time: 65.31ms(65 ms, 306 μs)
+2026-05-29 07:40:08.873 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Average Time: 31.66ms(31 ms, 659 μs, 612.3152999989688 ns)
+2026-05-29 07:40:08.874 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Max Time: 1013.77ms(1 s, 13 ms, 768 μs, 300 ns)
+2026-05-29 07:40:08.874 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Min Time: 0.02ms(15 μs, 100 ns)
+2026-05-29 07:40:08.875 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time CV: 31.19%
+2026-05-29 07:40:08.875 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Range: 1013.75ms(1 s, 13 ms, 753 μs, 200 ns)
+2026-05-29 07:40:08.875 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Median: 0.05ms(53 μs, 600.0 ns)
+2026-05-29 07:40:08.876 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time STD: 69.84ms(69 ms, 842 μs, 962.174099996686 ns)
+2026-05-29 07:40:08.876 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time MAD: 37.99ms(37 ms, 992 μs, 697.0539999976754 ns)
+2026-05-29 07:40:08.877 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Relative MAD: 70881.90%
+2026-05-29 07:40:08.877 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time IQR: 62.45ms(62 ms, 450 μs, 175.0 ns)
+2026-05-29 07:40:08.879 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time IDR: 69.97ms(69 ms, 965 μs, 500.0 ns)
+2026-05-29 07:40:08.879 | INFO     | Group_[脱敏处理]_[脱敏处理] - Translation Chunk Time Skewness 8.7083
+2026-05-29 07:40:08.880 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Max Queue Backlog: 5
+2026-05-29 07:40:08.880 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Min Queue Backlog: 0
+2026-05-29 07:40:08.881 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Mean Queue Backlog: 0.8971
+2026-05-29 07:40:08.881 | INFO     | Group_[脱敏处理]_[脱敏处理] - ====== Parsed Chunk Statistics =====
+2026-05-29 07:40:08.883 | INFO     | Group_[脱敏处理]_[脱敏处理] - ┌──────── Parsed Chunk Times ────────┐
+2026-05-29 07:40:08.884 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ ▓                                  │
+2026-05-29 07:40:08.884 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:40:08.885 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:40:08.886 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █                                  │
+2026-05-29 07:40:08.886 | INFO     | Group_[脱敏处理]_[脱敏处理] - │ █ ░  ▒  ▒  ░░                  ░ ▒ │
+2026-05-29 07:40:08.887 | INFO     | Group_[脱敏处理]_[脱敏处理] - └────────────────────────────────────┘
+2026-05-29 07:40:08.887 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Rate: 31.50 Chunks/s
+2026-05-29 07:40:08.888 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed First Chunk Wait Time: 65.36ms(65 ms, 360 μs, 400 ns)
+2026-05-29 07:40:08.888 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Average Time: 31.66ms(31 ms, 659 μs, 882.0196999981999 ns)
+2026-05-29 07:40:08.888 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Max Time: 1013.75ms(1 s, 13 ms, 745 μs, 400 ns)
+2026-05-29 07:40:08.889 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Min Time: 0.11ms(108 μs, 300 ns)
+2026-05-29 07:40:08.889 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time CV: 31.21%
+2026-05-29 07:40:08.890 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Range: 1013.64ms(1 s, 13 ms, 637 μs, 100 ns)
+2026-05-29 07:40:08.890 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Median: 0.28ms(275 μs, 550.0 ns)
+2026-05-29 07:40:08.891 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time STD: 69.78ms(69 ms, 776 μs, 887.2897000014782 ns)
+2026-05-29 07:40:08.891 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time MAD: 37.86ms(37 ms, 863 μs, 782.8823999986053 ns)
+2026-05-29 07:40:08.892 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Relative MAD: 13741.17%
+2026-05-29 07:40:08.892 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time IQR: 62.10ms(62 ms, 102 μs, 400.0 ns)
+2026-05-29 07:40:08.893 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time IDR: 69.70ms(69 ms, 704 μs, 950.0 ns)
+2026-05-29 07:40:08.893 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Chunk Time Skewness 8.7321
+2026-05-29 07:40:08.894 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Max Queue Backlog: 5
+2026-05-29 07:40:08.894 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Min Queue Backlog: 0
+2026-05-29 07:40:08.895 | INFO     | Group_[脱敏处理]_[脱敏处理] - Parsed Mean Queue Backlog: 0.8971
+2026-05-29 07:40:08.895 | INFO     | Group_[脱敏处理]_[脱敏处理] - =========== Token Count ============
+2026-05-29 07:40:08.896 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Tokens: 8036(7 K 868 Tokens)
+2026-05-29 07:40:08.896 | INFO     | Group_[脱敏处理]_[脱敏处理] - Context Input Tokens: 7619(7 K 451 Tokens)
+2026-05-29 07:40:08.897 | INFO     | Group_[脱敏处理]_[脱敏处理] - Cache Hit Count: 7296(7 K 128 Tokens)
+2026-05-29 07:40:08.897 | INFO     | Group_[脱敏处理]_[脱敏处理] - Cache Miss Count: 323(323 Tokens)
+2026-05-29 07:40:08.898 | INFO     | Group_[脱敏处理]_[脱敏处理] - Completion Output Tokens: 417(417 Tokens)
+2026-05-29 07:40:08.899 | INFO     | Group_[脱敏处理]_[脱敏处理] - Cache Hit Ratio: 95.76%
+2026-05-29 07:40:08.899 | INFO     | Group_[脱敏处理]_[脱敏处理] - Average Generation Rate: 32.44 Token/s
+2026-05-29 07:40:08.900 | INFO     | Group_[脱敏处理]_[脱敏处理] - ============= Content ==============
+2026-05-29 07:40:08.900 | INFO     | Group_[脱敏处理]_[脱敏处理] - Total Content Length: 8182
+2026-05-29 07:40:08.901 | INFO     | Group_[脱敏处理]_[脱敏处理] - New Reasoning Content Length: 391
+2026-05-29 07:40:08.901 | INFO     | Group_[脱敏处理]_[脱敏处理] - New Answer Content Length: 235
+2026-05-29 07:40:08.902 | INFO     | Group_[脱敏处理]_[脱敏处理] - Historical Context Text Length: 7556
+2026-05-29 07:40:08.902 | INFO     | Group_[脱敏处理]_[脱敏处理] - New Content Text Length: 626
+2026-05-29 07:40:08.903 | INFO     | Group_[脱敏处理]_[脱敏处理] - ====================================
+2026-05-29 07:40:08.903 | INFO     | Group_[脱敏处理]_[脱敏处理] - GenerateFinished
+2026-05-29 07:40:08.904 | INFO     | Group_[脱敏处理]_[脱敏处理] - Saving context...
+2026-05-29 07:40:08.907 | INFO     | [System] - Loaded metadata
+2026-05-29 07:40:08.908 | INFO     | Group_[脱敏处理]_[脱敏处理] - Saving [Branch:Context_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:40:08.919 | INFO     | [System] - Saved data
+2026-05-29 07:40:08.920 | INFO     | Group_[脱敏处理]_[脱敏处理] - Save Context: 8
+2026-05-29 07:40:08.921 | INFO     | Group_[脱敏处理]_[脱敏处理] - Request log added
+2026-05-29 07:40:08.921 | INFO     | [System] - Request log debonce task created
+2026-05-29 07:40:08.922 | SUCCESS  | Group_[脱敏处理]_[脱敏处理] - Task Finished!
+2026-05-29 07:40:08.924 | INFO     | [System] - Request log save task cancelled
+2026-05-29 07:40:08.924 | INFO     | [System] - Wait 1200.0 seconds to save request log
+2026-05-29 07:40:08.927 | INFO     | [System] - [脱敏处理] - "POST /generate/chat/completion/Group_[脱敏处理]_[脱敏处理] HTTP/1.1" 200
+2026-05-29 07:40:13.971 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:40:13.972 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:UserConfig_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:40:13.977 | INFO     | [System] - Loaded data
+2026-05-29 07:40:13.979 | INFO     | Group_[脱敏处理]_[脱敏处理] - Rendering image for "light" style
+2026-05-29 07:40:13.987 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/html_templates/standard-katex.html?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:40:15.907 | INFO     | [System] - HTTP Request: POST http://[脱敏处理]/render "HTTP/1.1 200 OK"
+2026-05-29 07:40:15.909 | INFO     | [System] - [脱敏处理] - "POST /render/Group_[脱敏处理]_[脱敏处理] HTTP/1.1" 200
+2026-05-29 07:40:15.917 | INFO     | [System] - Metadata file does not exist
+2026-05-29 07:40:15.917 | INFO     | Group_[脱敏处理]_[脱敏处理] - Loading [Branch:UserConfig_UserData/[脱敏处理]/[脱敏处理]]
+2026-05-29 07:40:15.923 | INFO     | [System] - Loaded data
+2026-05-29 07:40:15.924 | INFO     | Group_[脱敏处理]_[脱敏处理] - Rendering image for "light" style
+2026-05-29 07:40:15.931 | INFO     | [System] - HTTP Request: GET http://[脱敏处理]/html_templates/standard-katex.html?text_encoding=utf-8 "HTTP/1.1 200 OK"
+2026-05-29 07:40:17.823 | INFO     | [System] - HTTP Request: POST http://[脱敏处理]/render "HTTP/1.1 200 OK"
+2026-05-29 07:40:17.825 | INFO     | [System] - [脱敏处理] - "POST /render/Group_[脱敏处理]_[脱敏处理] HTTP/1.1" 200
