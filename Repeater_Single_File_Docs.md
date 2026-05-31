@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adaptation Repeater v4.6.5.0
-Last Update Time: 2026-05-24 09:50:00
+Adaptation Repeater v4.7.0.0
+Last Update Time: 2026-06-01 02:58:04
 
 ---
 
@@ -131,10 +131,10 @@ NoneBot + FastAPI + OpenAI SDK
 最小运行 2 个服务，也就是 Repeater Server + Model INFO Server
 如果你要带上 NoneBot Repeater Client 的话，则还需要配置一个 Render Server 才可以正常使用
 其中：
-- `Repeater Server` (19.3k+ Code) 是核心服务，提供 API 接口，有状态，必须部署
+- `Repeater Server` (21.4k+ Code) 是核心服务，提供 API 接口，有状态，必须部署
 - `Model INFO Server` (1.2k+ Code) 用于提供模型信息，如模型名称、模型 API Key 等信息，以在多实例中方便集中管理，必须部署
 - `Repeater Render Server` (3.2k+ Code) 用于进行内容渲染，无状态，可选部署，如果你不需要 Markdown 渲染功能的话
-- `NoneBot Repeater Client` (11.1k+ Code) 是 NoneBot 插件，用于将 Repeater API 安全的对接到群聊中，无状态，可选部署
+- `NoneBot Repeater Client` (13.3k+ Code) 是 NoneBot 插件，用于将 Repeater API 安全的对接到群聊中，无状态，可选部署
 - `Repeater Nexus` (1.1k+ Code) 用于进行数据的跨用户、跨实例分享，无状态，可选部署
 - `Notes Client` (1.7k+ Code) 是一个增值服务，用于自动生成一些内容，这写内容可以当作机器人的日记，可多后端，可选部署
 - `Auto Backup` (0.3k+ Code) 是一个增值服务，用于自动备份用户数据，防止数据丢失，无网络，可选部署
@@ -682,6 +682,7 @@ Repeater 使用了 Markdown 语法进行文本渲染
       - index.md
       - model_info_obj.md
       - model_type.md
+      - query_expression.md
     - README.md
   - models_providers.json
   - nexus-docs
@@ -6556,6 +6557,7 @@ PS: 由于项目对于个人来说过大，大多数项目文档选择了母语�
 | pip-requirements-parser | 32.0.1 | MIT License                      | [MIT](https://github.com/jazzband/pip-requirements-parser/blob/main/LICENSE)        | `core.requirements_version_checker` | Parse requirements.txt files.         |
 | jsonpatch         | 1.33     | BSD-3-Clause license                 | [BSD-3-Clause license](https://github.com/stefankoegl/python-json-patch/blob/master/LICENSE) | `core.data_manager`        | JSON Diff & Patch                     |
 | pythonping        | 1.1.4    | MIT License                          | [MIT](https://github.com/alessandromaggio/pythonping/blob/main/LICENSE)             | `core.api`                          | Checking network connectivity         |
+| cachetools        | 7.1.4    | MIT License                          | [MIT](https://github.com/tkem/cachetools/blob/master/LICENSE)                       | *Entire Project*                    | Cachetools is a caching library for Python |
 
 具体依赖的License请查看[LICENSES](./LICENSES/index.md)
 
@@ -7042,6 +7044,9 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
     - **type:** `JSON`
     - **Content:**
       - `message` (str | null): 用户发送的消息，允许为空，但这时模型的行为可能是未定义的
+      - `suffix` (str | null): 消息后缀，需要保证 `fim_mode` = `true` 才可使用，允许为空
+      - `echo` (bool): 是否回显用户消息，默认为 True，需要 `fim_mode` = `true` 才可使用
+      - `fim_mode` (bool): 是否使用 FIM 模式，默认为 False
       - `history_messages` (list[dict]): 历史消息，如果填写则使用此处提供的上下文，否则使用用户保存的，格式为 `[{"role": "user", "content": "..."}, {"role": "assistant", "content": "..."}]`
       - `user_info` 用户信息，全部可选
         - `username` (str): 用户名
@@ -7364,6 +7369,9 @@ API_INFO
 
 - **`/models/{model_uid: str}`**
   - **method**: `GET`
+  - **Request**
+    - **Query**
+      - `detailed_info` (bool): 是否返回详细模型信息，默认为 False
   - **Response**
     - **type:** `JSON`
     - **Content:**
@@ -7377,7 +7385,7 @@ API_INFO
 
 列出所有模型
 
-- **`/models/{model_type: str}`**
+- **`/models`**
   - **method**: `GET`
   - **Response**
     - **type:** `JSON`
@@ -7645,8 +7653,9 @@ Repeater 提供了如下对接 Nexus 的接口：
   - `stream_processing_start_time` (TimeStamp): 流式处理开始时间
   - `stream_processing_end_time` (TimeStamp): 流式处理结束时间
   - `task_end_time` (TimeStamp): 任务结束时间
-  - `chunk_times` (list[TimeStamp]): Parsed Chunk 时间列表
   - `chunk_generated_times` (list[TimeStamp]): Generated Chunk 时间列表
+  - `translation_chunk_times` (list[TimeStamp]): Translated Chunk 时间列表
+  - `chunk_times` (list[TimeStamp]): Parsed Chunk 时间列表
   - `created_time` (int): API报告的创建时间
   - `total_tokens` (int): 请求的总 Token 数量
   - `prompt_tokens` (int): 输入的 Token 数量
@@ -9070,10 +9079,10 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 默认值：true，因为 Fast Statistics 需要这部分数据
         "include_usage": true,
 
-        // 最大重新生成次数
-        // 通常用于模型进行 Tool Calls 时
-        // 限制其最大重复次数，防止模型陷入死循环
-        "max_regenerate_times": 10,
+        // 单次请求的最大生成次数
+        // 通常用于模型进行 Tool Calls 等需要循环调用的任务时
+        // 限制其最大循环次数，防止模型陷入死循环
+        "max_generate_times": 10,
 
         // 是否发送用户 ID 到服务端
         // 默认值：false
@@ -9253,25 +9262,55 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 默认模型超时时间，单位为秒
         "default_timeout": 600.0,
 
+        // 默认模型种子
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_seed": null,
+
         // 默认模型温度，更高的温度意味着下一个词更高的不确定性
-        "default_temperature": 1.0,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_temperature": null,
+
+        // 默认模型 Top_A
+        // 筛选出所有概率不低于 最高概率的token × A 的 token
+        // 然后归一化重新采样
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_top_a": null,
 
         // 默认模型 Top_P ，值越大在采样时考虑的词汇越多
-        "default_top_p": 1.0,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_top_p": null,
+
+        // 默认模型 Top_K
+        // 从概率最高的 K 个 token 中抽样，其余 token 的概率被直接置为零
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_top_k": null,
 
         // 默认模型最大生成长度(兼容)
-        "default_max_tokens": 4096,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_max_tokens": null,
 
         // 默认模型最大生成长度
-        "default_max_completion_tokens": 4096,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_max_completion_tokens": null,
+
+        // 默认模型重复惩罚，值越高模型越不容易出现重复内容
+        // 惩罚程度按照重复次数增加，该值不允许为负
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_repetition_penalty": null,
 
         // 默认模型频率惩罚，值越高模型越不容易出现重复内容
         // 惩罚程度按照频率增加，如果该值为负则是奖励模型输出重复内容
-        "default_frequency_penalty": 0.0,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_frequency_penalty": null,
 
         // 默认模型存在惩罚，值越高模型越不容易出现重复内容
         // 惩罚程度只要存在就一直不变，如果该值为负则是奖励模型输出重复内容
-        "default_presence_penalty": 0.0,
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_presence_penalty": null,
+
+        // 默认在 FIM 模式下，模型是否重复用户输入
+        // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
+        "default_fim_echo": null,
 
         // 默认模型停止符
         // 当模型输出到停止符内容时，停止生成
@@ -9293,6 +9332,15 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // - "max"
         // - null
         "default_reasoning_effort": null,
+
+        // 控制模型是否输出 logprobs
+        // 如果这里为 null，则使用提供方的默认值
+        "logprobs": null,
+
+        // 默认模型返回的 logprobs 数量
+        // 如果这里为 null，则使用提供方的默认值
+        "top_logprobs": null,
+
 
         // 默认模型是否流式输出
         // 注意：这里只是在告诉 Repeater 应该使用什么方式调用模型接口
@@ -9702,11 +9750,8 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
 并通过接口来修改它们
 
 ```json
-{
-    
-    // (str) 预设提示词
-    // 用于快速路由定义好的提示词文件
-    "preset_prompt_name": null,
+{   
+    // Model Parameters ----------------------------------------------
 
     // (str | list[str]) 模型UID
     // 用于指定消息处理模型
@@ -9717,10 +9762,19 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // 温度越高模型输出的随机性就越高
     "temperature": null,
 
-    // (float) 模型Top-p参数
+    // (float) 模型 Top-A 参数
+    // 筛选出所有概率不低于 最高概率的token × A 的 token
+    // 然后归一化重新采样
+    "top_a": null,
+
+    // (float) 模型 Top-P 参数
     // Top-p参数越低
     // 模型在采样的时候就更倾向于使用更高概率的词
     "top_p": null,
+
+    // (float) 模型 Top-K 参数
+    // 从概率最高的 K 个 token 中抽样，其余 token 的概率被直接置为零
+    "top_k": null,
 
     // (int) 最大生成长度
     // 模型新生成的文本长度不能超过这个值
@@ -9746,6 +9800,11 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // 如果为 null 则使用模型的默认超时
     "model_timeout": null,
 
+    // (float) 模型重复惩罚参数
+    // 重复惩罚参数越高
+    // 模型在生成文本时重复越少
+    "repetition_penalty": null,
+
     // (float) 模型频率惩罚参数
     // 频率惩罚参数越高
     // 模型在生成文本时越倾向于使用新的词
@@ -9755,6 +9814,71 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // 存在性惩罚参数越高
     // 模型越倾向于讨论新话题
     "presence_penalty": null,
+
+    // (bool) 是否发送用户 ID 到服务端
+    // 如果为 true，则 Repeater 会讲 user_id 进行 sha256 后填充到 `user_id` 字段中
+    // 需要服务端明确支持 `user_id` 字段
+    "send_user_id": null,
+
+    // Generate Loop ----------------------------------------------
+
+    // (int) 单次请求允许的最大生成次数
+    // 该值会影响 Tool Call 等需要循环调用的功能
+    "max_generate_times": null,
+
+    // Render ----------------------------------------------
+
+    // (str) Request Statistics Message 模板
+    // 用于生成一段自定义的统计文本
+    "request_statistics_template": null,
+
+    // (str) 渲染风格
+    // 用于指定文本转图片时的CSS样式文件
+    "render_style": null,
+
+    // (str) 渲染 HTML 模板
+    // 用于指定文本转图片时的HTML模板文件
+    "render_html_template": null,
+
+    // (str) 渲染 HTML 标题
+    // 用于指定文本转图片时的图片标题
+    "render_title": null,
+
+    // (str) 渲染尾部注释
+    // 在生成图片的最下方添加一小段独立文本
+    "render_document_bottom_comment": null,
+
+    // Prompt ------------------------------------------------
+
+    // (bool) 是否加载提示词
+    // 此选项会被API接口中传入的 load_prompt 参数覆盖
+    "load_prompt": null,
+    
+    // (str) 预设提示词
+    // 用于快速路由定义好的提示词文件
+    "preset_prompt_name": null,
+
+    // (dict[str, list[str]]) 设置 Prompt Directives
+    // 键为基础类型，值为激活的 Prompt Directives 名称
+    "prompt_directives": null,
+
+
+    // Context ----------------------------------------------
+
+    // (bool) 是否保存上下文
+    // 此选项会被API接口中传入的 save_context 参数覆盖
+    "save_context": null,
+
+    // (bool) 是否只保存新消息
+    // 如果启用，则只保存新消息，而不是追加到历史消息中
+    "save_new_only": null,
+
+    // (bool) 是否在保存时丢弃非文本数据
+    "save_text_only": null,
+
+    // (bool) 是否构建多模态请求
+    // 如果为 false 则多模态内容将以文本的形式发送
+    "make_multimodal_message": null,
 
     // (int) 定义上下文问的极限字数
     // Repeater会以一对消息为单位去删除过多的部分。
@@ -9779,59 +9903,7 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // (list[str]) 允许调用的工具列表
     "allowed_tool_calls": null,
 
-    // (bool) 是否发送用户 ID 到服务端
-    // 如果为 true，则 Repeater 会讲 user_id 进行 sha256 后填充到 `user_id` 字段中
-    // 需要服务端明确支持 `user_id` 字段
-    "send_user_id": null,
-
-    // ----------------------------------------------
-
-    // (str) Request Statistics Message 模板
-    // 用于生成一段自定义的统计文本
-    "request_statistics_template": null,
-
-    // (str) 渲染风格
-    // 用于指定文本转图片时的CSS样式文件
-    "render_style": null,
-
-    // (str) 渲染 HTML 模板
-    // 用于指定文本转图片时的HTML模板文件
-    "render_html_template": null,
-
-    // (str) 渲染 HTML 标题
-    // 用于指定文本转图片时的图片标题
-    "render_title": null,
-
-    // (str) 渲染尾部注释
-    // 在生成图片的最下方添加一小段独立文本
-    "render_document_bottom_comment": null,
-
-    // ------------------------------------------------
-
-    // (bool) 是否加载提示词
-    // 此选项会被API接口中传入的 load_prompt 参数覆盖
-    "load_prompt": null,
-
-    // (bool) 是否保存上下文
-    // 此选项会被API接口中传入的 save_context 参数覆盖
-    "save_context": null,
-
-    // (bool) 是否只保存新消息
-    // 如果启用，则只保存新消息，而不是追加到历史消息中
-    "save_new_only": null,
-
-    // (bool) 是否在保存时丢弃非文本数据
-    "save_text_only": null,
-
-    // (bool) 是否构建多模态请求
-    // 如果为 false 则多模态内容将以文本的形式发送
-    "make_multimodal_message": null,
-
-    // (dict[str, list[str]]) 设置 Prompt Directives
-    // 键为基础类型，值为激活的 Prompt Directives 名称
-    "prompt_directives": null,
-
-    // -------------------------------------------------
+    // User Profile -------------------------------------------------
 
     // (str) 用户名
     // 这个值在模板中为 `user_custom_name`
@@ -9854,7 +9926,7 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // 用于控制模板展开器中的时间变量
     "timezone": null,
 
-    // -------------------------------------------------
+    // Permission -------------------------------------------------
 
     // (bool) 是否允许跨用户数据访问
     // 如果为true, 则使用请求里指定的的用户进行加载和保存
@@ -9863,6 +9935,8 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // 如果要访问的目标用户也设置了该值
     // 且对方该值为false, 则请求将会自动回退到当前用户的上下文中
     "cross_user_data_access": null,
+
+    // Additional User Data -------------------------------------------------
 
     // (dict[str, Any]) 用户附加配置数据
     // 用于存储某些与用户相关的数据
@@ -10099,7 +10173,7 @@ LICENSES/
 
 | 组件名称                | 版本号    | 描述        | 链接  |
 | :---                   | :---:     | :---        | :--- |
-| Model INFO Server      | `1.0.3.0` | 模型信息服务 | [Github](https://github.com/qeggs-dev/repeater-modelinfo-server) |
+| Model INFO Server      | `1.0.5.0` | 模型信息服务 | [Github](https://github.com/qeggs-dev/repeater-modelinfo-server) |
 | Static Resource Server | `1.0.0`   | 静态资源服务 | [Github](https://github.com/qeggs-dev/static-resources-server) |
 | Nexus                  | `1.0.0.0` | 数据共享服务 | [Github](https://github.com/qeggs-dev/repeater-nexus) |
 | Render Server          | `1.0.0`   | 渲染服务     | [Github](https://github.com/qeggs-dev/repeater-render-server) |
@@ -11153,7 +11227,13 @@ main_api.json
 
     // Ciallo~ (∠・ω< )⌒★
     // 在执行 ciallo 命令时，发送的内容
-    "ciallo_content": "Ciallo~ (∠・ω< )⌒★"
+    "ciallo_content": "Ciallo~ (∠・ω< )⌒★",
+
+    // 无用的按钮文字
+    "useless_button_words": [...],
+
+    // 当按钮未命中时，返回的内容
+    "useless_button_missing": "The button buzzed away.",
 }
 ```
 配置了一些主要的参数，如文本长度评分、推理模型使用的UID、欢迎消息等。
@@ -11239,6 +11319,13 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `noReason`                 | `nr`     | `NoReason`                | `CHAT`      | 4.3.15.0       | 不使用 Thinking 进行对话       | 自然语言输入                               | 关闭 `thinking` 参数以阻止进入 Thinking 模式 |
 | `generateCandidateAnswer`  | `gca`    | `GenerateCandidateAnswer` | `CHAT`      | 4.3.18.0       | 生成候选答案                   | 无                                        | 生成候选答案（生成内容不保存） |
 | `generateCandidateReason`  | `gcr`    | `GenerateCandidateReason` | `CHAT`      | 4.3.23.1       | 生成候选推理                   | 无                                        | 生成候选回答并开启推理（生成内容不保存） |
+
+### FIM Command
+
+| Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
+| :---                       | :---     | :---                      | :---        | :---           | :---                          | :---                                      | :---    |
+| `/fillInMiddle`            | `fim`    | `FillInTheMiddle`         | `FIM`       | 4.6.10.0       | FIM 内容生成                   | 自然语言输入                               | 用 `[fill_this]` 或 `___` 来填充空缺内容，一次只能填写一个空位 |
+| `/fillAtAfter`             | `faa`    | `FillAtAfter`             | `FIM`       | 4.6.10.0       | FIM 前缀续写                   | 自然语言前缀                               | 添入一个前缀，模型会自动尝试续写内容 |
 
 ### Context Command
 
@@ -11361,8 +11448,10 @@ PS：该配置文件是专门用于对接ChatTTS的
 #### Mixed Command
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
-| :---                       | :---    | :---                       | :---:       | :---           | :---                          | :---                                      | :---    |
+| :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `generatePrompt`           | `genp`   | `GeneratePrompt`          | `MIXED`     | 4.3.7.5        | 生成提示词                     | 角色描述                                   | 生成提示词，并自动保存到用户提示词数据中 |
+| `rewrite`                  | `rew`    | `Rewrite`                 | `MIXED`     | 4.6.6.2        | 重写                          | 自然语言文本                                | 撤回上一条并使用当前内容修改重新发送 |
+| `regenerate`               | `reg`    | `Regenerate`              | `MIXED`     | 4.6.6.2        | 重新生成                       | 无                                        | 撤回上条并使用当前内容重新生成 |
 
 ### User File Command
 
@@ -11654,7 +11743,9 @@ PS: 除了 Alived API
       "name": "OpenAI API Group", // 模型组名称
       "id": "openai", // 模型组 ID，用于查询与唯一标识
       "api_key_env": "OPENAI_API_KEY", // 模型API密钥环境变量的名称，你也可以在这里填写列表以支持多个密钥随机访问
-      "url": "https://api.openai.com/v1",
+      "base_url": "https://api.openai.com", // API 的基础 URL
+      "endpoint": "/v1", // API 的基础路径
+      "fetch_models_endpoint": "/models", // 获取模型列表的 API 路径
       "limit": { // 限制，包含以下字段
         "max_connections": 100, // 最大连接数
         "max_keepalive_connections": 20, // 最大保持连接数
@@ -11727,6 +11818,10 @@ PS: 除了 Alived API
 用于描述模型信息
 详情请查看 [Model Info Object](./model_info_object.md)
 
+## Query expression
+
+用于描述查询条件
+详情请查看 [Query expression](./query_expression.md)
 [file content end]
 
 [file: "./model-info-server-docs/docs/model_info_obj.md"]
@@ -11739,19 +11834,20 @@ PS: 除了 Alived API
 ``` json
 {
   "name": "Model Name", // 可读的模型名称
-  "url": "https://api.example.com/v1", // 模型 API 的 URL
+  "base_url": "https://api.example.com", // 模型 API 的 URL
+  "endpoint": "/v1",
+  "fetch_models_endpoint": "/models", // 获取模型列表的 API 端点
   "id": "model-id", // 面向厂商的模型 ID
   "uid": "deepseek/model-id", // 模型的唯一标识符，可用于查询
   "parent": "Deepseek", // 该模型所属的模型组
   "parent_id": "deepseek", // 模型组 ID，可用于查询
   "api_key": "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", // API 密钥
-  "uid": "deepseek-chat", // 面向查询的模型 ID
   "limit": { // 限制，包含以下字段
     "max_connections": 100, // 最大连接数
     "max_keepalive_connections": 20, // 最大保持连接数
     "keepalive_expiry": 5, // 保持连接的过期时间，单位为秒
   },
-  "timeout": { // 超时时间，单位为秒，这里也可以填写一个数字，表示总超时
+  "timeout": { // 超时时间，单位为秒，也可以填写一个数字，表示总超时
     "connect": 10, // 连接超时
     "read": 30, // 读取超时
     "write": 30, // 写入超时
@@ -11771,6 +11867,22 @@ PS: 除了 Alived API
 | Model Type | 接口 | 描述 |
 | --- | --- | --- |
 | `chat` | `OpenAI.chat.completions` | 用于对话的大语言模型 API |
+[file content end]
+
+[file: "./model-info-server-docs/docs/query_expression.md"]
+[file content begin]
+# Query expression
+
+用于描述查询条件，以供服务器进行模型检索
+
+支持以下写法：
+
+1. `<model_id>`: 返回所有供应商下的该模型
+2. `<provider>`: 返回该供应商下的所有模型
+3. `<provider>/<model_id>`: 返回该供应商下的指定模型，通常这种写法只能返回一个模型，可用于锁定模型请求
+4. `match:<regex>`: 返回所有 `3` 格式下满足正则表达式的模型
+5. `search:<regex>`: 返回所有 `3` 格式下满足正则表达式的模型，但是包含该模式而非全字匹配该模式
+6. `schema:<schema>`: 返回所有模型资料满足提交的 json schema 的模型
 [file content end]
 
 
