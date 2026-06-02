@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adaptation Repeater v4.7.0.0
-Last Update Time: 2026-06-01 03:09:40
+Adaptation Repeater v4.7.1.0
+Last Update Time: 2026-06-02 19:23:22
 
 ---
 
@@ -9468,15 +9468,32 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 设置为 null 则不限制长度
         "result_max_length_for_logs": 100,
 
-        // 允许的 HTTP 方法
-        // 设置为 null 则所有方法不可用
-        // 设置为 "ALL" 则所有方法可用
-        // 可以指定仅能的方法，比如 ["GET", "POST"]
-        "allowed_http_methods": null,
+        // Tools 自己的配置
+        "tools_configs": {
 
-        // 是否允许对私有网络进行 HTTP 请求
-        // 包括局域网与回环
-        "allow_private_network_requests": false
+            // HTTP 请求配置
+            "http_requests": {
+                // 允许的 HTTP 方法
+                // 设置为 null 则所有方法不可用
+                // 设置为 "ALL" 则所有方法可用
+                // 可以指定仅能的方法，比如 ["GET", "POST"]
+                "allowed_http_methods": null,
+
+                // 上报给目标服务器的爬虫名称
+                // 默认为 "Repeater AI Crawler"
+                "crawler_name": "Repeater AI Crawler",
+
+                // 缓存的 Robots.txt 项目数量
+                "robots_cache_size": 8192,
+
+                // 缓存 Robots.txt 的超时时间（秒）
+                "robots_cache_timeout": 3600,
+
+                // 是否允许对私有网络进行 HTTP 请求
+                // 包括局域网与回环
+                "allow_private_network_requests": false,
+            }
+        }
     },
 
     // Prompt 配置
@@ -10805,6 +10822,8 @@ f"Hello {args.name}, your data is {args.data}"
         "auth": null, // Basic authentication credentials as a (username, password) tuple.
         "follow_redirects": true, // Whether to automatically follow HTTP redirects.
         "timeout_seconds": 10, // Request timeout in seconds.
+        "verify_crawler_permissions": true, // Whether to verify crawler permissions.
+        "exclude_crawler_user_agent": false // Whether to exclude the crawler user agent from the request headers.
       }
     ]
   ]
@@ -11049,13 +11068,15 @@ PS: 此处的长度评分函数并非实际算法，仅为演示使用
 | Name       | Version | License      | License Text Link                                                      | Where it is used              |
 |------------|---------|--------------|------------------------------------------------------------------------|-------------------------------|
 | httpx      | 0.28.1  | BSD License  | [BSD-3-Clause](https://github.com/encode/httpx/blob/master/LICENSE.md) | *Entire Project*              |
-| nonebot    | 2.4.3   | MIT License  | [MIT](https://github.com/nonebot/nonebot2/blob/master/LICENSE)         | *Entire Project*              |
+| nonebot    | 2.4.3   | MIT License  | [MIT](https://github.com/nonebot/nonebot2/blob/master/LICENSE)         | Protocol docking              |
 | pydantic   | 2.12.0  | MIT License  | [MIT](https://github.com/pydantic/pydantic/blob/main/LICENSE)          | *Entire Project*              |
 | aiofiles   | 25.1.0  | MIT License  | [Apache-2.0](https://github.com/Tinche/aiofiles/blob/main/LICENSE)     | `storage`                     |
 | pyyaml     | 6.0.3   | MIT License  | [MIT](https://github.com/yaml/pyyaml/blob/main/LICENSE)                | `storage`                     |
 | orjson     | 3.11.3  | Apache Software License; MIT License | [Apache-2.0](https://github.com/ijl/orjson/blob/master/LICENSE-APACHE) / [MIT](https://github.com/ijl/orjson/blob/master/LICENSE-MIT) | `storage` |
 | loguru     | 0.7.3   | MIT License  | [MIT](https://github.com/Delgan/loguru/blob/master/LICENSE)            | *Entire Project*              |
 | curlify2   | 2.0.0   | MIT License  | [MIT](https://github.com/marcuxyz/curlify2/blob/master/LICENSE)        | *Entire Project*              |
+| numpy      | 2.4.2   | BSD 3-Clause | [BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)   | *Entire Project*              |
+| cachetools | 7.1.4   | MIT License  | [MIT](https://github.com/tkem/cachetools/blob/master/LICENSE)          | *Entire Project*              |
 
 具体依赖的License请查看[LICENSES.md](LICENSES.md)
 
@@ -11142,13 +11163,24 @@ main_api.json
     // 在仅@且没有任何文本的情况下
     // 返回的消息内容
     "hello_content": "Repeater is Online!",
-
-    // 是hello_content的变种
-    // 这里的Key是星期
-    // Value是星期对应的消息内容
-    "welcome_messages_by_weekday": {
-        "4": "Repeater is Online!\n\n疯狂星期四! ! !\n复读机想要 50,000,000 Token ，求求了（>^< ;)"
+    
+    // hello_content 的可变后缀
+    // 这里的 Key 是一个用 `-` 分割的日期
+    // Value 是对应日期的消息内容
+    // 例如 "06-28" 对应 6月28日
+    // 当该值与 hello_messages_by_weekday 同时匹配时
+    // 该值将在上方显示
+    "hello_messages_for_date": {
+        "06-28": "\n\n今天是 6-28 ，是复读机生日！！！\n好耶！！！ ヽ(✿ﾟ▽ﾟ)ノ"
     },
+
+    // hello_content 的可变后缀
+    // 这里的 Key 是星期
+    // Value 是星期对应的消息内容
+    "hello_messages_by_weekday": {
+        "4": "\n\n疯狂星期四! ! !\n复读机想要 50,000,000 Token ，求求了 (>^< ;)"
+    },
+
     // 是否在群聊中让所有人使用同一个上下文
     "usage_group_context": false,
 
@@ -11225,10 +11257,20 @@ main_api.json
     // Client 将向 Repeater Server 申请取消任务
     // 将其设置为 null 可以忽略超时检查
     "model_first_chunk_timeout": 90.0,
+
+    // 解析消息中的文本文件时
+    // 使用的编码
+    "text_file_encoding": "utf-8",
     
-    // 是否在注册时打印 Handler 信息
-    // 默认为 false
-    "print_handler_info": false,
+    // 是否在注册时打印 Handler 名称
+    // 默认为 true
+    "log_registed_handler_name": true,
+
+    // 平台接口缓存大小
+    "platform_interface_cache_size": 1000,
+
+    // 平台接口缓存超时时间
+    "platform_interface_cache_timeout": 60,
 
     // Ciallo~ (∠・ω< )⌒★
     // 在执行 ciallo 命令时，发送的内容
