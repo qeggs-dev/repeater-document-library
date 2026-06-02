@@ -476,15 +476,32 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 设置为 null 则不限制长度
         "result_max_length_for_logs": 100,
 
-        // 允许的 HTTP 方法
-        // 设置为 null 则所有方法不可用
-        // 设置为 "ALL" 则所有方法可用
-        // 可以指定仅能的方法，比如 ["GET", "POST"]
-        "allowed_http_methods": null,
+        // Tools 自己的配置
+        "tools_configs": {
 
-        // 是否允许对私有网络进行 HTTP 请求
-        // 包括局域网与回环
-        "allow_private_network_requests": false
+            // HTTP 请求配置
+            "http_requests": {
+                // 允许的 HTTP 方法
+                // 设置为 null 则所有方法不可用
+                // 设置为 "ALL" 则所有方法可用
+                // 可以指定仅能的方法，比如 ["GET", "POST"]
+                "allowed_http_methods": null,
+
+                // 上报给目标服务器的爬虫名称
+                // 默认为 "Repeater AI Crawler"
+                "crawler_name": "Repeater AI Crawler",
+
+                // 缓存的 Robots.txt 项目数量
+                "robots_cache_size": 8192,
+
+                // 缓存 Robots.txt 的超时时间（秒）
+                "robots_cache_timeout": 3600,
+
+                // 是否允许对私有网络进行 HTTP 请求
+                // 包括局域网与回环
+                "allow_private_network_requests": false,
+            }
+        }
     },
 
     // Prompt 配置
