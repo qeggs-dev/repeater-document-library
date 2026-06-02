@@ -48,7 +48,7 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 ## Version
 
 Adaptation Repeater v4.7.1.0
-Last Update Time: 2026-06-02 19:23:22
+Last Update Time: 2026-06-02 23:06:56
 
 ---
 
@@ -10823,7 +10823,7 @@ f"Hello {args.name}, your data is {args.data}"
         "follow_redirects": true, // Whether to automatically follow HTTP redirects.
         "timeout_seconds": 10, // Request timeout in seconds.
         "verify_crawler_permissions": true, // Whether to verify crawler permissions.
-        "exclude_crawler_user_agent": false // Whether to exclude the crawler user agent from the request headers.
+        "exclude_crawler_user_agent": false // Whether to not actively add the `User-Agent` in the request header (turn off this option if you need to set 'User-Agent') .
       }
     ]
   ]
