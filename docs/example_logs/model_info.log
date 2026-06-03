@@ -1,2 +1,4 @@
-2026-05-29 07:30:58.886 | INFO     | [脱敏处理] - "GET /models/deepseek-beta/deepseek-v4-pro HTTP/1.1" 200
-2026-05-29 07:39:55.543 | INFO     | [脱敏处理] - "GET /models/deepseek-beta/deepseek-v4-pro HTTP/1.1" 200
+2026-06-02 23:34:40.109 | INFO     | [脱敏处理] - "GET /models/deepseek-beta/deepseek-v4-pro HTTP/1.1" 200
+2026-06-02 23:34:49.907 | INFO     | [脱敏处理] - "GET /models HTTP/1.1" 200
+2026-06-02 23:35:53.850 | INFO     | [脱敏处理] - "GET /models/deepseek-beta/deepseek-v4-pro HTTP/1.1" 200
+2026-06-02 23:36:03.136 | INFO     | [脱敏处理] - "GET /models/deepseek/deepseek-v4-pro HTTP/1.1" 200
