@@ -183,17 +183,16 @@ Repeater 使用微服务
 
 ### 权限
 
-Repeater 只有两种权限角色
-Deployer 和 User
+Repeater 权限模型分为 User 和 Deployer
+User 为 "经过对接层的流量"
+Deployer 为 "直接访问 API 的流量"
 
-权限仅对于 NoneBot Repeater Client 有意义
-其他组件并未包含权限管理部分
+Deployer ≠ Superuser
+Superuser 属于 User 层概念
 
-Deployer 的定义是可以直接对其他组件进行 HTTP 请求的人员
-User 的定义是使用 NoneBot Repeater Client 的用户
-
-由于 NoneBot Repeater Client 的用途是将用户命令转换成 API 请求
-所以 User 的能力是 Deployer 的子集
+只要能直连接触到任意 API
+那么对于这个 API 服务器来说这个用户的身份就是 Deployer
+服务不会验证用户是谁，服务只会确保行为正确
 
 ### 命令
 
