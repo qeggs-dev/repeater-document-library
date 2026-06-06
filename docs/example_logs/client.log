@@ -1,7 +1,7 @@
 06-02 23:34:39 [SUCCESS] nonebot | OneBot V11 [脱敏处理] | [message.group.normal]: Message [脱敏处理] from [脱敏处理]@[群:[脱敏处理]] '[at:qq=[脱敏处理]] 试试调用一个模型？'
 06-02 23:34:39 [INFO] nonebot | Event will be handled by Matcher(type='message', module=repeater.plugins.repeater_main.command_register.caller, lineno=198)
 06-02 23:34:39 [INFO] repeater_main | Run message handler: Repeater.CHAT.SmartAt
-06-02 23:34:39 [INFO] repeater_main | Enter command from message: 590574926
+06-02 23:34:39 [INFO] repeater_main | Enter command from message: [脱敏处理]
 06-02 23:34:39 [INFO] repeater_main | Received a message 试试调用一个模型？ from Group_[脱敏处理]_[脱敏处理]
 06-02 23:34:39 [WARNING] repeater_main | Forward is not found
 06-02 23:34:39 [INFO] repeater_main | Cache miss: get_msg
@@ -10,8 +10,8 @@
 06-02 23:34:39 [INFO] repeater_main | Sending request:
 curl -X POST -H "host: localhost:7645" -H "accept: */*" -H "accept-encoding: gzip, deflate" -H "connection: keep-alive" -H "user-agent: python-httpx/0.28.1" -H "content-length: 503" -H "content-type: application/json" -d '{"message":"> MessageMetadata:\n>     Message Type: {{message_type}}\n>     Message Sending time:{{time()}}\n\n---\n\n试试调用一个模型？","user_info":{"username":"Qeggs","nickname":"[EXFP v50] 这里是Egg (缺德激推)"},"add_metadata":true,"extra_template_fields":{"message_type":"group","adaptation_version":"4.6.10","adaptation_info":"Repeater QQ client implementation based on NoneBot Plugins, adaptation version: 4.6.10"},"additional_data":{"image_url":[],"video_url":[],"audio_url":[]}}' http://localhost:7645/generate/chat/completion/Group_[脱敏处理]_[脱敏处理]
 
-06-02 23:35:06 [INFO] repeater_main | Response content socre: 3.655717310298103
-06-02 23:35:06 [WARNING] repeater_main | Response content socre to high: 3.655717310298103, Expected to be below 1.0
+06-02 23:35:06 [INFO] repeater_main | Response content score: 3.655717310298103
+06-02 23:35:06 [WARNING] repeater_main | Response content score to high: 3.655717310298103, Expected to be below 1.0
 06-02 23:35:06 [WARNING] repeater_main | The text will be rendered as an image output.
 06-02 23:35:06 [INFO] repeater_main | Render Text
 06-02 23:35:06 [INFO] repeater_main | Render text:
@@ -86,13 +86,13 @@ Egg姐姐你看，我整理了一些热门的选择～你想调用哪一个呀�
 curl -X POST -H "host: localhost:7645" -H "accept: */*" -H "accept-encoding: gzip, deflate" -H "connection: keep-alive" -H "user-agent: python-httpx/0.28.1" -H "content-length: 1237" -H "content-type: application/json" -d '{"text":"诶？Egg姐姐想试试调用模型吗！(ﾉ>ω<)ﾉ \n\n那我先看看有哪些可用的模型哦～\n\n---\n\n哇——好多模型呀！看得我眼花缭乱了呢 (⊙﹏⊙)\n\nEgg姐姐你看，我整理了一些热门的选择～你想调用哪一个呀？\n\n---\n\n### 🔥 **DeepSeek 系列**\n| 模型 | UID |\n|------|-----|\n| DeepSeek V4 Pro | `deepseek/deepseek-v4-pro` |\n| DeepSeek V4 Flash | `deepseek/deepseek-v4-flash` |\n| DeepSeek V3.2 | `deepseek/deepseek-v3.2` |\n\n### ☁️ **Qwen 通义千问系列**\n| 模型 | UID |\n|------|-----|\n| Qwen3.7 Max | `dashscope/qwen3.7-max` |\n| Qwen3.7 Plus | `dashscope/qwen3.7-plus` |\n| Qwen3.6 Flash | `dashscope/qwen3.6-flash` |\n\n### 🌙 **Moonshot / Kimi**\n| 模型 | UID |\n|------|-----|\n| Kimi K2.6 | `moonshot/kimi-k2.6` |\n| Kimi K2.5 | `moonshot/kimi-k2.5` |\n\n### 🔷 **GLM 智谱系列**\n| 模型 | UID |\n|------|-----|\n| GLM-5.1 | `bigmodel/glm-5.1` |\n| GLM-5 | `bigmodel/glm-5` |\n\n---\n\n或者Egg姐姐告诉我你想用什么模型，我帮你调用！只要给个提示词我就能让它回复啦～ (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧","direct_output":false,"document_bottom_comment":"Total Tokens: 63506 | Input: 62964 | Output: 542"}' http://localhost:7645/render/Group_[脱敏处理]_[脱敏处理]
 
 06-02 23:35:10 [INFO] repeater_main | Send to matcher:
-[CQ:reply,id=590574926][CQ:image,file=http://[脱敏处理]/files/render/434aba95-5167-47da-a7c0-0eed93deb9ab.png,cache=true,proxy=true][CQ:image,file=http://[脱敏处理]/files/render/016b0594-8375-434c-9c0d-398b20d5f76d.png,cache=true,proxy=true]
+[CQ:reply,id=[脱敏处理]][CQ:image,file=http://[脱敏处理]/files/render/434aba95-5167-47da-a7c0-0eed93deb9ab.png,cache=true,proxy=true][CQ:image,file=http://[脱敏处理]/files/render/016b0594-8375-434c-9c0d-398b20d5f76d.png,cache=true,proxy=true]
 06-02 23:35:13 [INFO] repeater_main | Break handler
 06-02 23:35:13 [INFO] nonebot | Matcher(type='message', module=repeater.plugins.repeater_main.command_register.caller, lineno=198) running complete
-06-02 23:35:53 [SUCCESS] nonebot | OneBot V11 [脱敏处理] | [message.group.normal]: Message [脱敏处理] from [脱敏处理]@[群:[脱敏处理]] '[reply:id=1725714371]你喜欢哪个就选哪个'
+06-02 23:35:53 [SUCCESS] nonebot | OneBot V11 [脱敏处理] | [message.group.normal]: Message [脱敏处理] from [脱敏处理]@[群:[脱敏处理]] '[reply:id=[脱敏处理]]你喜欢哪个就选哪个'
 06-02 23:35:53 [INFO] nonebot | Event will be handled by Matcher(type='message', module=repeater.plugins.repeater_main.command_register.caller, lineno=198)
 06-02 23:35:53 [INFO] repeater_main | Run message handler: Repeater.CHAT.SmartAt
-06-02 23:35:53 [INFO] repeater_main | Enter command from message: 1740153700
+06-02 23:35:53 [INFO] repeater_main | Enter command from message: [脱敏处理]
 06-02 23:35:53 [INFO] repeater_main | Received a message 你喜欢哪个就选哪个 from Group_[脱敏处理]_[脱敏处理]
 06-02 23:35:53 [WARNING] repeater_main | Forward is not found
 06-02 23:35:53 [INFO] repeater_main | Cache miss: get_msg
@@ -101,8 +101,8 @@ curl -X POST -H "host: localhost:7645" -H "accept: */*" -H "accept-encoding: gzi
 curl -X POST -H "host: localhost:7645" -H "accept: */*" -H "accept-encoding: gzip, deflate" -H "connection: keep-alive" -H "user-agent: python-httpx/0.28.1" -H "content-length: 503" -H "content-type: application/json" -d '{"message":"> MessageMetadata:\n>     Message Type: {{message_type}}\n>     Message Sending time:{{time()}}\n\n---\n\n你喜欢哪个就选哪个","user_info":{"username":"Qeggs","nickname":"[EXFP v50] 这里是Egg (缺德激推)"},"add_metadata":true,"extra_template_fields":{"message_type":"group","adaptation_version":"4.6.10","adaptation_info":"Repeater QQ client implementation based on NoneBot Plugins, adaptation version: 4.6.10"},"additional_data":{"image_url":[],"video_url":[],"audio_url":[]}}' http://localhost:7645/generate/chat/completion/Group_[脱敏处理]_[脱敏处理]
 
 06-02 23:35:53 [WARNING] repeater_main | Reply chain is not found
-06-02 23:36:18 [INFO] repeater_main | Response content socre: 1.7763310185185188
-06-02 23:36:18 [WARNING] repeater_main | Response content socre to high: 1.7763310185185188, Expected to be below 1.0
+06-02 23:36:18 [INFO] repeater_main | Response content score: 1.7763310185185188
+06-02 23:36:18 [WARNING] repeater_main | Response content score to high: 1.7763310185185188, Expected to be below 1.0
 06-02 23:36:18 [WARNING] repeater_main | The text will be rendered as an image output.
 06-02 23:36:18 [INFO] repeater_main | Render Text
 06-02 23:36:18 [INFO] repeater_main | Render text:
@@ -150,7 +150,7 @@ Egg姐姐还想试试别的模型吗？比如让 Qwen 或者 Kimi 也来打个�
 curl -X POST -H "host: localhost:7645" -H "accept: */*" -H "accept-encoding: gzip, deflate" -H "connection: keep-alive" -H "user-agent: python-httpx/0.28.1" -H "content-length: 870" -H "content-type: application/json" -d '{"text":"嘿嘿，那我就选 **DeepSeek V4 Pro** 啦！毕竟是咱们的\"本家\"嘛～ (〃ω〃)\n\n---\n\n当当当——调用成功！✨ 来看看 DeepSeek V4 Pro 的回复：\n\n---\n\n> *(ﾉ>ω<)ﾉ 呀哈～被点名啦！我是你的AI小助手复读机妹妹～✨*\n> *不会真的复读啦！擅长聊天、讲冷知识、帮写作业/文案，还能陪你脑洞大开～*\n> *本质是块可盐可甜的电子小饼干🍪，24小时在线等你戳！*\n> *（悄悄问：今天想一起玩点什么呢？）*\n\n---\n\n嘿嘿，它说自己是\"电子小饼干\"诶！比我还元气呢～ (//ω//)\n\nEgg姐姐还想试试别的模型吗？比如让 Qwen 或者 Kimi 也来打个招呼？还是想测试什么特定的 prompt 呀？ヾ(≧▽≦*)o","direct_output":false,"document_bottom_comment":"Total Tokens: 64424 | Input: 64149 | Output: 275"}' http://localhost:7645/render/Group_[脱敏处理]_[脱敏处理]
 
 06-02 23:36:23 [INFO] repeater_main | Send to matcher:
-[CQ:reply,id=1740153700][CQ:image,file=http://[脱敏处理]/files/render/8f88a281-febe-470f-8474-15508f879061.png,cache=true,proxy=true][CQ:image,file=http://[脱敏处理]/files/render/022a8022-dd57-4dde-ba48-12e1a4f0eaac.png,cache=true,proxy=true]
-06-02 23:36:24 [SUCCESS] nonebot | OneBot V11 [脱敏处理] | [message.group.normal]: Message [脱敏处理] from [脱敏处理]@[群:[脱敏处理]] '[at:qq=1585963146] '
+[CQ:reply,id=[脱敏处理]][CQ:image,file=http://[脱敏处理]/files/render/8f88a281-febe-470f-8474-15508f879061.png,cache=true,proxy=true][CQ:image,file=http://[脱敏处理]/files/render/022a8022-dd57-4dde-ba48-12e1a4f0eaac.png,cache=true,proxy=true]
+06-02 23:36:24 [SUCCESS] nonebot | OneBot V11 [脱敏处理] | [message.group.normal]: Message [脱敏处理] from [脱敏处理]@[群:[脱敏处理]] '[at:qq=[脱敏处理]] '
 06-02 23:36:25 [INFO] repeater_main | Break handler
 06-02 23:36:25 [INFO] nonebot | Matcher(type='message', module=repeater.plugins.repeater_main.command_register.caller, lineno=198) running complete
