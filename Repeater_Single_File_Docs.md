@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adaptation Repeater v4.7.3.0
-Last Update Time: 2026-06-07 06:41:32
+Adaptation Repeater v4.7.4.2
+Last Update Time: 2026-06-09 11:53:58
 
 ---
 
@@ -676,6 +676,7 @@ Repeater 使用了 Markdown 语法进行文本渲染
     - docs
       - apis
         - alived.md
+        - disable.md
         - exception_response.md
         - get_all_models.md
         - get_model.md
@@ -7065,7 +7066,7 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
       - `allowed_tool_calls` (list[str]): 允许调用的工具列表，格式为 `["tool_name"]`
       - `extra_template_fields` (dict[str, Any]): 额外模板字段，用于在模板中填充额外字段，格式为 `{"key": "value"}`
       - `temporary_prompt` (str): 临时Prompt，临时指定一个Prompt，覆盖配置系统中的Prompt进行生成
-      - `model_uid` (str): 模型UID，用于临时指定一个模型对话，如果不填则根据配置系统推断值
+      - `model_id` (str): 模型UID，用于临时指定一个模型对话，如果不填则根据配置系统推断值
       - `thinking` (str): 思考模式，部分模型可以用于开启或关闭思考模式
       - `load_prompt` (bool): 是否加载Prompt，如果不填则根据配置系统推断值
       - `save_context` (bool): 是否在完成后保存上下文，如果不填则根据配置系统推断值
@@ -7090,20 +7091,20 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
     - **type:** `JSON` | `JSONL STREAM`
     - **Content:**
       - `JSON`:
-        - `reasoning_content` (str): CoT回复内容，即使模型没有返回CoT它仍然存在，注意判断逻辑应为非null和非空字符串
         - `context`
           - `context_list` (list[ContentUnit]): 上下文列表，包含所有新生成的上下文内容
         - `user_raw_input` (str): 用户发送的原始消息
         - `user_input` (str | list[ContentBlock]): 用户发送的消息经过格式化后处理后的内容，使用[OpenAI Chat Completion User Message Content](https://platform.openai.com/docs/api-reference/chat/create#chat_create-messages-user_message-content)格式
         - `model_group` (str): 模型组，由[API_Info文件](../configs/api_info.md)决定
         - `model_name` (str): 模型名称，通常是该模型的可读名称
-        - `model_type` (str): 模型类型, 由[API_Info文件](../configs/api_info.md)决定，通常这个接口返回的是`chat`
+        - `model_uid` (str): 模型唯一标识，用于锁定当前请求使用的模型
         - `create_time` (int): 提交请求到API时API厂商报告的请求创建时间戳
         - `id` (str): 请求ID，通常是一个随机的字符串，由API厂商生成，通常可以被作为唯一标识使用
         - `finish_reason_code` (str): 模型结束生成的原因，由API厂商提供
         - `finish_reason_cause` (str): 模型结束生成的原因，该字段为可读版本，由程序自动生成
         - `request_log` (RequestLogObject): [Request Log Object](./../request_log/request_log_object.md)
-        - `status` (int): 状态码，这里和http状态码一致，只是为了报告而写，通常你应该优先选择检查http报告的状态码而不是这个字段
+        - `request_statistics` (str): 请求统计信息，由程序自动生成
+        - `status` (int): 状态码，这里和http状态码一致，只是为了报告而写，通常应该优先选择检查 http 报告的状态码而不是这个字段
       - `JSON STREAM`:
         - *\*每一行*
           - **Delta**:
@@ -7139,22 +7140,17 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
 直到该用户的上一个请求完成
 这保证了用户在频繁发起请求时数据的线性处理
 `user_id` 不同时RUL不会阻碍它们并行处理
+当 `save_context` 为 `false` 时，RUL 不会生效
 
 在请求时，Repeater 并不会立刻保存当前用户的输入
 而是先放在内存中，并在生成完全结束后与生成的部分一起保存
 这有效避免了在出现异常导致流程中断时
 本地上下文不会因此而多出来一个 `user` 消息
 
-由于程序是 Async 架构的
-初始化阶段是计算密集型任务居多
-大概持续 `40ms` 左右
-在这段时间内，当前执行的协程会无法让出执行权
-所以还请注意
+请求预处理大概持续 `80ms ~ 150ms` 左右
 
 `logprobs` 参数目前并没有数据内容
 它只是在占位
-不过如果模型在流式输出中添加了 `logprobs` 参数
-那么它将会在这里出现
 
 你可以在 `message` 中编写模板
 参考 [模板展开器](./../template_engine/main.md)
@@ -7165,6 +7161,10 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
 当你在提供 `history_messages` 数据时
 建议设置 `save_context` 为 `false`
 否则临时上下文可能会覆盖你的数据
+
+设置 `history_msg_role_map` 时
+如果不设置 `save_context` 为 `false`
+那么用户的上下文会被新的内容所覆盖
 [file content end]
 
 [file: "./server-docs/docs/api_table/generate_api/chat_api/get_chat_buffer.md"]
@@ -7372,7 +7372,7 @@ API_INFO
 
 列出所有指定UID的模型
 
-- **`/models/{model_uid: str}`**
+- **`/models/{model_id: str}`**
   - **method**: `GET`
   - **Request**
     - **Query**
@@ -7517,7 +7517,7 @@ Repeater 提供了如下对接 Nexus 的接口：
   - **Request**
     - **method:** `POST`
     - **Content:**
-      - `model_uid` (str): 模型 UID
+      - `model_id` (str): 模型 UID
       - `timeout` (int): 请求超时时间
       - `times` (int): 请求次数
       - `size` (int): 请求包大小
@@ -9025,7 +9025,7 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
 
         // 这里非常建议你填写，因为默认的`chat`真的很容易冲突
         // 一定要保证这个 UID 在 Model Server 中存在
-        "default_model_uid": "deepseek-chat"
+        "default_model_id": "deepseek-chat"
     },
     "text_template": {
         "time": {
@@ -9376,8 +9376,8 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         "api_key_env_name": "MODEL_INFO_API_KEY",
 
         // 默认模型 ID
-        // 如果填写为列表，则每次请求从列表中随机选择一个
-        "default_model_uid": "chat",
+        // 如果填写为列表，则顺序尝试直到找到第一个有匹配的 ID
+        "default_model_id": "chat",
 
         // Ping 服务提供方配置
         "ping_provider":{
@@ -9785,10 +9785,10 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
 {   
     // Model Parameters ----------------------------------------------
 
-    // (str | list[str]) 模型UID
+    // (str | list[str]) 模型 ID
     // 用于指定消息处理模型
-    // 允许指定多个模型
-    "model_uid": null,
+    // 如果填写为列表，则顺序尝试直到找到第一个有匹配的 ID
+    "model_id": null,
 
     // (float) 模型温度参数
     // 温度越高模型输出的随机性就越高
@@ -10205,7 +10205,7 @@ LICENSES/
 
 | 组件名称                | 版本号    | 描述        | 链接  |
 | :---                   | :---:     | :---        | :--- |
-| Model INFO Server      | `1.0.5.0` | 模型信息服务 | [Github](https://github.com/qeggs-dev/repeater-modelinfo-server) |
+| Model INFO Server      | `1.0.8.0` | 模型信息服务 | [Github](https://github.com/qeggs-dev/repeater-modelinfo-server) |
 | Static Resource Server | `1.0.0`   | 静态资源服务 | [Github](https://github.com/qeggs-dev/static-resources-server) |
 | Nexus                  | `1.0.0.0` | 数据共享服务 | [Github](https://github.com/qeggs-dev/repeater-nexus) |
 | Render Server          | `1.0.0`   | 渲染服务     | [Github](https://github.com/qeggs-dev/repeater-render-server) |
@@ -10669,12 +10669,14 @@ Jinja2 的语法与 Python 的语法非常相似
   - `user_custom_name`(str | null): 用户自定义名称
   - `user_custom_age`(int | float | null): 用户自定义年龄
   - `user_custom_gender`(str | null): 用户自定义性别
-  - `model_uid`(str): 模型ID
+  - `model_id`(str): 模型 ID
+  - `model_uid`(str): 模型 UID
   - `model_name`(str): 模型名称
-  - `model_type`(str): 模型类型
+  - `model_detailed`(dict[str, Any]): 模型详细描述
+  - `model_group`(str): 模型组
   - `model_group`(str): 模型组
   - `user_profile`(str): 用户简介
-  - `user_configs`(dict): 用户配置(副本)
+  - `user_configs`(dict[str, Any]): 用户配置(副本)
 - **Functions:**
   - [`age`](./functions/age.md): 获取用户年龄
   - [`copy_text`](./functions/copy_text.md): 复制文本
@@ -10736,7 +10738,7 @@ Asteval 是一个用于执行 Python 表达式的工具。它允许你将 Python
 接受参数:
 ``` json
 {
-  "model_uid": "", // Unique identifier used to locate and load the target model.
+  "model_id": "", // Unique identifier used to locate and load the target model.
   "user_name": "", // Name of the user making the request, used for logging and personalization.
   "temperature": 1.0, // Controls randomness in output. Lower values (e.g., 0.2) make output more deterministic; higher values (e.g., 1.5) increase diversity. Must be between 0 and 2.
   "top_p": 1.0, // Nucleus sampling threshold. The model considers only the smallest set of tokens whose cumulative probability >= top_p. Must be between 0 and 1.
@@ -11754,6 +11756,24 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
       - `OK`
 [file content end]
 
+[file: "./model-info-server-docs/docs/apis/disable.md"]
+[file content begin]
+# Disable Model
+
+禁用指定模型
+
+- `/disable/{model_id}`
+  - **method**: `POST`
+  - **params**:
+    - `model_id`: 模型 UID
+  - **response**:
+    - `timeout`: 超时时间，单位 `ns`
+  - **response**:
+    - `message`: 响应信息
+    - `success`: 成功禁用的模型数量
+    - `total`: 实际匹配到的模型数量
+[file content end]
+
 [file: "./model-info-server-docs/docs/apis/exception_response.md"]
 [file content begin]
 # Exception Response
@@ -11788,10 +11808,10 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 
 获取指定 uid 的模型信息
 
-- `/model_info/{model_uid}`
+- `/model_info/{model_id}`
   - **method**: `GET`
   - **params**:
-    - `model_uid`: 模型 UID
+    - `model_id`: 模型 UID
   - **response**:
     - `message`: 响应信息
     - `models`: 与 UID 匹配的模型列表，单元结构请查看 [Model Info Object](../model_info_obj.md)
@@ -11805,7 +11825,7 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 
 - [Get Model](./get_model.md)
 - [Get All Models](./get_all_models.md)
-- [Get API Key](./get_api_key.md)
+- [Disable Model](./disable_model.md)
 - [Alived](./alived.md)
 - [*\*Exception Response*](./exception_response.md)
 
@@ -11918,7 +11938,8 @@ PS: 除了 Alived API
     "model_api": {
         "api_file_path": "./configs/api_info.json", // 模型信息引导文件路径
         "default_timeout": 600.0, // 在模型没有定义超时时间时使用的超时时间
-        "allow_schema_match": false // 是否允许在任何地方使用 json schema 进行模型匹配
+        "allow_schema_match": false, // 是否允许在任何地方使用 json schema 进行模型匹配
+        "default_fuzzy_match_limit": 32 // 在模型没有定义模糊匹配上限时使用的值
     },
     "server": {
         "host": "", // 服务器绑定的主机
@@ -12016,6 +12037,10 @@ PS: 除了 Alived API
 4. `match:<regex>`: 返回所有 `3` 格式下满足正则表达式的模型
 5. `search:<regex>`: 返回所有 `3` 格式下满足正则表达式的模型，但是包含该模式而非全字匹配该模式
 6. `schema:<schema>`: 返回所有模型资料满足提交的 json schema 的模型
+7. `fuzzy:<model_uid>:<count>`: 模糊匹配指定 `model_uid` 的模型，返回 `count` 个结果
+
+当所有查询表达式无法匹配到时
+使用模糊匹配，返回 `default_fuzzy_match_limit` 个结果
 [file content end]
 
 
