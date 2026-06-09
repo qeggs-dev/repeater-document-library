@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adaptation Repeater v4.7.4.2
-Last Update Time: 2026-06-09 11:53:58
+Adapted Repeater v4.7.4.2
+Last Update Time: 2026-06-09 11:55:26
 
 ---
 
