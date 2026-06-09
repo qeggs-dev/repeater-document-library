@@ -30,7 +30,7 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
 
         // 这里非常建议你填写，因为默认的`chat`真的很容易冲突
         // 一定要保证这个 UID 在 Model Server 中存在
-        "default_model_uid": "deepseek-chat"
+        "default_model_id": "deepseek-chat"
     },
     "text_template": {
         "time": {
@@ -381,8 +381,8 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         "api_key_env_name": "MODEL_INFO_API_KEY",
 
         // 默认模型 ID
-        // 如果填写为列表，则每次请求从列表中随机选择一个
-        "default_model_uid": "chat",
+        // 如果填写为列表，则顺序尝试直到找到第一个有匹配的 ID
+        "default_model_id": "chat",
 
         // Ping 服务提供方配置
         "ping_provider":{
