@@ -502,7 +502,7 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
 
                 // 是否允许对私有网络进行 HTTP 请求
                 // 包括局域网与回环
-                "allow_private_network_requests": false,
+                "allow_private_network_requests": false
             },
 
             // 系统信息配置
@@ -680,6 +680,18 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 静态资源服务器的超时时间
         "timeout": 10.0
     },
+
+    // 系统识别配置
+    "system_identification": {
+        // 系统名称
+        "system_name": "Repeater AI System",
+
+        // 系统的 User-Agent
+        "system_ua": "Repeater AI System",
+
+        // 爬虫名称
+        "crawler_name": "Repeater AI Crawler"
+    }
 
     // 用户数据配置
     "user_data": {
