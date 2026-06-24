@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adapted Repeater v4.7.5.4
-Last Update Time: 2026-06-20 03:22:39
+Adapted Repeater v4.8.0.0
+Last Update Time: 2026-06-24 08:24:18
 
 ---
 
@@ -760,6 +760,9 @@ Repeater 使用了 Markdown 语法进行文本渲染
             - chat_completion.md
             - get_chat_buffer.md
             - index.md
+          - image_api
+            - generate.md
+            - index.md
           - index.md
         - index.md
         - license_api
@@ -837,6 +840,7 @@ Repeater 使用了 Markdown 语法进行文本渲染
               - inject.md
               - rewrite.md
               - role_mapping.md
+              - set.md
               - withdraw.md
             - user
               - userlist.md
@@ -7197,6 +7201,186 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
 - [获取缓冲区内容](./get_chat_buffer.md)
 [file content end]
 
+[file: "./server-docs/docs/api_table/generate_api/image_api/generate.md"]
+[file content begin]
+# Image Generation API
+
+生成一张图片
+
+
+- **`/generate/image/generate/{user_id:str}`**
+  - **Requset**
+    - **method:** `POST`
+    - **type:** `JSON`
+    - **Content:**
+      - 
+      - `model_id` (str | list[str]): 模型 ID
+      - `prompt` (str): 提示词
+      - `background` (str): 背景设置
+        - `transparent`：透明背景
+        - `opaque`：不透明背景
+        - `auto`：自动选择背景类型
+      - `moderation` (str): 
+        - `low`：低风险
+        - `auto`：自动选择风险等级
+      - `n` (int): 生成图片的数量
+      - `output_compression` (int): 输出压缩级别
+      - `output_format` (str): 输出格式
+        - `png`：PNG 格式
+        - `jpeg`：JPEG 格式
+        - `webp`：WebP 格式
+      - `partial_images` (int): 是否允许部分图片
+      - `quality` (str): 图片质量
+        - `standard`：标准质量
+        - `hd`：高清质量
+        - `low`：低质量
+        - `medium`：中质量
+        - `high`：高质量
+        - `auto`：自动选择质量
+      - `response_format` (str): 响应格式
+        - `url`：返回图片 URL
+        - `b64_json`：返回图片 Base64 编码
+      - `size` (str): 图片尺寸
+        - `auto`：自动选择尺寸
+        - `1024x1024`：1024x1024 尺寸
+        - `1536x1024`：1536x1024 尺寸
+        - `1024x1536`：1024x1536 尺寸
+        - `256x256`：256x256 尺寸
+        - `512x512`：512x512 尺寸
+        - `1792x1024`：1792x1024 尺寸
+        - `1024x1792`：1024x1792 尺寸
+      - `stream` (bool): 是否流式传输
+      - `style` (str): 风格设置
+        - `vivid`：鲜艳风格
+        - `natural`：自然风格
+      - `user` (str): 用户标识
+  - **Response**
+    - **type:** `JSON` | `JSONL STREAM`
+    - **Content:**
+      - `JSON`:
+        - `created` (int): 请求创建时间
+        - `background` (str): 背景设置
+          - `transparent`：透明背景
+          - `opaque`：不透明背景
+          - `auto`：自动选择背景类型
+        - `data` (list): 图片数据
+          - *\*每一个元素*
+            - `b64_json` (str): 图片 Base64 编码
+            - `revised_prompt` (str): 修改后的提示词
+            - `url` (str): 图片 URL
+        - `output_format` (str): 输出格式
+          - `png`：PNG 格式
+          - `jpeg`：JPEG 格式
+          - `webp`：WebP 格式
+        - `quality` (str): 图片质量
+          - `standard`：标准质量
+          - `hd`：高清质量
+          - `low`：低质量
+          - `medium`：中质量
+          - `high`：高质量
+          - `auto`：自动选择质量
+        - `size` (str): 图片尺寸
+          - `auto`：自动选择尺寸
+          - `1024x1024`：1024x1024 尺寸
+          - `1536x1024`：1536x1024 尺寸
+          - `1024x1536`：1024x1536 尺寸
+          - `256x256`：256x256 尺寸
+          - `512x512`：512x512 尺寸
+          - `1792x1024`：1792x1024 尺寸
+          - `1024x1792`：1024x1792 尺寸
+        - `usage`
+          - `input_tokens` (int): 输入 Token 数
+          - `input_tokens_details`
+            - `image_tokens` (int): 图片 Token 数
+            - `text_tokens` (int): 文本 Token 数
+          - `output_tokens` (int): 输出 Token 数
+          - `output_tokens_details`
+            - `image_tokens` (int): 图片 Token 数
+            - `text_tokens` (int): 文本 Token 数
+          - `total_tokens` (int): 总 Token 数
+      - `JSON STREAM`:
+        - *\*每一行*
+          - **partial_image**:
+            - `b64_json` (str): 图片的 Base64 编码
+            - `background` (str): 背景设置
+              - `transparent`：透明背景
+              - `opaque`：不透明背景
+              - `auto`：自动选择背景类型
+            - `created_at` (str): 创建时间
+            - `output_format` (str): 输出格式
+              - `png`：PNG 格式
+              - `jpeg`：JPEG 格式
+              - `webp`：WebP 格式
+            - `partial_image_index` (int): 图片索引
+            - `quality` (str): 图片质量
+              - `standard`：标准质量
+              - `hd`：高清质量
+              - `low`：低质量
+              - `medium`：中质量
+              - `high`：高质量
+              - `auto`：自动选择质量
+            - `size` (str): 图片尺寸
+              - `auto`：自动选择尺寸
+              - `1024x1024`：1024x1024 尺寸
+              - `1536x1024`：1536x1024 尺寸
+              - `1024x1536`：1024x1536 尺寸
+              - `256x256`：256x256 尺寸
+              - `512x512`：512x512 尺寸
+              - `1792x1024`：1792x1024 尺寸
+              - `1024x1792`：1024x1792 尺寸
+            - `type` (Literal["image_generation.partial_image"]): 块类型
+          - **completed**
+            - `b64_json` (str): 图片的 Base64 编码
+            - `background` (str): 背景设置
+              - `transparent`：透明背景
+              - `opaque`：不透明背景
+              - `auto`：自动选择背景类型
+            - `created_at` (str): 创建时间
+            - `output_format` (str): 输出格式
+              - `png`：PNG 格式
+              - `jpeg`：JPEG 格式
+              - `webp`：WebP 格式
+            - `partial_image_index` (int): 图片索引
+            - `quality` (str): 图片质量
+              - `standard`：标准质量
+              - `hd`：高清质量
+              - `low`：低质量
+              - `medium`：中质量
+              - `high`：高质量
+              - `auto`：自动选择质量
+            - `size` (str): 图片尺寸
+              - `auto`：自动选择尺寸
+              - `1024x1024`：1024x1024 尺寸
+              - `1536x1024`：1536x1024 尺寸
+              - `1024x1536`：1024x1536 尺寸
+              - `256x256`：256x256 尺寸
+              - `512x512`：512x512 尺寸
+              - `1792x1024`：1792x1024 尺寸
+              - `1024x1792`：1024x1792 尺寸
+            - `type` (Literal["image_generation.completed"]): 块类型
+            - `usage`
+              - `input_tokens` (int): 输入 Token 数
+              - `input_tokens_details`
+                - `image_tokens` (int): 图片 Token 数
+                - `text_tokens` (int): 文本 Token 数
+              - `output_tokens` (int): 输出 Token 数
+              - `output_tokens_details`
+                - `image_tokens` (int): 图片 Token 数
+                - `text_tokens` (int): 文本 Token 数
+              - `total_tokens` (int): 总 Token 数
+
+[file content end]
+
+[file: "./server-docs/docs/api_table/generate_api/image_api/index.md"]
+[file content begin]
+# Image API
+
+发送图片生成请求给模型
+让模型生成图片
+
+- [Image Generate API](./generate.md)
+[file content end]
+
 [file: "./server-docs/docs/api_table/generate_api/index.md"]
 [file content begin]
 # Generate API
@@ -7204,6 +7388,7 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
 调用模型生成内容的接口
 
 - [Chat](./chat_api/index.md)
+- [Image](./image_api/index.md)
 [file content end]
 
 [file: "./server-docs/docs/api_table/index.md"]
@@ -8061,7 +8246,7 @@ Repeater 提供了如下对接 Nexus 的接口：
     - **Content:**
       - *\*Config 内容*
   - **Response**
-    - **type:** `Text`
+    - **type:** `JSON`
     - **Content:**
       - *\*Config 内容*
 
@@ -8082,7 +8267,7 @@ Repeater 提供了如下对接 Nexus 的接口：
       - `type` (str):  配置类型
       - `value` (Any):  配置字段值
   - **Response**
-    - **type:** `Text`
+    - **type:** `JSON`
     - **Content:**
       - *\*Config 内容*
 
@@ -8353,9 +8538,11 @@ Repeater 提供了如下对接 Nexus 的接口：
   - [Get Part Of Context API](./get/part_of.md)
 
 ## 更新上下文
+  - [Set Context API](./set/set.md)
   - [Inject Context API](./set/inject.md)
   - [Rewrite Context API](./set/rewrite.md)
   - [Withdraw Context API](./set/withdraw.md)
+  - [Role Mapping API](./set/role_mapping.md)
 
 ## 删除上下文
   - [Delete Context API](./delete/delete.md)
@@ -8442,6 +8629,24 @@ Repeater 提供了如下对接 Nexus 的接口：
     - **Content:**
       - `status` (str): 状态码，如果 `http code` 为 `200` 则必为`success`
       - `context` (Context): 更新后的Context内容
+[file content end]
+
+[file: "./server-docs/docs/api_table/userdata_api/context/set/set.md"]
+[file content begin]
+# Set Context API
+
+设置指定用户的上下文内容
+
+- **`/userdata/context/set/{user_id:str}`**
+  - **Requset**
+    - **method:** `PUT`
+    - **type:** `JSON`
+    - **Content:**
+      - *\*Context 内容*
+  - **Response**
+    - **type:** `Text`
+      - **Content:**
+        - "Success"
 [file content end]
 
 [file: "./server-docs/docs/api_table/userdata_api/context/set/withdraw.md"]
@@ -9497,7 +9702,7 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
 
                 // 是否允许对私有网络进行 HTTP 请求
                 // 包括局域网与回环
-                "allow_private_network_requests": false,
+                "allow_private_network_requests": false
             },
 
             // 系统信息配置
@@ -9675,6 +9880,18 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 静态资源服务器的超时时间
         "timeout": 10.0
     },
+
+    // 系统识别配置
+    "system_identification": {
+        // 系统名称
+        "system_name": "Repeater AI System",
+
+        // 系统的 User-Agent
+        "system_ua": "Repeater AI System",
+
+        // 爬虫名称
+        "crawler_name": "Repeater AI Crawler"
+    }
 
     // 用户数据配置
     "user_data": {
@@ -10832,12 +11049,16 @@ f"Hello {args.name}, your data is {args.data}"
   "base_headers": null, // The underlying request header shared by all requests.
   "base_cookies": null, // The base Cookie shared by all requests.
   "base_auth": null, // The base Auth shared by all requests.
+  "base_proxy": null, // The base Proxy shared by all requests.
   "base_timeout": 5, // Requests timeout in seconds.
   "requests": [ // Sending requests in batches using connection pooling (The outer list executes sequentially, and the inner list executes in parallel.).
     [
       {
+        "type": "request", // The type of request.
         "method": "", // The HTTP method to use for the request.
+        "id": "", // The ID of the request.
         "url": "", // The target URL of the request.
+        "fail_to_retry": null, // Whether to retry the request if it fails.
         "query_params": null, // Query parameters to include in the request URL.
         "headers": null, // HTTP headers to send with the request.
         "cookies": null, // Cookies to attach to the request.
@@ -10850,16 +11071,25 @@ f"Hello {args.name}, your data is {args.data}"
         "exclude_crawler_user_agent": false // Whether to not actively add the `User-Agent` in the request header (turn off this option if you need to set 'User-Agent') .
       },
       {
+        "type": "sleep", // The type of sleep.
         "sleep_seconds": 10 // Sleep in a batch affects the end time of the batch.
       }
     ],
     {
+      "type": "sleep",
       "sleep_seconds": 10.0 // Sleep on the outside suspends requests on the back end.
     },
     {
+      "type": "request",
       // If the batch had only one request, it could be written like this.
       "method": "GET",
-      "url": "https://example.com"
+      "url": "https://example.com",
+      "fail_to_retry": {
+        "status_codes": [500, 502, 503, 504], // The HTTP status codes to retry on.
+        "retiry": 3, // Retry 3 times
+        "backoff": 1.0, // Backoff Index (1.0, 2.0, 4.0, ...)
+        "jitter": 0.0 // No jitter
+      }
     }
   ]
 }
@@ -10871,8 +11101,10 @@ f"Hello {args.name}, your data is {args.data}"
 {
   "responses":[
     {
+      "request_id": "", // The ID of the request.
       "status_code": 200, // HTTP Status Code
       "reason": "success", // As long as the response is `success` and timeouts and the like will be something else
+      "response_time": "", // The time it took to get the response
       "headers": {}, // Response headers
       "cookies": {}, // Response cookie
       "request": {},  // Request object
@@ -10945,12 +11177,18 @@ AI 在调用该工具时，会传递以下参数：
 返回当前的系统信息：
 ``` json
 {
-  "name": "Repeater AI System",
-  "version": "x.x.x.x",
-  "author": "Qeggs",
-  "license": "MIT",
-  "copyright": "Copyright (c) 2025 Qeggs",
-  "github": [...]
+  "name": "Repeater AI System", // Repeater AI System Name
+  "version": "x.x.x.x", // Repeater AI System Version
+  "author": "Qeggs", // Repeater AI System Author
+  "license": "MIT", // Repeater AI System License
+  "copyright": "Copyright (c) 2025 Qeggs", // Repeater AI System Copyright
+  "github": [...], // Repeater AI System Github Repositories
+  "system_identificationConfig": {
+    "system_name": "Repeater AI System", // Repeater AI System Name
+    "system_ua": "Repeater AI System", // Repeater AI System User-Agent
+    "crawler_name": "Repeater AI Crawler", // Repeater AI System Crawler Name
+  },
+  "runtime": "Python 3.11.x (tags/v3.11.x:xxxxxx, xxx  x xxxx, xx:xx:xx) [Platform] on xxx", // Repeater AI System Runtime
 }
 ```
 
@@ -11136,6 +11374,7 @@ PS: 此处的长度评分函数并非实际算法，仅为演示使用
 | curlify2   | 2.0.0   | MIT License  | [MIT](https://github.com/marcuxyz/curlify2/blob/master/LICENSE)        | *Entire Project*              |
 | numpy      | 2.4.2   | BSD 3-Clause | [BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)   | *Entire Project*              |
 | cachetools | 7.1.4   | MIT License  | [MIT](https://github.com/tkem/cachetools/blob/master/LICENSE)          | *Entire Project*              |
+| croniter   | 6.2.2   | MIT License  | [MIT](https://github.com/pallets-eco/croniter/blob/master/LICENSE)     | Hello Content                 |
 
 具体依赖的License请查看[LICENSES.md](LICENSES.md)
 
@@ -11221,23 +11460,25 @@ main_api.json
 
     // 在仅@且没有任何文本的情况下
     // 返回的消息内容
-    "hello_content": "Repeater is Online!",
-    
-    // hello_content 的可变后缀
-    // 这里的 Key 是一个用 `-` 分割的日期
-    // Value 是对应日期的消息内容
-    // 例如 "06-28" 对应 6月28日
-    // 当该值与 hello_messages_by_weekday 同时匹配时
-    // 该值将在上方显示
-    "hello_messages_for_date": {
-        "06-28": "\n\n今天是 6-28 ，是复读机生日！！！\n好耶！！！ ヽ(✿ﾟ▽ﾟ)ノ"
-    },
+    "hello_content": {
 
-    // hello_content 的可变后缀
-    // 这里的 Key 是星期
-    // Value 是星期对应的消息内容
-    "hello_messages_by_weekday": {
-        "4": "\n\n疯狂星期四! ! !\n复读机想要 50,000,000 Token ，求求了 (>^< ;)"
+        // 基础内容
+        // 可以让欢迎内容有相同的前缀
+        "content": "Repeater is Online!",
+        
+        // 后缀内容
+        "suffixs": [
+            {
+                // Cron 表达式
+                // 此处建议填写范围大一些
+                // 否则用户可能命中不到
+                // 注意：此处 Cron 不代表后缀是主动触发的，而是作为时间验证器使用
+                "cron": "* * 1 1 *",
+
+                // 后缀内容
+                "content": "\nHappy New Year!"
+            }
+        ]
     },
 
     // 是否在群聊中让所有人使用同一个上下文
@@ -11248,6 +11489,8 @@ main_api.json
 
         // 聊天 API 超时
         "chat": 600.0,
+
+        "image": 2400.0,
 
         // 上下文操作 API 超时
         "context": 10.0,
@@ -11272,6 +11515,9 @@ main_api.json
 
         // 版本 API 超时
         "version": 10.0,
+
+        // 请求统计 API 超时
+        "request_log": 1200.0,
 
         // 变量展开 API 超时
         "variable_expansion": 40.0,
@@ -11332,12 +11578,19 @@ main_api.json
     // 是否在注册时打印 Handler 名称
     // 默认为 true
     "log_registed_handler_name": true,
+    
+    // 平台接口配置
+    "platform_interface": {
+        // 是否缓存
+        "cache": true,
+        
+        // 接口缓存大小
+        "cache_size": 1000,
+    
+        // 接口缓存超时时间
+        "cache_timeout": 60,
+    },
 
-    // 平台接口缓存大小
-    "platform_interface_cache_size": 1000,
-
-    // 平台接口缓存超时时间
-    "platform_interface_cache_timeout": 60,
 
     // Ciallo~ (∠・ω< )⌒★
     // 在执行 ciallo 命令时，发送的内容
@@ -11431,7 +11684,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `echo`                     | `echo`   | `Echo`                    | `ECHO`      | 4.0 Beta       | 重复消息                       | 要重复消息内容                             | 重复消息内容，包括特殊消息段，如果输入不跟内容，复读机会等待下一条消息 |
-| `noPromptEcho`             | `npecho` | `NoPromptEcho`            | `ECHO`      | 4.3.16.0       | 无额外反应的 Echo              | 任何内容                                  | 与 `echo` 命令相同，但不在未找到参数时显示等待提示词 |
+| `noPromptEcho`             | `npecho` | `NoPromptEcho`            | `ECHO`      | 4.3.16.0       | 无额外反应的 Echo              | 任何内容                                   | 与 `echo` 命令相同，但不在未找到参数时显示等待提示词 |
 
 ### Chat Command
 
@@ -11461,6 +11714,12 @@ PS：该配置文件是专门用于对接ChatTTS的
 | :---                       | :---     | :---                      | :---        | :---           | :---                          | :---                                      | :---    |
 | `/fillInMiddle`            | `fim`    | `FillInTheMiddle`         | `FIM`       | 4.6.10.0       | FIM 内容生成                   | 自然语言输入                               | 用 `[fill_this]` 或 `___` 来填充空缺内容，一次只能填写一个空位 |
 | `/fillAtAfter`             | `faa`    | `FillAtAfter`             | `FIM`       | 4.6.10.0       | FIM 前缀续写                   | 自然语言前缀                               | 添入一个前缀，模型会自动尝试续写内容 |
+
+### Gen Image Command
+
+| Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
+| :---                       | :---     | :---                      | :---        | :---           | :---                          | :---                                      | :---    |
+| `generateImage`            | `gi`     | `GenerateImage`           | `GENIMG`    | 4.8.0.0        | 使用模型生成图片               | 提示词                                     | 使用模型生成图片内容 |
 
 ### Context Command
 
@@ -11530,6 +11789,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `setPresetDirectives`      | `spd`    | `SetPresetDirectives`     | `CONFIG`    | 4.6.1.0        | 设置 Directive 预设           | *\*多个 Directive*                          | 添加 Directive |
 | `addPresetDirectives`      | `apd`    | `AddPresetDirectives`     | `CONFIG`    | 4.6.1.0        | 添加 Directive 预设           | `<type>: <name>`                            | 添加 Directive |
 | `removePresetDirectives`   | `rpd`    | `RemovePresetDirectives`  | `CONFIG`    | 4.6.1.0        | 移除 Directive 预设           | `<type>: <name>`                            | 移除 Directive |
+| `setImageModel`            | `sim`    | `SetImageModel`           | `CONFIG`    | 4.8.0.0        | 设置 Image Model              | 模型名称                                    | 设置 Image Model |
 
 ### Branch Command
 
@@ -11629,11 +11889,12 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `envUploadToNexus`         | `eutn`   | `EnvUploadToNexus`        | `NEXUS`     | 4.3.19.0       | 上传环境到 Nexus               | 超时秒数                                   | 同时上传所有用户数据到Nexus |
 | `envDownloadFromNexus`     | `edfn`   | `EnvDownloadFromNexus`    | `NEXUS`     | 4.3.19.0       | 从 Nexus 下载环境              | 资源 UUID                                  | 从 Nexus 同时下载所有用户数据 |
 
-### User Config Command
+### Client Config Command
 
-| Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
-| :---                       | :---     | :--                       | :--         | :--            | :--                           | :--                                       | :--     |
-| `changeBackend`            | `cb`     | `ChangeBackend`           | `USER`      | 4.7.4.0       | 更改后端                        | 后端 ID                                   | 更换用于处理请求的后端 |
+| Command                    | Abridge  | Full Name                 | Type            | Joined Version | Description                   | Parameter Description                     | Remarks |
+| :---                       | :---     | :--                       | :--             | :--            | :--                           | :--                                       | :--     |
+| `changeBackend`            | `cb`     | `ChangeBackend`           | `CLIENT_CONFIG` | 4.7.4.0        | 更改后端                       | 后端 ID                                   | 更换用于处理请求的后端 |
+| `setHelloContent`          | `shc`    | `SetHelloContent`         | `CLIENT_CONFIG` | 4.8.0.0        | 设置欢迎内容                   | 欢迎内容配置                               | 设置客户端启动时的欢迎内容 |
 
 ### Licenses Command
 
@@ -11663,7 +11924,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `seeCmd`                   | `sc`     | `SeeCmd`                  | `SEE_CMD`   | 4.6.4.0        | 显示命令                       | 命令名称                                  | 显示指定命令的详细帮助信息 |
 | `cmdTypesList`             | `ctl`    | `CmdTypesList`            | `SEE_CMD`   | 4.6.4.0        | 列出命令类型                   | 无                                        | 列出所有命令类型 |
-| `cmdType`                  | `ct`     | `CmdType`                 | `SEE_CMD`   | 4.6.5.0        | 列出命令类型下的所有命令        | 无                                        | 列出命令类型下的所有命令 |
+| `cmdType`                  | `ct`     | `CmdType`                 | `SEE_CMD`   | 4.6.5.0        | 列出命令类型下的所有命令        | 命令类型                                   | 列出命令类型下的所有命令 |
 
 ### Version Command
 
