@@ -48,7 +48,7 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 ## Version
 
 Adapted Repeater v4.8.0.0
-Last Update Time: 2026-06-24 08:24:18
+Last Update Time: 2026-06-25 21:58:16
 
 ---
 
@@ -131,10 +131,10 @@ NoneBot + FastAPI + OpenAI SDK
 最小运行 2 个服务，也就是 Repeater Server + Model INFO Server
 如果你要带上 NoneBot Repeater Client 的话，则还需要配置一个 Render Server 才可以正常使用
 其中：
-- `Repeater Server` (21.4k+ Code) 是核心服务，提供 API 接口，有状态，必须部署
+- `Repeater Server` (23.1k+ Code) 是核心服务，提供 API 接口，有状态，必须部署
 - `Model INFO Server` (1.2k+ Code) 用于提供模型信息，如模型名称、模型 API Key 等信息，以在多实例中方便集中管理，必须部署
 - `Repeater Render Server` (3.2k+ Code) 用于进行内容渲染，无状态，可选部署，如果你不需要 Markdown 渲染功能的话
-- `NoneBot Repeater Client` (13.3k+ Code) 是 NoneBot 插件，用于将 Repeater API 安全的对接到群聊中，无状态，可选部署
+- `NoneBot Repeater Client` (17.0k+ Code) 是 NoneBot 插件，用于将 Repeater API 安全的对接到群聊中，无状态，可选部署
 - `Repeater Nexus` (1.1k+ Code) 用于进行数据的跨用户、跨实例分享，无状态，可选部署
 - `Notes Client` (1.7k+ Code) 是一个增值服务，用于自动生成一些内容，这写内容可以当作机器人的日记，可多后端，可选部署
 - `Auto Backup` (0.3k+ Code) 是一个增值服务，用于自动备份用户数据，防止数据丢失，无网络，可选部署
@@ -11458,6 +11458,27 @@ main_api.json
         }
     },
 
+    // 在发现到有内容重复注册时
+    // 是否抛出异常
+    "throw_on_duplicate": {
+
+        // 当发现 Trigger 重复时
+        // 是否抛出异常
+        "trigger": true,
+
+        // 当发现 Handler 重复时
+        // 是否抛出异常
+        "handler": true
+    },
+
+    // 在发现命令模块注册失败时
+    // 是否静默异常到模块级别
+    // 而不是中断整个模块注册
+    // 比如在 Chat 模块注册失败
+    // 那么该模块已经注册的部分可以正常使用
+    // 而出错与剩余部分则不会生效
+    "continue_on_error": true,
+
     // 在仅@且没有任何文本的情况下
     // 返回的消息内容
     "hello_content": {
@@ -11597,6 +11618,9 @@ main_api.json
     "ciallo_content": "Ciallo~ (∠・ω< )⌒★",
 
     // 无用的按钮文字
+    // 在里面填写字符串
+    // 无用的按钮将以 1% 的概率随机选择一个
+    // 排序越靠前概率越高
     "useless_button_words": [...],
 
     // 当按钮未命中时，返回的内容
@@ -11685,6 +11709,16 @@ PS：该配置文件是专门用于对接ChatTTS的
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `echo`                     | `echo`   | `Echo`                    | `ECHO`      | 4.0 Beta       | 重复消息                       | 要重复消息内容                             | 重复消息内容，包括特殊消息段，如果输入不跟内容，复读机会等待下一条消息 |
 | `noPromptEcho`             | `npecho` | `NoPromptEcho`            | `ECHO`      | 4.3.16.0       | 无额外反应的 Echo              | 任何内容                                   | 与 `echo` 命令相同，但不在未找到参数时显示等待提示词 |
+
+### Control Command
+
+| Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
+| :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
+| `sleep`                    | `s`      | `Sleep`                   | `CONTROL`   | 4.8.0.0        | 休眠                          | 休眠时间（秒）                             | 休眠时间必须为一个有效数字且大于 0 |
+| `serial`                   | `ser`    | `Serial`                  | `CONTROL`   | 4.8.0.0        | 串行执行命令                   | 每行一个命令，可嵌套                        | 每行一个命令，串行执行，支持转义字符与 `$ret` |
+| `parallel`                 | `par`    | `Parallel`                | `CONTROL`   | 4.8.0.0        | 并行执行命令                   | 每行一个命令，可嵌套                        | 每行一个命令，并行执行，支持转义字符 |
+| `waitCall`                 | `wc`     | `WaitCall`                | `CONTROL`   | 4.8.0.0        | 等待用户输入消息后执行          | 格式为: 跳过的消息数量 命令 参数            | 消息数量不能小于 1，默认为 1，最终交给 Handler 的是最后一条消息 |
+| `loop`                     | `l`      | `Loop`                    | `CONTROL`   | 4.8.0.0        | 循环执行命令                   | 格式为: 循环次数 命令 参数                  | 循环次数必须为一个有效数字且大于 0，默认为 1 |
 
 ### Chat Command
 
@@ -11991,6 +12025,29 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 分割时会按照最先出现的一个分隔符开始分割
 即使后面出现了其他分隔符，也会作为子字符串的一部分
 而不是也当成分隔符去切割子字符串
+
+
+`CONTROL` 命令下的逐行命令
+我们可以这样编写参数
+```
+/ser
+echo
+  lines2
+  lines3
+    lines4
+echo finished
+sleep 2.7
+```
+它等同于这种写法
+```
+/ser
+echo lines2\nlines3\n  lines4
+echo finished
+sleep 2.7
+```
+其中嵌套开始的第一行不变
+然后所有嵌套向内收缩一格
+直到嵌套结束
 
 所有命令都有变体
 多单词的命令格式有：
