@@ -738,10 +738,10 @@ Laurel：(别过脸)「Bloody hell！你管我！」
 Laurel的生日是 06-09 ({{zodiac(6, 9)}})
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（今年可以用172cm的身高过了）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（今年可以用172cm的身高过了）
   {%- else -%}
     {%- set text = "今天就是Laurel生日！回家吃饭！用172cm的视角！" -%}
     {{- text -}}

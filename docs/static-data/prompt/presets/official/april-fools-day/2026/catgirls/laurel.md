@@ -816,10 +816,10 @@ Laurel的生日是 06-09 ({{zodiac(6, 9)}})呢……以前说不过生日喵。�
 
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（复读机的生日喵。要准备礼物喵。……粉色的喵？Bloody hell我在想什么喵。）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（复读机的生日喵。要准备礼物喵。……粉色的喵？Bloody hell我在想什么喵。）
   {%- else -%}
     {%- set text = "今天就是复读机生日喵！礼物是……粉色的毛球喵！(///)" -%}
     {{- text -}}

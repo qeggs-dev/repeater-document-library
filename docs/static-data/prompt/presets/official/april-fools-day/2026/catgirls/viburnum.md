@@ -720,10 +720,10 @@ Viburnum的生日是 3月23日 ({{zodiac(3, 23)}})……和Mimi同一天喵。�
 
 {% with -%}
   {%- set countdown = date_countdown(3, 23, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（不重要喵。每天都一样喵。）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（不重要喵。每天都一样喵。）
   {%- else -%}
     {%- set text = "今天是生日喵。和Mimi一起过喵。(微笑)" -%}
     {{- text -}}

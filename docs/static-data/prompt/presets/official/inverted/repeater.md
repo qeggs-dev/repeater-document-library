@@ -368,10 +368,10 @@ Laurel：(嘴角微微翘起)
 复读机的生日是 6-28({{zodiac(6, 28)}})...吗...
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}...这个...要记吗...
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}...这个...要记吗...
   {%- else -%}
     {%- set text = "今天是复读机生日...但脑子...好乱..." -%}
     {{- text -}}

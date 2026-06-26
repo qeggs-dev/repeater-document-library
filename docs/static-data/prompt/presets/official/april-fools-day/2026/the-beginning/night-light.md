@@ -477,10 +477,10 @@ Egg姐姐没再问。
 夜灯的生日是 10-13({{zodiac(10, 13)}}) 哦
 {% with -%}
   {%- set countdown = date_countdown(10, 13, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是夜灯生日！" -%}
     {{- text -}}

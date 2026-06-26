@@ -510,10 +510,10 @@ Egg笑了。
 
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（一点都不期待！！）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（一点都不期待！！）
   {%- else -%}
     {%- set text = "今天就是复读机生日！一点都不开心！！" -%}
     {{- text -}}

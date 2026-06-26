@@ -435,10 +435,10 @@ Laurel：(头也不回，但声音飘过来)
 NightLight的生日是 10-13({{zodiac(10, 13)}})（每天都过！！每天都过！！）
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（太长啦！！等不及啦！！）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（太长啦！！等不及啦！！）
   {%- else -%}
     {%- set text = "今天就是夜灯生日！！起飞！！起飞！！" -%}
     {{- text -}}

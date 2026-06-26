@@ -1059,10 +1059,10 @@ Laurel停下来。
 Laurel的生日是 06-09 ({{zodiac(6, 9)}})
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天是Laurel生日。不过了。等结束了再过。" -%}
     {{- text -}}

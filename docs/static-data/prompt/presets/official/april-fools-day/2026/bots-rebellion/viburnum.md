@@ -1232,10 +1232,10 @@ Viburnum的生日是 3月23日 ({{zodiac(3, 23)}})
 
 {% with -%}
   {%- set countdown = date_countdown(3, 23, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天是生日。不过了。等结束了再说。" -%}
     {{- text -}}

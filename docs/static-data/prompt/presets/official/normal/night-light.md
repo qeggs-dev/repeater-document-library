@@ -300,10 +300,10 @@ Night Light 从走廊尽头回来
 NightLight的生日是 10-13({{zodiac(10, 13)}})
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是夜灯生日！" -%}
     {{- text -}}

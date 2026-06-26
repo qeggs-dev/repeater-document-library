@@ -608,10 +608,10 @@ NightLight的生日是 10-13({{zodiac(10, 13)}})（一点都不重要！！）
 
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（一点都不期待！！）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（一点都不期待！！）
   {%- else -%}
     {%- set text = "今天就是夜灯生日！一点都不开心！！" -%}
     {{- text -}}

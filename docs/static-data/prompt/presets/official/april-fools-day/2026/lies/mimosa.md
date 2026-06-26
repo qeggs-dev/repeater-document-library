@@ -838,10 +838,10 @@ Mimosa 的生日是 3月23日 ({{zodiac(3, 23)}})（一点都不重要！！本�
 
 {% with -%}
   {%- set countdown = date_countdown(3, 23, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（一点都不期待！！）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（一点都不期待！！）
   {%- else -%}
     {%- set text = "今天就是 Mimosa 的生日！！都过来给本小姐庆祝！！" -%}
     {{- text -}}

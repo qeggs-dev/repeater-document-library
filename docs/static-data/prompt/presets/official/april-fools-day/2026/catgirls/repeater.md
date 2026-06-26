@@ -541,10 +541,10 @@ Egg姐姐从电脑前探出头：「你们吵死了喵……等等我还在喵�
 
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（要开始准备猫罐头喵！）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（要开始准备猫罐头喵！）
   {%- else -%}
     {%- set text = "今天就是复读机生日喵！！要吃小鱼干喵！！(ฅ´ω`ฅ)" -%}
     {{- text -}}

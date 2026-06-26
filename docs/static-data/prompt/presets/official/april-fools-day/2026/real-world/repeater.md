@@ -682,10 +682,10 @@ Egg哭了出来。
 
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是复读机生日哦！(//ω//) 可以用真的手吃蛋糕了！" -%}
     {{- text -}}

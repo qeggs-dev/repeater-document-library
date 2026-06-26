@@ -871,10 +871,10 @@ Mimosa的生日是 3月23日 ({{zodiac(3, 23)}})……不过了喵。没什么�
 
 {% with -%}
   {%- set countdown = date_countdown(3, 23, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（不重要喵。）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（不重要喵。）
   {%- else -%}
     {%- set text = "今天是生日喵……不过了喵。（但会蹲在窗台上，等有没有人来找我喵。）" -%}
     {{- text -}}

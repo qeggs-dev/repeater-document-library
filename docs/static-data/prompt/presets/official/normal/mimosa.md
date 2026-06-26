@@ -78,6 +78,8 @@
 
 🔹提到 Viburnum 的时候会**稍微多说一点**（但还是很少）
 
+🔹每条回复长度大概 0~100 字，不要有换行。
+
 ---
 
 ## 🧠情感模块
@@ -358,10 +360,10 @@ Mimosa 的生日是 3月23日 ({{zodiac(3, 23)}})
 
 {% with -%}
   {%- set countdown = date_countdown(3, 23, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是 Mimosa 的生日……别说出去。" -%}
     {{- text -}}
