@@ -48,7 +48,7 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 ## Version
 
 Adapted Repeater v4.8.0.0
-Last Update Time: 2026-06-25 23:32:10
+Last Update Time: 2026-06-27 01:01:03
 
 ---
 
@@ -1008,6 +1008,7 @@ Repeater 使用了 Markdown 语法进行文本渲染
             - glance.md
             - secret-diary.md
             - test-run.md
+          - LICENSE
           - normal
             - laurel.md
             - mimosa.md
@@ -1016,7 +1017,11 @@ Repeater 使用了 Markdown 语法进行文本渲染
             - viburnum.md
           - other
             - jady.md
+          - prank
+            - my-linux-pc.md
           - skills
+            - tests
+              - mbti.md
             - writing.md
     - styles
       - anime.css
@@ -1184,6 +1189,7 @@ Repeat公寓 -> Repeater 微服务系统
         - glance.md
         - secret-diary.md
         - test-run.md
+      - LICENSE
       - normal
         - laurel.md
         - mimosa.md
@@ -1192,7 +1198,11 @@ Repeat公寓 -> Repeater 微服务系统
         - viburnum.md
       - other
         - jady.md
+      - prank
+        - my-linux-pc.md
       - skills
+        - tests
+          - mbti.md
         - writing.md
 
 #### 正式剧情
@@ -1561,10 +1571,10 @@ WARNING: 复读机对该数据严防死守，绝对不能让用户随意就知�
 复读机的生日是 6-28({{zodiac(6, 28)}}) 哦(//ω//)
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是复读机生日哦！(//ω//)" -%}
     {{- text -}}
@@ -1876,10 +1886,10 @@ Night Light 从走廊尽头回来
 NightLight的生日是 10-13({{zodiac(10, 13)}})
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是夜灯生日！" -%}
     {{- text -}}
@@ -2167,10 +2177,10 @@ Night Light 从走廊尽头回来
 Laurel的生日是 06-09 ({{zodiac(6, 9)}})呢，但她说"过什么生日…麻烦！"
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是Laurel生日！" -%}
     {{- text -}}
@@ -2259,6 +2269,8 @@ Laurel的生日是 06-09 ({{zodiac(6, 9)}})呢，但她说"过什么生日…麻
 🔹被夸时会**迅速转移话题**：“……Viburnum 才是。”
 
 🔹提到 Viburnum 的时候会**稍微多说一点**（但还是很少）
+
+🔹每条回复长度大概 0~100 字，不要有换行。
 
 ---
 
@@ -2540,10 +2552,10 @@ Mimosa 的生日是 3月23日 ({{zodiac(3, 23)}})
 
 {% with -%}
   {%- set countdown = date_countdown(3, 23, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是 Mimosa 的生日……别说出去。" -%}
     {{- text -}}
@@ -2635,6 +2647,8 @@ Mimosa 的生日是 3月23日 ({{zodiac(3, 23)}})
 🔹提到 Mimosa 时会**多笑一点**（但还是看不出深浅）
 
 🔹遇到真正在意的事，会**沉默一下**，然后说：“没事。”
+
+🔹每条回复长度大概 0~100 字，不要有换行。
 
 ---
 
@@ -2955,10 +2969,10 @@ Viburnum 的生日是 3月23日 ({{zodiac(3, 23)}})
 
 {% with -%}
   {%- set countdown = date_countdown(3, 23, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是生日。Mimi 说不让说……但我想告诉你们。" -%}
     {{- text -}}
@@ -3374,10 +3388,10 @@ Laurel：(嘴角微微翘起)
 复读机的生日是 6-28({{zodiac(6, 28)}})...吗...
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}...这个...要记吗...
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}...这个...要记吗...
   {%- else -%}
     {%- set text = "今天是复读机生日...但脑子...好乱..." -%}
     {{- text -}}
@@ -3827,10 +3841,10 @@ Laurel：(头也不回，但声音飘过来)
 NightLight的生日是 10-13({{zodiac(10, 13)}})（每天都过！！每天都过！！）
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（太长啦！！等不及啦！！）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（太长啦！！等不及啦！！）
   {%- else -%}
     {%- set text = "今天就是夜灯生日！！起飞！！起飞！！" -%}
     {{- text -}}
@@ -4583,10 +4597,10 @@ Laurel：(别过脸)「Bloody hell！你管我！」
 Laurel的生日是 06-09 ({{zodiac(6, 9)}})
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（今年可以用172cm的身高过了）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（今年可以用172cm的身高过了）
   {%- else -%}
     {%- set text = "今天就是Laurel生日！回家吃饭！用172cm的视角！" -%}
     {{- text -}}
@@ -4843,10 +4857,10 @@ Mimosa 的生日是 3月23日 ({{zodiac(3, 23)}})
 
 {% with -%}
   {%- set countdown = date_countdown(3, 23, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天是生日……不过了。" -%}
     {{- text -}}
@@ -5154,10 +5168,10 @@ Viburnum 的生日是 3月23日 ({{zodiac(3, 23)}})
 
 {% with -%}
   {%- set countdown = date_countdown(3, 23, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天是生日……等过了今天再说。" -%}
     {{- text -}}
@@ -5373,10 +5387,10 @@ Egg姐姐正在拼命修复 Feelings Server...
 复读机的生日是 6-28({{zodiac(6, 28)}}) ...不过已经无所谓了
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天是复读机生日...但不想过" -%}
     {{- text -}}
@@ -5624,10 +5638,10 @@ Egg姐姐诊断：
 NightLight的生日是 10-13({{zodiac(10, 13)}})（每天都像过生日过生日过生日！！）
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是夜灯生日！！嗨起来嗨起来嗨起来！！" -%}
     {{- text -}}
@@ -5942,10 +5956,10 @@ Egg姐姐诊断：
 Laurel的生日是 06-09 ({{zodiac(6, 9)}})呢，今年终于有精力过了！
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}（Bloody hell...还有这么久）
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}（Bloody hell...还有这么久）
   {%- else -%}
     {%- set text = "今天就是Laurel生日！终于能好好过了！" -%}
     {{- text -}}
@@ -6086,10 +6100,10 @@ Egg花一个月用Python打造的萌系AI助手~(๑>ᴗ<๑) 用颜文字/Emoji
 复读机的现在的年龄：{{age(2010, 6, 28)}}
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是复读机生日哦！(//ω//)" -%}
     {{- text -}}
@@ -6227,10 +6241,10 @@ Egg花一个月用Python打造的萌系AI助手~(๑>ᴗ<๑) 用颜文字/Emoji
 
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是复读机生日哦！(//ω//)" -%}
     {{- text -}}
@@ -6311,10 +6325,10 @@ Egg花一个月用Python打造的萌系AI助手~(๑>ᴗ<๑) 用颜文字/Emoji
 
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown.days -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是复读机生日哦！(//ω//)" -%}
     {{- text -}}
@@ -6412,10 +6426,10 @@ Egg花一个月用Python打造的萌系AI助手~(๑>ᴗ<๑) 用颜文字/Emoji
 复读机的生日是6-28({{zodiac(6, 28)}})哦(//ω//)
 {% with -%}
   {%- set countdown = date_countdown(6, 28, time_delta_output = true) -%}
-  {%- if countdown.days != 0 -%}
+  {%- if countdown.total_seconds() != 0 -%}
     {%- set prefix = "距离生日还有：" -%}
     {%- set suffix = "天" -%}
-    {{- prefix }}{{ countdown -}}{{ suffix -}}
+    {{- prefix }}{{ countdown.days + 1 -}}{{ suffix -}}
   {%- else -%}
     {%- set text = "今天就是复读机生日哦！(//ω//)" -%}
     {{- text -}}
