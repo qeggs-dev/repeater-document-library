@@ -460,8 +460,8 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---        | :---           | :---                          | :---                                      | :---    |
-| `/fillInMiddle`            | `fim`    | `FillInTheMiddle`         | `FIM`       | 4.6.10.0       | FIM 内容生成                   | 自然语言输入                               | 用 `[fill_this]` 或 `___` 来填充空缺内容，一次只能填写一个空位 |
-| `/fillAtAfter`             | `faa`    | `FillAtAfter`             | `FIM`       | 4.6.10.0       | FIM 前缀续写                   | 自然语言前缀                               | 添入一个前缀，模型会自动尝试续写内容 |
+| `fillInMiddle`            | `fim`    | `FillInTheMiddle`         | `FIM`       | 4.6.10.0       | FIM 内容生成                   | 自然语言输入                               | 用 `[fill_this]` 或 `___` 来填充空缺内容，一次只能填写一个空位 |
+| `fillAtAfter`             | `faa`    | `FillAtAfter`             | `FIM`       | 4.6.10.0       | FIM 前缀续写                   | 自然语言前缀                               | 添入一个前缀，模型会自动尝试续写内容 |
 
 ### Gen Image Command
 
@@ -657,7 +657,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `getCoreTaskStatus`        | `gcts`   | `GetCoreTaskStatus`       | `STATUS`    | 4.3.17.0       | 获取当前任务状态               | 无                                         | 获取当前核心任务状态 (Free or Task Stack) |
-| `breakChatTask`            | `bct`    | `BreakChatTask`           | `STATUS`    | 4.4.4.0        | 中止当前所有生成任务            | 无                                         | 中止当前所有生成任务，中止后模型已生成内容将不会保存和显示 |
+| `breakChatTask`            | `bct`    | `BreakChatTask`           | `STATUS`    | 4.4.4.0        | 中止当前所有生成任务            | 任务 ID，不填中止所有任务                   | 中止当前所有生成任务，中止后模型已生成内容将不会保存和显示 |
 | `getChatBuffer`            | `gcb`    | `GetChatBuffer`           | `STATUS`    | 4.4.8.0        | 获取聊天缓冲区                 | 无                                         | 获取当前会话的聊天缓冲区 |
 
 ### Statistic Command
