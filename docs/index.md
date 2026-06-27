@@ -510,7 +510,7 @@ Repeater 还有一个自动化客户端，负责生成日记
 #### 主要仓库
 
 - [Repeater Server](https://github.com/qeggs-dev/repeater-ai-chatbot) Repeater 主服务
-- [Nonebot Repeater Client](https://github.com/qeggs-dev/repeater-nonebot-onebot-v11-client) 基于 Nonebot OneBot v11 的 Repeater 客户端实现
+- [Nonebot Repeater Client](https://github.com/qeggs-dev/repeater-onebot-v11-client) 基于 Nonebot OneBot v11 的 Repeater 客户端实现
 - [Repeater Nexus](https://github.com/qeggs-dev/repeater-nexus) Repeater 数据共享服务
 - [Repeater Notes Client](https://github.com/qeggs-dev/repeater-notes-client) Repeater 自动化日记客户端
 - [Auto Backup](https://github.com/qeggs-dev/auto-backup) 自动数据备份程序
