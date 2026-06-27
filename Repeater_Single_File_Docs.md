@@ -48,7 +48,7 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 ## Version
 
 Adapted Repeater v4.8.0.0
-Last Update Time: 2026-06-27 01:01:03
+Last Update Time: 2026-06-27 21:45:59
 
 ---
 
@@ -7053,6 +7053,13 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
     - `code` (int): HTTP 状态码
     - `msg` (str): API 返回的消息
     - `cancel_count` (int): 取消的任务数量
+
+- **`/generate/chat/break/{user_id:str}/{task_id:str}`**
+  - **Request**
+    - ***method:** `POST`
+  - **Response**
+    - `code` (int): HTTP 状态码
+    - `msg` (str): API 返回的消息
 [file content end]
 
 [file: "./server-docs/docs/api_table/generate_api/chat_api/chat_completion.md"]
@@ -7068,6 +7075,7 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
     - **type:** `JSON`
     - **Content:**
       - `message` (str | null): 用户发送的消息，允许为空，但这时模型的行为可能是未定义的
+      - `task_id` (str | null): 任务 ID，如果客户端需要管理任务，可以由客户端生成，否则服务端自行生成
       - `suffix` (str | null): 消息后缀，需要保证 `fim_mode` = `true` 才可使用，允许为空
       - `echo` (bool): 是否回显用户消息，默认为 True，需要 `fim_mode` = `true` 才可使用
       - `fim_mode` (bool): 是否使用 FIM 模式，默认为 False
@@ -11760,8 +11768,8 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---        | :---           | :---                          | :---                                      | :---    |
-| `/fillInMiddle`            | `fim`    | `FillInTheMiddle`         | `FIM`       | 4.6.10.0       | FIM 内容生成                   | 自然语言输入                               | 用 `[fill_this]` 或 `___` 来填充空缺内容，一次只能填写一个空位 |
-| `/fillAtAfter`             | `faa`    | `FillAtAfter`             | `FIM`       | 4.6.10.0       | FIM 前缀续写                   | 自然语言前缀                               | 添入一个前缀，模型会自动尝试续写内容 |
+| `fillInMiddle`            | `fim`    | `FillInTheMiddle`         | `FIM`       | 4.6.10.0       | FIM 内容生成                   | 自然语言输入                               | 用 `[fill_this]` 或 `___` 来填充空缺内容，一次只能填写一个空位 |
+| `fillAtAfter`             | `faa`    | `FillAtAfter`             | `FIM`       | 4.6.10.0       | FIM 前缀续写                   | 自然语言前缀                               | 添入一个前缀，模型会自动尝试续写内容 |
 
 ### Gen Image Command
 
@@ -11957,7 +11965,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `getCoreTaskStatus`        | `gcts`   | `GetCoreTaskStatus`       | `STATUS`    | 4.3.17.0       | 获取当前任务状态               | 无                                         | 获取当前核心任务状态 (Free or Task Stack) |
-| `breakChatTask`            | `bct`    | `BreakChatTask`           | `STATUS`    | 4.4.4.0        | 中止当前所有生成任务            | 无                                         | 中止当前所有生成任务，中止后模型已生成内容将不会保存和显示 |
+| `breakChatTask`            | `bct`    | `BreakChatTask`           | `STATUS`    | 4.4.4.0        | 中止当前所有生成任务            | 任务 ID，不填中止所有任务                   | 中止当前所有生成任务，中止后模型已生成内容将不会保存和显示 |
 | `getChatBuffer`            | `gcb`    | `GetChatBuffer`           | `STATUS`    | 4.4.8.0        | 获取聊天缓冲区                 | 无                                         | 获取当前会话的聊天缓冲区 |
 
 ### Statistic Command
