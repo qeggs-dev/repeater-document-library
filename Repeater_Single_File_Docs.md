@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adapted Repeater v4.8.2.0
-Last Update Time: 2026-07-07 14:52:34
+Adapted Repeater v4.8.3.0
+Last Update Time: 2026-07-09 15:00:41
 
 ---
 
@@ -9322,6 +9322,22 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 如果为 true，则 Repeater 会讲 user_id 进行 sha256 后填充到 `user_id` 字段中
         // 需要服务端明确支持 `user_id` 字段
         "send_user_id": false,
+
+        // 快速统计配置
+        "fast_statistics": {
+
+            // 是否启用快速统计
+            "enable": true,
+
+            // 单元项标题最小长度
+            "title_width": 50,
+
+            // 图表宽度
+            "chart_width": 50,
+
+            // 图表高度
+            "chart_height": 10
+        }
     },
 
     // Context 配置
