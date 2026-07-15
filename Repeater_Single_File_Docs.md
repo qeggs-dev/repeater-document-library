@@ -48,7 +48,7 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 ## Version
 
 Adapted Repeater v4.8.3.0
-Last Update Time: 2026-07-15 17:52:58
+Last Update Time: 2026-07-16 03:46:39
 
 ---
 
@@ -11592,9 +11592,23 @@ main_api.json
     // 伪装选项，可能会有一定的反风控效果
     "camouflage": {
         // 限制发送消息的频率
-        // 默认 100 次/分钟
-        // 如果想关闭可以设置为 null
-        "send_msg_limit_speed_per_minute": 100
+        "limit_speed_per_minute": {
+
+            // 限制消息发送的频率
+            // 默认 100 次/分钟
+            // 如果想关闭可以设置为 null
+            "send_msg": 100,
+
+            // 限制文件发送的频率
+            // 默认 50 次/分钟
+            // 如果想关闭可以设置为 null
+            "file": 50,
+
+            // 限制戳一戳发送的频率
+            // 默认 6 次/分钟
+            // 如果想关闭可以设置为 null
+            "poke": 6
+        }
     },
 
     // 下载图片的超时时间
