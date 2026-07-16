@@ -48,7 +48,7 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 ## Version
 
 Adapted Repeater v4.8.3.0
-Last Update Time: 2026-07-16 03:52:01
+Last Update Time: 2026-07-16 23:58:35
 
 ---
 
@@ -220,16 +220,16 @@ Repeater 使用微服务
 
 ### 权限
 
-Repeater 权限模型分为 User 和 Deployer
-User 为 "经过对接层的流量"
-Deployer 为 "直接访问 API 的流量"
+Repeater 权限模型分为 User 和 Root
+User 为 "使用对接层的操作对象"
+Root 为 "物理访问服务器的对象"
 
-Deployer ≠ Superuser
-Superuser 属于 User 层概念
+Root ≠ Superuser
+Superuser 没有权限完全控制服务器的权限
 
-只要能直连接触到任意 API
-那么对于这个 API 服务器来说这个用户的身份就是 Deployer
-服务不会验证用户是谁，服务只会确保行为正确
+只要可以物理(或 SSH/远程桌面)访问到服务器
+他就会成为 Root
+此时他可以完全控制服务器的行为
 
 ### 命令
 
@@ -10029,14 +10029,7 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
 [file content begin]
 # 用户配置文件
 
-用户配置并不是一个运营应该接触的文件
-它是一个由程序自动生成和管理的文件
-通常你**不需要**也**不应该**手动修改它
-它在用户数据目录下的config类型中
-每个用户各有一个自己的配置文件
-并且受到分支调控管理
-
-不过如果你正在开发Client
+如果你正在开发Client
 那么你可能需要学习一下字段的含义
 并通过接口来修改它们
 
