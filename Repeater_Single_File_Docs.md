@@ -48,7 +48,7 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 ## Version
 
 Adapted Repeater v4.8.3.0
-Last Update Time: 2026-07-17 08:31:01
+Last Update Time: 2026-07-17 12:26:22
 
 ---
 
@@ -11799,8 +11799,8 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---        | :---           | :---                          | :---                                      | :---    |
-| `fillInMiddle`            | `fim`    | `FillInTheMiddle`         | `FIM`       | 4.6.10.0       | FIM 内容生成                   | 自然语言输入                               | 用 `[fill_this]` 或 `___` 来填充空缺内容，一次只能填写一个空位 |
-| `fillAtAfter`             | `faa`    | `FillAtAfter`             | `FIM`       | 4.6.10.0       | FIM 前缀续写                   | 自然语言前缀                               | 添入一个前缀，模型会自动尝试续写内容 |
+| `fillInMiddle`             | `fim`    | `FillInTheMiddle`         | `FIM`       | 4.6.10.0       | FIM 内容生成                   | 自然语言输入                               | 用 `[fill_this]` 或 `___` 来填充空缺内容，一次只能填写一个空位 |
+| `fillAtAfter`              | `faa`    | `FillAtAfter`             | `FIM`       | 4.6.10.0       | FIM 前缀续写                   | 自然语言前缀                               | 添入一个前缀，模型会自动尝试续写内容 |
 
 ### Gen Image Command
 
