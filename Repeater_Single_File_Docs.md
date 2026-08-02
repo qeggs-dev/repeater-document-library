@@ -48,7 +48,7 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 ## Version
 
 Adapted Repeater v4.8.4.0
-Last Update Time: 2026-08-02 20:20:15
+Last Update Time: 2026-08-02 20:32:05
 
 ---
 
@@ -759,6 +759,7 @@ Repeater 使用了 Markdown 语法进行文本渲染
             - get_chat_buffer.md
             - index.md
           - image_api
+            - file_type.md
             - generate.md
             - index.md
           - index.md
@@ -7221,6 +7222,35 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
 - [获取缓冲区内容](./get_chat_buffer.md)
 [file content end]
 
+[file: "./server-docs/docs/api_table/generate_api/image_api/file_type.md"]
+[file content begin]
+# File Type
+
+用于判定文件读取类型的结构
+
+可以为以下三种结构
+``` json
+{
+    "type": "path",
+    "path": "path/to/file"
+}
+```
+
+``` json
+{
+    "type": "url",
+    "url": "https://example.com/path/to/file"
+}
+```
+
+``` json
+{
+    "type": "base64",
+    "base64": "base64 encoded string"
+}
+```
+[file content end]
+
 [file: "./server-docs/docs/api_table/generate_api/image_api/generate.md"]
 [file content begin]
 # Image Generation API
@@ -7234,7 +7264,7 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
     - **type:** `JSON`
     - **Content:**
       - `model_id` (str | list[str]): 模型 ID
-      - `images` (list[FILE_TYPE]): 图片文件，选填
+      - `images` (list[FILE_TYPE]): 图片文件，选填，文件类型参考 [#文件类型](./file_type.md)
       - `prompt` (str): 提示词
       - `background` (str): 背景设置
         - `transparent`：透明背景
