@@ -342,6 +342,10 @@ main_api.json
         "cache_timeout": 60,
     },
 
+    // 生成图片所参考的文件的解析类型
+    // 支持 url / path / base64
+    // 具体请参考你的 OneBot 实现选择的方式
+    "generate_image_file_type": "url",
 
     // Ciallo~ (∠・ω< )⌒★
     // 在执行 ciallo 命令时，发送的内容
@@ -489,7 +493,6 @@ PS：该配置文件是专门用于对接ChatTTS的
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---        | :---           | :---                          | :---                                      | :---    |
 | `generateImage`            | `gi`     | `GenerateImage`           | `GENIMG`    | 4.8.0.0        | 使用模型生成图片               | 提示词                                     | 使用模型生成图片内容 |
-| `generateImageStream`      | `gis`    | `GenerateImageStream`     | `GENIMG`    | 4.8.0.0        | 流式返回生成的图片             | 提示词                                     | 流式返回生成的图片内容 |
 | `generateImageWithSize`    | `giz`    | `GenerateImageWithSize`   | `GENIMG`    | 4.8.0.0        | 使用模型生成图片               | 宽x高 提示词                               | 使用模型生成图片内容，并指定画幅 |
 
 ### Context Command
@@ -714,7 +717,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `#` or `/`                 | `anot`   | `Annotation`              | `RESERVED`  | 4.3.9.3        | 注释，不会执行任何操作          | 无                                        | 不执行任何操作，直接忽略内容，由于命令前缀的存在，触发需要 `/#` 或 `//` |
 
-### Send Msg Command
+### Send Msg Command (Superuser Only)
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
@@ -768,25 +771,23 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 我们可以这样编写参数
 ```
 /ser
-echo
+/echo
   lines2
   lines3
     lines4
-echo finished
-sleep 2.7
+/echo finished
+/sleep 2.7
 ```
 它等同于这种写法
 ```
 /ser
-echo lines2\nlines3\n  lines4
-echo finished
-sleep 2.7
+/echo lines2\nlines3\n  lines4
+/echo finished
+/sleep 2.7
 ```
 其中嵌套开始的第一行不变
 然后所有嵌套向内收缩一格
 直到嵌套结束
-请不要在内部的命令开头添加特殊符号
-这可能会影响 trigger 的识别
 
 所有命令都有变体
 多单词的命令格式有：
