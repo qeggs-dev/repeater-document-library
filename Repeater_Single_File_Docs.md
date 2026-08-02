@@ -48,7 +48,7 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 ## Version
 
 Adapted Repeater v4.8.3.0
-Last Update Time: 2026-07-17 12:26:22
+Last Update Time: 2026-08-02 15:33:15
 
 ---
 
@@ -7233,8 +7233,8 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
     - **method:** `POST`
     - **type:** `JSON`
     - **Content:**
-      - 
       - `model_id` (str | list[str]): 模型 ID
+      - `images` (list[FILE_TYPE]): 图片文件，选填
       - `prompt` (str): 提示词
       - `background` (str): 背景设置
         - `transparent`：透明背景
@@ -10029,7 +10029,13 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
 [file content begin]
 # 用户配置文件
 
-如果你正在开发Client
+用户配置是一个由程序自动生成和管理的文件
+通常你**不需要**也**不应该**手动修改它
+它在用户数据目录下的config类型中
+每个用户各有一个自己的配置文件
+并且受到分支调控管理
+
+不过如果你正在开发Client
 那么你可能需要学习一下字段的含义
 并通过接口来修改它们
 
@@ -11660,6 +11666,10 @@ main_api.json
         "cache_timeout": 60,
     },
 
+    // 生成图片所参考的文件的解析类型
+    // 支持 url / path / base64
+    // 具体请参考你的 OneBot 实现选择的方式
+    "generate_image_file_type": "url",
 
     // Ciallo~ (∠・ω< )⌒★
     // 在执行 ciallo 命令时，发送的内容
@@ -11807,7 +11817,6 @@ PS：该配置文件是专门用于对接ChatTTS的
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---        | :---           | :---                          | :---                                      | :---    |
 | `generateImage`            | `gi`     | `GenerateImage`           | `GENIMG`    | 4.8.0.0        | 使用模型生成图片               | 提示词                                     | 使用模型生成图片内容 |
-| `generateImageStream`      | `gis`    | `GenerateImageStream`     | `GENIMG`    | 4.8.0.0        | 流式返回生成的图片             | 提示词                                     | 流式返回生成的图片内容 |
 | `generateImageWithSize`    | `giz`    | `GenerateImageWithSize`   | `GENIMG`    | 4.8.0.0        | 使用模型生成图片               | 宽x高 提示词                               | 使用模型生成图片内容，并指定画幅 |
 
 ### Context Command
@@ -12032,7 +12041,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `#` or `/`                 | `anot`   | `Annotation`              | `RESERVED`  | 4.3.9.3        | 注释，不会执行任何操作          | 无                                        | 不执行任何操作，直接忽略内容，由于命令前缀的存在，触发需要 `/#` 或 `//` |
 
-### Send Msg Command
+### Send Msg Command (Superuser Only)
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
@@ -12086,25 +12095,23 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 我们可以这样编写参数
 ```
 /ser
-echo
+/echo
   lines2
   lines3
     lines4
-echo finished
-sleep 2.7
+/echo finished
+/sleep 2.7
 ```
 它等同于这种写法
 ```
 /ser
-echo lines2\nlines3\n  lines4
-echo finished
-sleep 2.7
+/echo lines2\nlines3\n  lines4
+/echo finished
+/sleep 2.7
 ```
 其中嵌套开始的第一行不变
 然后所有嵌套向内收缩一格
 直到嵌套结束
-请不要在内部的命令开头添加特殊符号
-这可能会影响 trigger 的识别
 
 所有命令都有变体
 多单词的命令格式有：
