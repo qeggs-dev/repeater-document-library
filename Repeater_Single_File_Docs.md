@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adapted Repeater v4.8.4.0
-Last Update Time: 2026-08-02 20:32:05
+Adapted Repeater v4.8.5.0
+Last Update Time: 2026-08-05 04:14:57
 
 ---
 
@@ -7112,6 +7112,7 @@ $$H(s) = -\sum_{i=1}^{k} p_i \log_2 p_i$$
           - `load_from_user_id` (str): 从指定用户ID加载配置数据
           - `save_to_user_id` (str): 将配置数据保存到指定用户ID
       - `stream` (bool): 是否流式返回（设置该值为 `true` 需要保证在配置中启用了流式处理器，否则会返回`503`错误码）
+      - `extra_bodys` (dict[str, Any]): 额外参数，用于传递给模型，具体参数根据模型定义，需保证启用 `model.enable_user_extra_bodys` 才能生效
   - **Response**
     - **type:** `JSON` | `JSONL STREAM`
     - **Content:**
@@ -9632,7 +9633,28 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 如果这里为 true
         // 那么 /generate/chat/completion 接口调用时 stream 参数可以为 true 或 false
         // 且控制台和日志会打印当前 chunk ，并生成 chunk 统计数据
-        "stream": true
+        "stream": true,
+
+        // 可以填写一些固定的其他参数
+        // 如果用户填写了其他参数
+        // 优先使用此处填写的参数
+        "extra_bodys_priority": {
+            
+        },
+
+        // 可以填写一些固定的其他参数
+        // 如果用户填写了其他参数
+        // 则会覆盖此处填写的参数
+        "extra_bodys": {
+            
+        },
+
+        // 是否启用用户自定义参数
+        // 如果启用，用户可以自定义参数
+        // 如果不启用，用户自定义参数会被忽略，但服务器定义的参数不会受影响
+        // 该值也会影响 call_model 工具的行为
+        // 如果禁用，会忽略传入的 extra_bodys 参数
+        "enable_user_extra_bodys": false,
     },
 
     // MODEL API 配置
@@ -11049,7 +11071,8 @@ Asteval 是一个用于执行 Python 表达式的工具。它允许你将 Python
   "remove_reasoning_prompt": null, // If True, strips the internal reasoning prompt from the output, returning only the final answer.
   "output_role": "assistant", // Role assigned to the generated content in the conversation structure (e.g., 'assistant').
   "timeout": null, // Maximum time in seconds to wait for a response before the request is cancelled.
-  "output_format": "text" // Format of the output data returned by the API (e.g., 'text').
+  "output_format": "text", // Format of the output data returned by the API (e.g., 'text').
+  "extra_bodys": {} // Additional parameters to pass to the API call.
 }
 ```
 
