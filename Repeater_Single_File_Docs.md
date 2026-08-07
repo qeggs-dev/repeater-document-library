@@ -48,7 +48,7 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 ## Version
 
 Adapted Repeater v4.8.5.0
-Last Update Time: 2026-08-07 18:29:10
+Last Update Time: 2026-08-08 06:24:07
 
 ---
 
@@ -12528,9 +12528,9 @@ PS: 除了 Alived API
 2. `<provider>`: 返回该供应商下的所有模型
 3. `<model_id>`: 返回所有供应商下的该模型
 4. `<provider>/<model_id>`: 返回该供应商下的指定模型，通常这种写法只能返回一个模型，可用于锁定模型请求
-5. `match:<regex>`: 返回所有 `3` 格式下满足正则表达式的模型
-6. `search:<regex>`: 返回所有 `3` 格式下满足正则表达式的模型，但是包含该模式而非全字匹配该模式
-7. `schema:<schema>`: 返回所有模型资料满足提交的 json schema 的模型
+5. `match:<regex>`: 返回所有 `4` 格式下满足正则表达式的模型
+6. `search:<regex>`: 返回所有 `4` 格式下满足正则表达式的模型，但是包含该模式而非全字匹配该模式
+7. `schema:<schema>`: 返回所有模型资料满足提交的 json schema 的模型（不安全，攻击者可以构造匹配来爆破你的 API Key）
 8. `fuzzy:<model_uid>:<count>`: 模糊匹配指定 `model_uid` 的模型，返回 `count` 个结果
 
 当所有查询表达式无法匹配到时
