@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adapted Repeater v4.8.5.0
-Last Update Time: 2026-08-08 06:24:07
+Adapted Repeater v4.8.6.0
+Last Update Time: 2026-08-13 23:38:25
 
 ---
 
@@ -134,7 +134,7 @@ NoneBot + FastAPI + OpenAI SDK
 - `Repeater Server` (23.1k+ Code) 是核心服务，提供 API 接口，有状态，必须部署
 - `Model INFO Server` (1.2k+ Code) 用于提供模型信息，如模型名称、模型 API Key 等信息，以在多实例中方便集中管理，必须部署
 - `Repeater Render Server` (3.2k+ Code) 用于进行内容渲染，无状态，可选部署，如果你不需要 Markdown 渲染功能的话
-- `NoneBot Repeater Client` (17.0k+ Code) 是 NoneBot 插件，用于将 Repeater API 安全的对接到群聊中，无状态，可选部署
+- `NoneBot Repeater Client` (17.8k+ Code) 是 NoneBot 插件，用于将 Repeater API 安全的对接到群聊中，无状态，可选部署
 - `Repeater Nexus` (1.1k+ Code) 用于进行数据的跨用户、跨实例分享，无状态，可选部署
 - `Notes Client` (1.7k+ Code) 是一个增值服务，用于自动生成一些内容，这写内容可以当作机器人的日记，可多后端，可选部署
 - `Auto Backup` (0.3k+ Code) 是一个增值服务，用于自动备份用户数据，防止数据丢失，无网络，可选部署
@@ -9542,6 +9542,10 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 默认模型超时时间，单位为秒
         "default_timeout": 600.0,
 
+        // 生成图片超时，单位为秒
+        // 建议设置更长时间，否则可能会出现模型超时的情况
+        "gen_image_timeout": 2400.0,
+
         // 默认模型种子
         // 如果值为 null, 则表示未定义, 值将由模型提供方的默认值决定
         "default_seed": null,
@@ -10141,6 +10145,12 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // 模型会停止生成
     // 如果为 null 则使用模型的默认超时
     "model_timeout": null,
+
+    
+    // (int | float) 图片模型生成超时
+    // 生成图片超时，单位为秒
+    // 建议设置更长时间，否则可能会出现模型超时的情况
+    "gen_image_timeout": null,
 
     // (float) 模型重复惩罚参数
     // 重复惩罚参数越高
@@ -11706,6 +11716,12 @@ main_api.json
     // 是否在注册时打印 Handler 名称
     // 默认为 true
     "log_registed_handler_name": true,
+
+    // 计算模型 Token 时，Tokenizer 缓存的大小上限
+    "tokenizer_cache_size": 50,
+
+    // 在计算模型 Token 时，会显示多少个最常用的 Token
+    "tokenizer_most_frequent_tokens": 5,
     
     // 平台接口配置
     "platform_interface": {
@@ -12069,6 +12085,8 @@ PS：该配置文件是专门用于对接ChatTTS的
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `tokenCount`               | `tc`     | `TokenCount`              | `STATISTIC` | 4.6.3.0        | 获取当前用户所消耗的 Token 数   | 无                                        | 获取当前用户所消耗的 Token 数量 |
+| `tokenizer`                | `tiz`    | `Tokenizer`               | `STATISTIC` | 4.8.5.0        | 计算一个字符串的 Token 数       | 待计算的字符串                             | 计算一个字符串的 Token 数，需要引用一个 `tokenizer.json` 文件 |
+| `tokenizerText`            | `tizt`   | `TokenizerText`           | `STATISTIC` | 4.8.5.0        | 计算一个字符串的 Token 数       | 待计算的字符串                             | 同上，但 `Most frequent` 部分将使用文本而不是图片输出 |
 
 ### See Cmd Command
 
@@ -12108,6 +12126,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `ciallo`                   | `ciallo` | `Ciallo`                  | `GAMES`     | 4.6.4.0        | Ciallo~(∠・ω< )⌒★           | 无                                        | 输出 `ciallo_content` 里的内容 |
 | `randomFortune`            | `rf`     | `RandomFortune`           | `GAMES`     | 4.6.4.0        | 随机运势                       | @指定用户（可选）                          | 根据用户与时间生成每日固定的随机数 |
 | `uselessButton`            | `ub`     | `UselessButton`           | `GAMES`     | 4.6.4.0        | 随机按钮                       | 次数（可选）                               | 多按几次或许会有意外收获 |
+| `word`                     | `word`   | `Word`                    | `GAMES`     | 4.8.5.0        | 获取一句话，或是修改它          | 填充内容                                   | 如果有传入参数，则使用传入的内容覆盖之前的内容，否则返回上一次填充的内容 |
 
 ### Other Command
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
