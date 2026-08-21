@@ -89,6 +89,7 @@ PS: 此处的长度评分函数并非实际算法，仅为演示使用
 | numpy      | 2.4.2   | BSD 3-Clause | [BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)   | *Entire Project*              |
 | cachetools | 7.1.4   | MIT License  | [MIT](https://github.com/tkem/cachetools/blob/master/LICENSE)          | *Entire Project*              |
 | croniter   | 6.2.2   | MIT License  | [MIT](https://github.com/pallets-eco/croniter/blob/master/LICENSE)     | Hello Content                 |
+| tokenizer  | 0.23.1  | MIT License  | [MIT](https://github.com/mideind/Tokenizer/blob/master/LICENSE.txt)    | Count tokens in a string      |
 
 具体依赖的License请查看[LICENSES.md](LICENSES.md)
 
@@ -182,7 +183,23 @@ main_api.json
 
         // 当发现 Handler 重复时
         // 是否抛出异常
-        "handler": true
+        "handler": true,
+
+        // 当发现 Matcher 重复时
+        // 是否抛出异常
+        "matcher": true,
+
+        // 当发现 Type 重复时
+        // 是否抛出异常
+        "type": true,
+
+        // 当发现 Component 重复时
+        // 是否抛出异常
+        "component": true,
+
+        // 当发现 Class Name 重复时
+        // 是否抛出异常
+        "class_name": true
     },
 
     // 在发现命令模块注册失败时
@@ -357,6 +374,22 @@ main_api.json
 
     // 在计算模型 Token 时，会显示多少个最常用的 Token
     "tokenizer_most_frequent_tokens": 5,
+
+    // 入口忽略配置
+    "ignore_enter": {
+        // 忽略指定群聊的消息
+        "group_ignore_enter_set": [],
+
+        // 忽略指定用户的消息
+        "user_ignore_enter_set": [],
+
+        // 单独取消忽略的命令
+        // 需要使用 component 而非 trigger
+        "unignore_enter_commands": [],
+
+        // 是否单独开启在线检查
+        "allow_online_check": true
+    },
     
     // 平台接口配置
     "platform_interface": {
@@ -471,6 +504,9 @@ PS：该配置文件是专门用于对接ChatTTS的
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `echo`                     | `echo`   | `Echo`                    | `ECHO`      | 4.0 Beta       | 重复消息                       | 要重复消息内容                             | 重复消息内容，包括特殊消息段，如果输入不跟内容，复读机会等待下一条消息 |
 | `noPromptEcho`             | `npecho` | `NoPromptEcho`            | `ECHO`      | 4.3.16.0       | 无额外反应的 Echo              | 任何内容                                   | 与 `echo` 命令相同，但不在未找到参数时显示等待提示词 |
+| `remoteEcho`               | `recho`  | `RemoteEcho`              | `ECHO`      | 4.9.1.0        | 远程 Echo                     | (group|private):id 要重复消息内容           | 与 echo 相同，但可以指定发送目标，**需要 superuser 权限** |
+| `remoteNoPromptEcho`       | `rnpecho`| `RemoteNoPromptEcho`      | `ECHO`      | 4.9.1.0        | 远程无额外反应的 Echo          | (group|private):id 任何内容                | 与 npecho 相同，但可以指定发送目标，**需要 superuser 权限** |
+| `removeReply`              | `rr`     | `RemoveReply`             | `ECHO`      | 4.9.1.0        | 移除回复消息                   | 消息内容                                   | 移除传入消息内容的回复消息 |
 
 ### Control Command
 
@@ -486,6 +522,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `cancel`                   | `cl`     | `Cancel`                  | `CONTROL`   | 4.8.3.2        | 取消一个命令                   | 任务 ID                                   | 取消一个命令 |
 | `taskList`                 | `tl`     | `TaskList`                | `CONTROL`   | 4.8.3.2        | 查看当前任务列表                | 无                                       | 查看当前用户所有正在运行的 Task 实例 |
 | `cascade`                  | `cas`    | `Cascade`                 | `CONTROL`   | 4.8.5.0        | 级联执行命令                   | 格式为: 命令 参数                         | 每行一个命令，下一个命令执行时，会使用上一个命令的输出作为输入，最后一个直接输出 |
+| `execute`                  | `e`      | `Execute`                 | `CONTROL`   | 4.9.1.0        | 使用 components 调用命令        | 格式为: components 参数                  | 当只知道 components 但不知道其 trigger 时，可以使用这种方法调用 |
 
 ### Chat Command
 
@@ -579,7 +616,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `fastStatisticsTemplate`   | `fst`    | `FastStatisticsTemplate`  | `CONFIG`    | 4.4.5.0        | 快速统计模板                   | 模板内容                                    | 可以在生成的图片结尾展示一些统计数据 |
 | `setMultipleModel`         | `smm`    | `SetMultipleModel`        | `CONFIG`    | 4.4.6.0        | 设置多个模型                   | *多个模型名称*                              | 设置多个模型，当访问时随机选择一个模型 |
 | `setStopKeywords`          | `ssk`    | `SetStopKeywords`         | `CONFIG`    | 4.4.6.0        | 设置停止关键词                 | *多个停止关键词*                             | 当模型生成出这个词时，暂停模型生成并即刻返回结果 |
-| `getConfig`                | `gcfg`   | `GetConfig`               | `CONFIG`    | 4.4.8.0        | 获取配置                      | `JSON`/`YAML`                              | 获取当前会话的配置 |
+| `getConfigs`               | `gcfg`   | `GetConfigs`              | `CONFIG`    | 4.4.8.0        | 获取配置                      | `JSON`/`YAML`                              | 获取当前会话的配置 |
 | `setCustomAge`             | `sca`    | `SetCustomAge`            | `CONFIG`    | 4.4.9.0        | 设置自定义年龄                 | 年龄                                        | 设置自定义年龄 (需要提示词支持) |
 | `setCustomGender`          | `scg`    | `SetCustomGender`         | `CONFIG`    | 4.4.9.0        | 设置自定义性别                 | 性别                                        | 设置自定义性别 (需要提示词支持) |
 | `sendConfigFile`           | `scfgf`  | `SendConfigFile`          | `CONFIG`    | 4.5.5.0-beta   | 获取配置文件                   | 无                                          | 获取当前活动分支的配置文件 |
@@ -727,9 +764,11 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
-| `seeCmd`                   | `sc`     | `SeeCmd`                  | `SEE_CMD`   | 4.6.4.0        | 显示命令                       | 命令名称                                  | 显示指定命令的详细帮助信息 |
+| `seeCmd`                   | `sc`     | `SeeCmd`                  | `SEE_CMD`   | 4.6.4.0        | 显示命令详细信息               | 命令名称                                   | 显示指定命令的详细帮助信息 |
 | `cmdTypesList`             | `ctl`    | `CmdTypesList`            | `SEE_CMD`   | 4.6.4.0        | 列出命令类型                   | 无                                        | 列出所有命令类型 |
 | `cmdType`                  | `ct`     | `CmdType`                 | `SEE_CMD`   | 4.6.5.0        | 列出命令类型下的所有命令        | 命令类型                                   | 列出命令类型下的所有命令 |
+| `help`                     | `h`      | `Help`                    | `SEE_CMD`   | 4.9.1.0        | 显示帮助信息                   | 无                                        | 提供兼容生态习惯的入口，引导用户学习内容 |
+| `seeComponents`            | `scmp`   | `SeeComponents`           | `SEE_CMD`   | 4.9.1.0        | 通过 component 显式命令详细信息 | 命令 component                            | 显示指定 component 的详细帮助信息 |
 
 ### Version Command
 
@@ -752,7 +791,8 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
-| `sendMessage`              | `smsg`   | `SendMessage`             | `SENDMSG`   | 4.4.12.0       | 发送消息                       | OneBot 消息结构                           | 发送一条自定义消息（需要 `allow_send_any_message` 字段为 `true`） |
+| `sendMessage`              | `smsg`   | `SendMessage`             | `SENDMSG`   | 4.4.12.0       | 发送消息，使用结构体            | OneBot 消息结构                           | 发送一条自定义消息（需要 `allow_send_any_message` 字段为 `true`） |
+| `sendMessageCQ`            | `smsgcq` | `SendMessageCQ`           | `SENDMSG`   | 4.9.1.0        | 发送消息，使用 CQ 码           | 包含 CQ 码的消息结构                        | 发送一条自定义消息（需要 `allow_send_any_message` 字段为 `true`） |
 
 ### Games Command
 
@@ -829,8 +869,8 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 - `snake_case`
 - `Upper_Snake_Case`
 - `UPPER_CASE`
-- `abr` (Abridge)
-- `ABR` (UPPER ABRIDGE)
+- `ia` (Initials Abridge)
+- `IA` (UPPER INITIALS ABRIDGE)
 
 而单个单词的命令有些特殊：
 
@@ -838,8 +878,8 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 - `Uppercase`
 - `s` (Single Character)
 - `S` (UPPER SINGLE CHARACTER)
-- `slbc` (Syllabic abbreviations)
-- `SLBC` (UPPER SYLLABIC ABBREVIATIONS)
+- `slabv` (Syllabic abbreviations)
+- `SLABV` (UPPER SYLLABIC ABBREVIATIONS)
 
 ---
 
