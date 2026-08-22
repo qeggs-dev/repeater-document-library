@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adapted Repeater v4.8.6.0
-Last Update Time: 2026-08-13 23:38:25
+Adapted Repeater v4.9.2.1
+Last Update Time: 2026-08-22 08:51:28
 
 ---
 
@@ -131,10 +131,10 @@ NoneBot + FastAPI + OpenAI SDK
 最小运行 2 个服务，也就是 Repeater Server + Model INFO Server
 如果你要带上 NoneBot Repeater Client 的话，则还需要配置一个 Render Server 才可以正常使用
 其中：
-- `Repeater Server` (23.1k+ Code) 是核心服务，提供 API 接口，有状态，必须部署
+- `Repeater Server` (25.0k+ Code) 是核心服务，提供 API 接口，有状态，必须部署
 - `Model INFO Server` (1.2k+ Code) 用于提供模型信息，如模型名称、模型 API Key 等信息，以在多实例中方便集中管理，必须部署
 - `Repeater Render Server` (3.2k+ Code) 用于进行内容渲染，无状态，可选部署，如果你不需要 Markdown 渲染功能的话
-- `NoneBot Repeater Client` (17.8k+ Code) 是 NoneBot 插件，用于将 Repeater API 安全的对接到群聊中，无状态，可选部署
+- `NoneBot Repeater Client` (19.5k+ Code) 是 NoneBot 插件，用于将 Repeater API 安全的对接到群聊中，无状态，可选部署
 - `Repeater Nexus` (1.1k+ Code) 用于进行数据的跨用户、跨实例分享，无状态，可选部署
 - `Notes Client` (1.7k+ Code) 是一个增值服务，用于自动生成一些内容，这写内容可以当作机器人的日记，可多后端，可选部署
 - `Auto Backup` (0.3k+ Code) 是一个增值服务，用于自动备份用户数据，防止数据丢失，无网络，可选部署
@@ -9330,8 +9330,12 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
     // CallAPI 配置
     "callapi": {
         // 协程池最大并发数
-        // 仅在 AI 请求路径下生效
+        // 仅在 LLM 请求路径下生效
         "max_concurrency": 1000,
+
+        // 生成图片时，协程池最大并发数
+        // 仅在 AI 生图路径下生效
+        "gen_image_max_concurrency": 120,
 
         // 当为 true 时，将启用流混淆。
         // 流混淆会在流 delta 事件的 `obfuscation` 字段中添加随机字符，
@@ -9408,6 +9412,25 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
         // 非文本数据在日志中的最大显示长度
         // 设置为 null 则不进行截断
         "max_log_length_for_non_text_content": 25
+    },
+
+    // 生成图片保存配置
+    "generated_images": {
+        // 生成图片保存的目录
+        "base_dir": "./workspace/generated_images",
+
+        // 下载图片的分块大小
+        "download_chunk_size": 5242880,
+
+        // 生成图片保存的文件名前缀
+        "file_name_prefix": "GeneratedImage_",
+
+        // 默认图片保存的文件名后缀
+        "save_file_suffix": ".png",
+
+        // 生成图片在本地保存的过期时间，单位为秒
+        // 设该值为 null 时表示不过期
+        "image_timeout": 43200
     },
 
     // 全局异常处理器配置
@@ -9930,29 +9953,260 @@ PS: 配置管理器会递归扫描环境变量`CONFIG_DIR`下的所有json/yaml�
     },
 
     // 服务器配置
-    // 这里的几个字段为 null 或不填则会使用环境变量中定义的配置
-    // 如果这里填写了内容，那么这里的内容会覆盖环境变量中的值
+    // 大部分情况只需要配置 host/port
     "server": {
-        // 监听的IP
-        "host": null,
-
-        // 监听的端口
-        "port": null,
-
-        // 工作进程数量
-        "workers": null,
-
-        // 是否在文件发生变动时自动重启
-        "reload": null,
-
-        // 是否启动服务器
-        // 如果为 false
-        // 那么在初始化结束后
-        // 程序将会直接退出
-        // 而不是启动服务器
+        "uvicron": {
+            // ==================== 网络基础配置 ====================
+            
+            // 绑定监听的 IP 地址
+            // 默认 127.0.0.1（仅本地访问）
+            // 设为 '0.0.0.0' 可监听所有接口
+            // 如果为 null 则从环境变量 `HOST` 中获取
+            "host": null,
+            
+            // 绑定监听的端口号
+            // 默认 8000
+            // 如果为 null 则从环境变量 `PORT` 中获取
+            "port": null,
+            
+            // Unix 域套接字（UDS）路径
+            // 若设置则忽略 host/port，用于进程间通信
+            "uds": null,
+            
+            // 文件描述符编号
+            // 若提供则使用已有的 socket（如从 systemd 继承）
+            // 优先级高于 host/port/uds
+            "fd": null,
+            
+            
+            // ==================== 协议/事件循环配置 ====================
+            
+            // 事件循环实现
+            // 'auto' - 自动选择（优先 uvloop）
+            // 'asyncio' - 使用标准库
+            // 'uvloop' - 使用高性能 uvloop
+            // 'none' - 不创建循环（用于嵌入场景）
+            "loop": "auto",
+            
+            // HTTP 协议解析器
+            // 'auto' - 自动选择（优先 httptools）
+            // 'h11' - 纯 Python 实现
+            // 'httptools' - 基于 Cython 的高性能解析器
+            "http": "auto",
+            
+            // WebSocket 协议实现
+            // 'auto' - 自动选择
+            // 'none' - 禁用 WebSocket
+            // 'websockets' - 使用 websockets 库
+            // 'websockets-sansio' - 无 I/O 版本
+            // 'wsproto' - 使用 wsproto 库
+            "ws": "auto",
+            
+            // WebSocket 接收消息的最大字节数
+            // 默认 16MB，超过则关闭连接
+            "ws_max_size": 16777216,
+            
+            // WebSocket 消息队列的最大长度（缓冲消息数）
+            "ws_max_queue": 32,
+            
+            // WebSocket 发送 ping 帧的间隔（秒）
+            // null 则禁用 ping，默认 20 秒
+            "ws_ping_interval": 20.0,
+            
+            // WebSocket 等待 pong 响应的超时时间（秒）
+            // 超时则关闭连接，默认 20 秒
+            "ws_ping_timeout": 20.0,
+            
+            // 是否启用 WebSocket 每条消息的压缩（per-message deflate）
+            "ws_per_message_deflate": true,
+            
+            
+            // ==================== 应用生命周期 ====================
+            
+            // 生命周期管理
+            // 'auto' - 自动检测
+            // 'on' - 强制启用（无则报错）
+            // 'off' - 完全禁用（不调用 startup/shutdown）
+            "lifespan": "auto",
+            
+            
+            // ==================== 日志配置 ====================
+            
+            // 加载环境变量文件（.env）的路径
+            // 用于读取配置
+            "env_file": null,
+            
+            // 日志配置
+            // 可传入 dict 或 JSON/YAML 文件路径
+            // null 则使用默认日志配置
+            "log_config": null,
+            
+            // 日志级别
+            // 如 'info'、'debug'、'warning'
+            // 或对应的数字值，null 则继承默认
+            "log_level": null,
+            
+            // 是否启用访问日志
+            // 记录每个请求的 method/path/status
+            "access_log": true,
+            
+            // 控制台输出是否启用颜色高亮
+            // null 则自动检测终端是否支持
+            "use_colors": null,
+            
+            
+            // ==================== 接口/协议适配 ====================
+            
+            // 应用接口类型
+            // 'auto' - 自动检测
+            // 'asgi3' - 强制 ASGI 3.0
+            // 'asgi2' - 强制 ASGI 2.0
+            // 'wsgi' - 兼容 WSGI 应用
+            "interface": "auto",
+            
+            
+            // ==================== 开发/重载配置 ====================
+            
+            // 是否启用热重载
+            // 检测文件变更自动重启，生产环境应设为 false
+            // 如果为 null 则从环境变量 `RELOAD` 中获取
+            "reload": null,
+            
+            // 热重载监控的额外目录
+            // 数组或逗号分隔字符串，默认监控应用代码目录
+            "reload_dirs": null,
+            
+            // 热重载检测到文件变更后的延迟重启时间（秒）
+            // 避免频繁重启，默认 0.25 秒
+            "reload_delay": 0.25,
+            
+            // 热重载时额外包含监控的文件模式
+            // 如 ["*.py"]，支持通配符
+            "reload_includes": null,
+            
+            // 热重载时排除监控的文件模式
+            // 如 ["*.log", "*.tmp"]，优先级高于 includes
+            "reload_excludes": null,
+            
+            
+            // ==================== 多进程/性能配置 ====================
+            
+            // 工作进程数量（多进程模式）
+            // null 则使用单进程，>1 时自动启用多进程
+            // 如果为 null 则从环境变量 `WORKERS` 中获取
+            "workers": null,
+            
+            // 是否信任代理头信息（X-Forwarded-*）
+            // 用于获取真实客户端 IP/协议
+            "proxy_headers": true,
+            
+            // 响应头是否包含 'Server: uvicorn'
+            "server_header": true,
+            
+            // 响应头是否包含 'Date' 时间戳
+            "date_header": true,
+            
+            // 允许信任的代理 IP 列表（用于 proxy_headers）
+            // '*' 表示信任所有，默认仅信任本地 IP
+            "forwarded_allow_ips": null,
+            
+            // 应用根路径前缀（如 '/api'）
+            // 用于反向代理时修正路径，默认空字符串
+            "root_path": "",
+            
+            // 最大并发连接数
+            // 超过则阻塞/拒绝，null 表示不限制
+            "limit_concurrency": null,
+            
+            // 每个工作进程处理的最大请求数
+            // 达到后优雅退出并重启，用于防止内存泄漏
+            // null 表示不限制
+            "limit_max_requests": null,
+            
+            // TCP 监听队列的最大长度（积压连接数）
+            "backlog": 2048,
+            
+            
+            // ==================== 超时配置 ====================
+            
+            // Keep-Alive 连接的空闲超时时间（秒）
+            // 超过则关闭连接，默认 5 秒
+            "timeout_keep_alive": 5,
+            
+            // 工作进程状态通知超时（秒）
+            // 主进程等待子进程响应的时间，默认 30 秒
+            "timeout_notify": 30,
+            
+            // 优雅关闭超时（秒）
+            // 等待工作进程完成当前请求后退出
+            // null 则使用默认值（通常为 timeout_notify）
+            "timeout_graceful_shutdown": null,
+            
+            // 工作进程健康检查间隔（秒）
+            // 主进程定期检查子进程是否存活，默认 5 秒
+            "timeout_worker_healthcheck": 5,
+            
+            
+            // ==================== SSL/TLS 配置 ====================
+            
+            // SSL 私钥文件路径（PEM 格式）
+            // 提供则启用 HTTPS
+            "ssl_keyfile": null,
+            
+            // SSL 证书文件路径（PEM 格式）
+            // 提供则启用 HTTPS
+            "ssl_certfile": null,
+            
+            // SSL 私钥文件的密码
+            // 如果私钥加密了，建议通过环境变量传入
+            "ssl_keyfile_password": null,
+            
+            // SSL/TLS 协议版本
+            // 默认使用 ssl.PROTOCOL_TLS_SERVER（支持 TLSv1.2+）
+            // 注：Python 中使用数字常量，JSONC 中保留为整数
+            "ssl_version": 4,
+            
+            // 客户端证书验证要求
+            // 0 = ssl.CERT_NONE（不验证）
+            // 1 = ssl.CERT_OPTIONAL（可选）
+            // 2 = ssl.CERT_REQUIRED（必须）
+            "ssl_cert_reqs": 0,
+            
+            // CA 证书文件路径（用于验证客户端证书）
+            // 仅在 ssl_cert_reqs 非 0 时需要
+            "ssl_ca_certs": null,
+            
+            // SSL 加密套件列表
+            // 默认 'TLSv1'（使用 TLSv1.0+ 兼容套件）
+            // 可自定义如 'ECDHE+AESGCM'
+            "ssl_ciphers": "TLSv1",
+            
+            
+            // ==================== 杂项配置 ====================
+            
+            // 自定义响应头列表
+            // 如 [["X-Custom", "value"]]，会添加到每个响应中
+            "headers": null,
+            
+            // 应用是否为工厂函数
+            // true 则每次请求调用获取应用实例
+            "factory": false,
+            
+            // h11 协议解析器允许的最大未完成事件大小（字节）
+            // 超过则报错，null 使用 h11 默认值
+            "h11_max_incomplete_event_size": null
+        },
+        
+        // （内部使用）是否在重启过程中
+        // 用于状态标记，一般不需手动设置
+        "restart": false,
+        
+        // 是否真正运行服务器
+        // false 时仅加载配置不启动，用于测试或嵌入场景
         "run_server": true,
-
-        // 是否开启异步事件循环的调试模式
+        
+        // 是否启用 asyncio 调试模式
+        // 会输出更详细的警告/错误，影响性能
         "asyncio_debug": false
     },
 
@@ -10146,7 +10400,6 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
     // 如果为 null 则使用模型的默认超时
     "model_timeout": null,
 
-    
     // (int | float) 图片模型生成超时
     // 生成图片超时，单位为秒
     // 建议设置更长时间，否则可能会出现模型超时的情况
@@ -10523,12 +10776,12 @@ LICENSES/
 
 ## 各个组件的版本号
 
-| 组件名称                | 版本号    | 描述        | 链接  |
-| :---                   | :---:     | :---        | :--- |
-| Model INFO Server      | `1.0.8.0` | 模型信息服务 | [Github](https://github.com/qeggs-dev/repeater-modelinfo-server) |
-| Static Resource Server | `1.0.0`   | 静态资源服务 | [Github](https://github.com/qeggs-dev/static-resources-server) |
-| Nexus                  | `1.0.0.0` | 数据共享服务 | [Github](https://github.com/qeggs-dev/repeater-nexus) |
-| Render Server          | `1.0.0`   | 渲染服务     | [Github](https://github.com/qeggs-dev/repeater-render-server) |
+| 组件名称                | 版本号     | 描述        | 链接  |
+| :---                   | :---:      | :---        | :--- |
+| Model INFO Server      | `1.0.12.0` | 模型信息服务 | [Github](https://github.com/qeggs-dev/repeater-modelinfo-server) |
+| Static Resource Server | `1.0.0`    | 静态资源服务 | [Github](https://github.com/qeggs-dev/static-resources-server) |
+| Nexus                  | `1.0.0.0`  | 数据共享服务 | [Github](https://github.com/qeggs-dev/repeater-nexus) |
+| Render Server          | `1.0.0`    | 渲染服务     | [Github](https://github.com/qeggs-dev/repeater-render-server) |
 [file content end]
 
 [file: "./server-docs/docs/template_engine/functions/age.md"]
@@ -11476,6 +11729,7 @@ PS: 此处的长度评分函数并非实际算法，仅为演示使用
 | numpy      | 2.4.2   | BSD 3-Clause | [BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)   | *Entire Project*              |
 | cachetools | 7.1.4   | MIT License  | [MIT](https://github.com/tkem/cachetools/blob/master/LICENSE)          | *Entire Project*              |
 | croniter   | 6.2.2   | MIT License  | [MIT](https://github.com/pallets-eco/croniter/blob/master/LICENSE)     | Hello Content                 |
+| tokenizer  | 0.23.1  | MIT License  | [MIT](https://github.com/mideind/Tokenizer/blob/master/LICENSE.txt)    | Count tokens in a string      |
 
 具体依赖的License请查看[LICENSES.md](LICENSES.md)
 
@@ -11569,7 +11823,23 @@ main_api.json
 
         // 当发现 Handler 重复时
         // 是否抛出异常
-        "handler": true
+        "handler": true,
+
+        // 当发现 Matcher 重复时
+        // 是否抛出异常
+        "matcher": true,
+
+        // 当发现 Type 重复时
+        // 是否抛出异常
+        "type": true,
+
+        // 当发现 Component 重复时
+        // 是否抛出异常
+        "component": true,
+
+        // 当发现 Class Name 重复时
+        // 是否抛出异常
+        "class_name": true
     },
 
     // 在发现命令模块注册失败时
@@ -11681,6 +11951,28 @@ main_api.json
     // 是否使用缩写来显示分支文件大小
     "branch_file_size_use_abbreviation": true,
 
+    // 客户端限制
+    "client_limits": {
+
+        // 最大并发连接数
+        "max_connections": 1000,
+
+        // 最大存活连接数
+        "max_keepalive_connections": 20,
+
+        // 保持连接的时间
+        "keepalive_expiry": 5
+    },
+
+    // 出错时，使用 markdown 渲染错误信息
+    "render_error_message": {
+        // 渲染错误信息的样式
+        "style": null,
+
+        // 渲染错误信息的模板
+        "html_template": null
+    },
+
     // 总计并收缩使用的默认消息内容
     "summarize_and_contract_default_message": "System Message: please sum up all the contents above.",
 
@@ -11722,6 +12014,22 @@ main_api.json
 
     // 在计算模型 Token 时，会显示多少个最常用的 Token
     "tokenizer_most_frequent_tokens": 5,
+
+    // 入口忽略配置
+    "ignore_enter": {
+        // 忽略指定群聊的消息
+        "group_ignore_enter_set": [],
+
+        // 忽略指定用户的消息
+        "user_ignore_enter_set": [],
+
+        // 单独取消忽略的命令
+        // 需要使用 component 而非 trigger
+        "unignore_enter_commands": [],
+
+        // 是否单独开启在线检查
+        "allow_online_check": true
+    },
     
     // 平台接口配置
     "platform_interface": {
@@ -11836,6 +12144,9 @@ PS：该配置文件是专门用于对接ChatTTS的
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `echo`                     | `echo`   | `Echo`                    | `ECHO`      | 4.0 Beta       | 重复消息                       | 要重复消息内容                             | 重复消息内容，包括特殊消息段，如果输入不跟内容，复读机会等待下一条消息 |
 | `noPromptEcho`             | `npecho` | `NoPromptEcho`            | `ECHO`      | 4.3.16.0       | 无额外反应的 Echo              | 任何内容                                   | 与 `echo` 命令相同，但不在未找到参数时显示等待提示词 |
+| `remoteEcho`               | `recho`  | `RemoteEcho`              | `ECHO`      | 4.9.1.0        | 远程 Echo                     | (group|private):id 要重复消息内容           | 与 echo 相同，但可以指定发送目标，**需要 superuser 权限** |
+| `remoteNoPromptEcho`       | `rnpecho`| `RemoteNoPromptEcho`      | `ECHO`      | 4.9.1.0        | 远程无额外反应的 Echo          | (group|private):id 任何内容                | 与 npecho 相同，但可以指定发送目标，**需要 superuser 权限** |
+| `removeReply`              | `rr`     | `RemoveReply`             | `ECHO`      | 4.9.1.0        | 移除回复消息                   | 消息内容                                   | 移除传入消息内容的回复消息 |
 
 ### Control Command
 
@@ -11851,6 +12162,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `cancel`                   | `cl`     | `Cancel`                  | `CONTROL`   | 4.8.3.2        | 取消一个命令                   | 任务 ID                                   | 取消一个命令 |
 | `taskList`                 | `tl`     | `TaskList`                | `CONTROL`   | 4.8.3.2        | 查看当前任务列表                | 无                                       | 查看当前用户所有正在运行的 Task 实例 |
 | `cascade`                  | `cas`    | `Cascade`                 | `CONTROL`   | 4.8.5.0        | 级联执行命令                   | 格式为: 命令 参数                         | 每行一个命令，下一个命令执行时，会使用上一个命令的输出作为输入，最后一个直接输出 |
+| `execute`                  | `e`      | `Execute`                 | `CONTROL`   | 4.9.1.0        | 使用 components 调用命令        | 格式为: components 参数                  | 当只知道 components 但不知道其 trigger 时，可以使用这种方法调用 |
 
 ### Chat Command
 
@@ -11944,7 +12256,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `fastStatisticsTemplate`   | `fst`    | `FastStatisticsTemplate`  | `CONFIG`    | 4.4.5.0        | 快速统计模板                   | 模板内容                                    | 可以在生成的图片结尾展示一些统计数据 |
 | `setMultipleModel`         | `smm`    | `SetMultipleModel`        | `CONFIG`    | 4.4.6.0        | 设置多个模型                   | *多个模型名称*                              | 设置多个模型，当访问时随机选择一个模型 |
 | `setStopKeywords`          | `ssk`    | `SetStopKeywords`         | `CONFIG`    | 4.4.6.0        | 设置停止关键词                 | *多个停止关键词*                             | 当模型生成出这个词时，暂停模型生成并即刻返回结果 |
-| `getConfig`                | `gcfg`   | `GetConfig`               | `CONFIG`    | 4.4.8.0        | 获取配置                      | `JSON`/`YAML`                              | 获取当前会话的配置 |
+| `getConfigs`               | `gcfg`   | `GetConfigs`              | `CONFIG`    | 4.4.8.0        | 获取配置                      | `JSON`/`YAML`                              | 获取当前会话的配置 |
 | `setCustomAge`             | `sca`    | `SetCustomAge`            | `CONFIG`    | 4.4.9.0        | 设置自定义年龄                 | 年龄                                        | 设置自定义年龄 (需要提示词支持) |
 | `setCustomGender`          | `scg`    | `SetCustomGender`         | `CONFIG`    | 4.4.9.0        | 设置自定义性别                 | 性别                                        | 设置自定义性别 (需要提示词支持) |
 | `sendConfigFile`           | `scfgf`  | `SendConfigFile`          | `CONFIG`    | 4.5.5.0-beta   | 获取配置文件                   | 无                                          | 获取当前活动分支的配置文件 |
@@ -12092,9 +12404,11 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
-| `seeCmd`                   | `sc`     | `SeeCmd`                  | `SEE_CMD`   | 4.6.4.0        | 显示命令                       | 命令名称                                  | 显示指定命令的详细帮助信息 |
+| `seeCmd`                   | `sc`     | `SeeCmd`                  | `SEE_CMD`   | 4.6.4.0        | 显示命令详细信息               | 命令名称                                   | 显示指定命令的详细帮助信息 |
 | `cmdTypesList`             | `ctl`    | `CmdTypesList`            | `SEE_CMD`   | 4.6.4.0        | 列出命令类型                   | 无                                        | 列出所有命令类型 |
 | `cmdType`                  | `ct`     | `CmdType`                 | `SEE_CMD`   | 4.6.5.0        | 列出命令类型下的所有命令        | 命令类型                                   | 列出命令类型下的所有命令 |
+| `help`                     | `h`      | `Help`                    | `SEE_CMD`   | 4.9.1.0        | 显示帮助信息                   | 无                                        | 提供兼容生态习惯的入口，引导用户学习内容 |
+| `seeComponents`            | `scmp`   | `SeeComponents`           | `SEE_CMD`   | 4.9.1.0        | 通过 component 显式命令详细信息 | 命令 component                            | 显示指定 component 的详细帮助信息 |
 
 ### Version Command
 
@@ -12117,7 +12431,8 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
-| `sendMessage`              | `smsg`   | `SendMessage`             | `SENDMSG`   | 4.4.12.0       | 发送消息                       | OneBot 消息结构                           | 发送一条自定义消息（需要 `allow_send_any_message` 字段为 `true`） |
+| `sendMessage`              | `smsg`   | `SendMessage`             | `SENDMSG`   | 4.4.12.0       | 发送消息，使用结构体            | OneBot 消息结构                           | 发送一条自定义消息（需要 `allow_send_any_message` 字段为 `true`） |
+| `sendMessageCQ`            | `smsgcq` | `SendMessageCQ`           | `SENDMSG`   | 4.9.1.0        | 发送消息，使用 CQ 码           | 包含 CQ 码的消息结构                        | 发送一条自定义消息（需要 `allow_send_any_message` 字段为 `true`） |
 
 ### Games Command
 
@@ -12194,8 +12509,8 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 - `snake_case`
 - `Upper_Snake_Case`
 - `UPPER_CASE`
-- `abr` (Abridge)
-- `ABR` (UPPER ABRIDGE)
+- `ia` (Initials Abridge)
+- `IA` (UPPER INITIALS ABRIDGE)
 
 而单个单词的命令有些特殊：
 
@@ -12203,8 +12518,8 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 - `Uppercase`
 - `s` (Single Character)
 - `S` (UPPER SINGLE CHARACTER)
-- `slbc` (Syllabic abbreviations)
-- `SLBC` (UPPER SYLLABIC ABBREVIATIONS)
+- `slabv` (Syllabic abbreviations)
+- `SLABV` (UPPER SYLLABIC ABBREVIATIONS)
 
 ---
 
