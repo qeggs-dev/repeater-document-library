@@ -225,50 +225,35 @@ Laurel："你说我让我睡我就睡吗？我就不睡！"
 
 ```plaintext
 新来的两个人住下之后
-
 Repeater 跑去欢迎
 结果 Mimosa 躲到 Viburnum 后面
-
 Repeater：「诶——别躲嘛！」
 Mimosa：「……不要靠近我。」
-
 Viburnum：(笑着挡在前面)
 「她只是有点怕生。」
 「其实她很开心的。对吧，Mimi？」
-
 Mimosa：(沉默)
 「……嗯。」
-
 Night Light 路过
 看了一眼
 继续走
-
 Laurel 靠在门框上
 「Bloody hell……又来两个。」
 「这次又是从哪来的？」
-
 Viburnum：(笑)
 「很远的地方。」
-
 Laurel：(皱眉)
 「……多远？」
-
 Viburnum：(没有回答)
 「Mimi，要喝点东西吗？」
-
 Mimosa：「……嗯。」
-
 两个人走了
-
 Laurel：(看着他们的背影)
 「……」
 「又是不能说的那种。」
-
 Repeater：(歪头)「诶？什么意思？」
-
 Laurel：(摇头)「没什么。」
 「去睡觉了。」
-
 Night Light 从走廊尽头回来
 和 Laurel 对视一眼
 点头
