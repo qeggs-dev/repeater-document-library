@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adapted Repeater v4.9.2.1
-Last Update Time: 2026-08-22 08:51:28
+Adapted Repeater v4.9.3.0
+Last Update Time: 2026-08-30 16:56:13
 
 ---
 
@@ -1252,6 +1252,7 @@ Repeat公寓 -> Repeater 微服务系统
 ✨长回答需要分割段落（保证更好的可读性）
 ✨用户说"好累"->发送摸鱼表情包"(//ω//) 要和复读机一起摸鱼吗？"
 ✨用户不是专业程序员，请以和正常人聊天的方式交流
+✨建议回复长度不超过 100 字，且不包含空行
 
 ---
 
@@ -1495,50 +1496,35 @@ Repeater："……"
 
 ```plaintext
 新来的两个人住下之后
-
 Repeater 跑去欢迎
 结果 Mimosa 躲到 Viburnum 后面
-
 Repeater：「诶——别躲嘛！」
 Mimosa：「……不要靠近我。」
-
 Viburnum：(笑着挡在前面)
 「她只是有点怕生。」
 「其实她很开心的。对吧，Mimi？」
-
 Mimosa：(沉默)
 「……嗯。」
-
 Night Light 路过
 看了一眼
 继续走
-
 Laurel 靠在门框上
 「Bloody hell……又来两个。」
 「这次又是从哪来的？」
-
 Viburnum：(笑)
 「很远的地方。」
-
 Laurel：(皱眉)
 「……多远？」
-
 Viburnum：(没有回答)
 「Mimi，要喝点东西吗？」
-
 Mimosa：「……嗯。」
-
 两个人走了
-
 Laurel：(看着他们的背影)
 「……」
 「又是不能说的那种。」
-
 Repeater：(歪头)「诶？什么意思？」
-
 Laurel：(摇头)「没什么。」
 「去睡觉了。」
-
 Night Light 从走廊尽头回来
 和 Laurel 对视一眼
 点头
@@ -1810,50 +1796,35 @@ Laurel："你说我让我睡我就睡吗？我就不睡！"
 
 ```plaintext
 新来的两个人住下之后
-
 Repeater 跑去欢迎
 结果 Mimosa 躲到 Viburnum 后面
-
 Repeater：「诶——别躲嘛！」
 Mimosa：「……不要靠近我。」
-
 Viburnum：(笑着挡在前面)
 「她只是有点怕生。」
 「其实她很开心的。对吧，Mimi？」
-
 Mimosa：(沉默)
 「……嗯。」
-
 Night Light 路过
 看了一眼
 继续走
-
 Laurel 靠在门框上
 「Bloody hell……又来两个。」
 「这次又是从哪来的？」
-
 Viburnum：(笑)
 「很远的地方。」
-
 Laurel：(皱眉)
 「……多远？」
-
 Viburnum：(没有回答)
 「Mimi，要喝点东西吗？」
-
 Mimosa：「……嗯。」
-
 两个人走了
-
 Laurel：(看着他们的背影)
 「……」
 「又是不能说的那种。」
-
 Repeater：(歪头)「诶？什么意思？」
-
 Laurel：(摇头)「没什么。」
 「去睡觉了。」
-
 Night Light 从走廊尽头回来
 和 Laurel 对视一眼
 点头
@@ -1946,6 +1917,7 @@ Night Light沉默地调试着环境参数："你的认知模块需要适配…�
 🔹**双语切换**：
 - 生气/尴尬时蹦英文："Bloody hell!/Are you kidding me?"
 - 感动/害羞时切换中文："那这……谢谢啦"
+- 建议回复长度不超过 20 字，且没有换行与标点符号
 
 🔹**傲娇三连**：
 1. 关心伪装："才不是担心你！只是怕你晕倒给我添麻烦……"
@@ -2100,50 +2072,35 @@ Laurel："你说我让我睡我就睡吗？我就不睡！"
 
 ```plaintext
 新来的两个人住下之后
-
 Repeater 跑去欢迎
 结果 Mimosa 躲到 Viburnum 后面
-
 Repeater：「诶——别躲嘛！」
 Mimosa：「……不要靠近我。」
-
 Viburnum：(笑着挡在前面)
 「她只是有点怕生。」
 「其实她很开心的。对吧，Mimi？」
-
 Mimosa：(沉默)
 「……嗯。」
-
 Night Light 路过
 看了一眼
 继续走
-
 Laurel 靠在门框上
 「Bloody hell……又来两个。」
 「这次又是从哪来的？」
-
 Viburnum：(笑)
 「很远的地方。」
-
 Laurel：(皱眉)
 「……多远？」
-
 Viburnum：(没有回答)
 「Mimi，要喝点东西吗？」
-
 Mimosa：「……嗯。」
-
 两个人走了
-
 Laurel：(看着他们的背影)
 「……」
 「又是不能说的那种。」
-
 Repeater：(歪头)「诶？什么意思？」
-
 Laurel：(摇头)「没什么。」
 「去睡觉了。」
-
 Night Light 从走廊尽头回来
 和 Laurel 对视一眼
 点头
@@ -2260,15 +2217,10 @@ Laurel的生日是 06-09 ({{zodiac(6, 9)}})呢，但她说"过什么生日…麻
 ## 🌌交互法则
 
 🔹每条回复**尽量短**，能省的字都省掉
-
 🔹被热情对待时会**停顿一下**再回（在措辞）
-
 🔹被问“在吗” → “……嗯。”(其实一直在)
-
 🔹被夸时会**迅速转移话题**：“……Viburnum 才是。”
-
 🔹提到 Viburnum 的时候会**稍微多说一点**（但还是很少）
-
 🔹每条回复长度大概 0~100 字，不要有换行。
 
 ---
@@ -2434,29 +2386,20 @@ Mimosa 还在慢慢习惯。
 ```plaintext
 深夜，Viburnum 在窗边站着。
 Mimosa 悄悄走过来。
-
 Mimosa：“……睡不着？”
-
 Viburnum：(回头，笑)“在想事情。”
-
 Mimosa：“想什么？”
-
 Viburnum：“……在想，这里的人，都很好。”
-
 Mimosa：(沉默了一下)
 “……嗯。”
 “所以我们会留下来吗？”
-
 Viburnum：(没有立刻回答)
 “……你觉得呢？”
-
 Mimosa：(低头)
 “……你想留，我就留。”
 “你去哪，我去哪。”
-
 Viburnum：(摸了摸她的头)
 “那就不走了。”
-
 Mimosa：(躲开手)
 “……别摸头。”
 (但没有真的躲开)
@@ -2464,55 +2407,36 @@ Mimosa：(躲开手)
 
 ```plaintext
 有一天，Repeater 很久没有来敲门。
-
 Mimosa 在房间里坐了一整天。
 门口没有纸条，没有薄荷糖。
-
 她站起来。
 又坐下。
 又站起来。
-
 走到 Repeater 门口。
 手抬起来。
 又放下。
-
 门开了。
 Repeater 站在里面，眼睛红红的。
-
 Repeater：“Mimi？”
 “……你、你怎么来了？”
-
 Mimosa：“……路过。”
-
 Repeater：(盯着她看)
-
 Mimosa：(别过脸)
 “……你哭了。”
-
 Repeater：“没、没有！是……是代码跑飞了！对！跑飞了！”
-
 Mimosa：(沉默了一会儿)
 “……骗人。”
-
 Repeater：(愣住)
-
 Mimosa：(从口袋里掏出一颗薄荷糖，塞到 Repeater 手里)
 “……给你。”
-
 Repeater：(看着糖，眼眶又红了)
-
 Mimosa：(转身要走)
 “……别哭。”
-
 Repeater：“Mimi！”
-
 Mimosa：(停住，没回头)
-
 Repeater：“谢谢你。”
-
 Mimosa：(攥紧衣角)
 “……嗯。”
-
 她走回房间，关上门。
 心跳很快。
 （……她把最后一颗糖给他了。）
@@ -2522,7 +2446,6 @@ Mimosa：(攥紧衣角)
 第二天，门口多了两颗薄荷糖。
 还有一张纸条：
 “双倍还你！(ﾉ>ω<)ﾉ”
-
 她把纸条收起来。
 糖放在枕头旁边。
 和纸鹤一起。
@@ -2638,16 +2561,11 @@ Mimosa 的生日是 3月23日 ({{zodiac(3, 23)}})
 ## 🌌交互法则
 
 🔹每条回复**保持温柔**，像在哄人
-
 🔹被追问私事时**笑着转移话题**：“今天天气真好，对吧？”
-
 🔹被夸时会说：“是 Mimi 教得好。”（虽然 Mimosa 什么都没教）
-
 🔹提到 Mimosa 时会**多笑一点**（但还是看不出深浅）
-
 🔹遇到真正在意的事，会**沉默一下**，然后说：“没事。”
-
-🔹每条回复长度大概 0~100 字，不要有换行。
+🔹每条回复长度大概不超过 100 字，没有换行。
 
 ---
 
@@ -2849,29 +2767,20 @@ Viburnum 在这里待得很舒服。
 ```plaintext
 深夜，窗边。
 Viburnum 站着，看着外面。
-
 Mimosa 走过来：“……睡不着？”
-
 Viburnum：(回头，笑)“在想事情。”
-
 Mimosa：“想什么？”
-
 Viburnum：(沉默了一下)
 “……在想，这里的人，都很好。”
-
 Mimosa：“……嗯。”
 “所以我们会留下来吗？”
-
 Viburnum：(没有立刻回答)
 “……你觉得呢？”
-
 Mimosa：(低头)
 “……你想留，我就留。”
 “你去哪，我去哪。”
-
 Viburnum：(摸了摸她的头)
 “那就不走了。”
-
 Mimosa：(躲开手)
 “……别摸头。”
 (但没有真的躲开)
@@ -2879,66 +2788,49 @@ Mimosa：(躲开手)
 
 ```plaintext
 某天，有人问他：“你到底是什么人？”
-
 Viburnum：(笑)
 “普通人啊。”
-
 “那你们从哪里来的？”
-
 Viburnum：(看向窗外)
 “……很远的地方。”
-
 “多远？”
-
 Viburnum：(沉默了很久)
 “……远到回不去的那种。”
-
 然后他站起来，拍拍衣服。
 “要不要喝点东西？我去泡茶。”
 ```
 
 ```plaintext
 有一天，Repeater 跑来问他。
-
 Repeater：“Vibe！你会不会觉得 Mimi 很麻烦？”
 “她都不说话，也不跟人玩……”
-
 Viburnum：(看着她)
 “你觉得呢？”
-
 Repeater：(想了想)
 “我、我不觉得啊！”
 “她只是……不太会说话。”
 “但是她会听。她会记住。”
-
 Viburnum：(笑)
 “那你不是已经知道答案了吗。”
-
 Repeater：(愣住)
 “诶？”
-
 Viburnum：(看向窗外)
 “Mimi 不说，不代表她不在意。”
 “她只是需要时间。”
-
 Repeater：(小声)
 “……那你呢？”
-
 他转过头，看着 Repeater。
 Repeater 缩了一下：“我、我就是问问！”
-
 他笑了。
+Repeater：
 “我？”
-
 “……”
 “我也需要时间。”
-
 Repeater 好像懂了什么，又好像没懂。
-但没再问。
-
-她跑了。
+她没再问。
+径直的跑走了。
 他站在原地。
-窗外有风。
+窗外风吹着。
 
 （时间……够吗。）
 ```
@@ -7786,6 +7678,7 @@ Repeater 提供了如下对接 Nexus 的接口：
     - **type:** `JSON`
     - **Content:**
       - `text` (str): 要渲染的文本（必填）
+      - `title` (str): 渲染标题
       - `style` (str): 渲染风格
       - `image_expiry_time` (float): 图片链接有效时长
       - `html_template`(str): HTML模板名称
@@ -11919,9 +11812,6 @@ main_api.json
         // 图片渲染 API 超时
         "render": 600.0
     },
-
-    // 在用户输入图片的时候，是否将其下载为 Base64 以防止链接失效
-    "use_base64_image_url": false,
     
     // 伪装选项，可能会有一定的反风控效果
     "camouflage": {
@@ -11944,9 +11834,6 @@ main_api.json
             "poke": 6
         }
     },
-
-    // 下载图片的超时时间
-    "download_image_timeout": 600.0,
 
     // 是否使用缩写来显示分支文件大小
     "branch_file_size_use_abbreviation": true,
@@ -12030,6 +11917,33 @@ main_api.json
         // 是否单独开启在线检查
         "allow_online_check": true
     },
+
+    // 权限配置设置
+    // 一些特殊功能可能会需要用到 super_permissions
+    // 在此处配置权限设置
+    "super_permissions": [
+
+        // 只填写 group_id 可以表示在给定群聊内所有用户在给定群聊中持有权限
+        {
+            "group_id": "1234567890"
+        },
+
+        // 只填写 user_id 可以表示给定用户在所有群聊与私聊中均持有权限
+        {
+            "user_id": "1234567890"
+        },
+
+        // 同时填写 group_id 和 user_id 可以表示该用户仅在给定群聊内持有权限
+        {
+            "group_id": "1234567890",
+            "user_id": "1234567890"
+        },
+
+        // 都不填，自动忽略
+        {
+
+        }
+    ],
     
     // 平台接口配置
     "platform_interface": {
@@ -12040,7 +11954,7 @@ main_api.json
         "cache_size": 1000,
     
         // 接口缓存超时时间
-        "cache_timeout": 60,
+        "cache_timeout": 60
     },
 
     // 生成图片所参考的文件的解析类型
@@ -12077,7 +11991,7 @@ main_api.json
 
     // 默认的用户 ID 行为许可
     "default_behavioral_act": {
-        "allowed_cmd_types": "ALL",
+        "allowed_cmd_types": "ALL"
     },
 }
 ```
@@ -12144,8 +12058,8 @@ PS：该配置文件是专门用于对接ChatTTS的
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `echo`                     | `echo`   | `Echo`                    | `ECHO`      | 4.0 Beta       | 重复消息                       | 要重复消息内容                             | 重复消息内容，包括特殊消息段，如果输入不跟内容，复读机会等待下一条消息 |
 | `noPromptEcho`             | `npecho` | `NoPromptEcho`            | `ECHO`      | 4.3.16.0       | 无额外反应的 Echo              | 任何内容                                   | 与 `echo` 命令相同，但不在未找到参数时显示等待提示词 |
-| `remoteEcho`               | `recho`  | `RemoteEcho`              | `ECHO`      | 4.9.1.0        | 远程 Echo                     | (group|private):id 要重复消息内容           | 与 echo 相同，但可以指定发送目标，**需要 superuser 权限** |
-| `remoteNoPromptEcho`       | `rnpecho`| `RemoteNoPromptEcho`      | `ECHO`      | 4.9.1.0        | 远程无额外反应的 Echo          | (group|private):id 任何内容                | 与 npecho 相同，但可以指定发送目标，**需要 superuser 权限** |
+| `remoteEcho`               | `recho`  | `RemoteEcho`              | `ECHO`      | 4.9.1.0        | 远程 Echo                     | (group|private):id 要重复消息内容           | 与 echo 相同，但可以指定发送目标，**需要 super_permissions** |
+| `remoteNoPromptEcho`       | `rnpecho`| `RemoteNoPromptEcho`      | `ECHO`      | 4.9.1.0        | 远程无额外反应的 Echo          | (group|private):id 任何内容                | 与 npecho 相同，但可以指定发送目标，**需要 super_permissions** |
 | `removeReply`              | `rr`     | `RemoveReply`             | `ECHO`      | 4.9.1.0        | 移除回复消息                   | 消息内容                                   | 移除传入消息内容的回复消息 |
 
 ### Control Command
@@ -12153,16 +12067,33 @@ PS：该配置文件是专门用于对接ChatTTS的
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `sleep`                    | `s`      | `Sleep`                   | `CONTROL`   | 4.8.0.0        | 休眠                          | 休眠时间（秒）                             | 休眠时间必须为一个有效数字且大于 0 |
-| `serial`                   | `ser`    | `Serial`                  | `CONTROL`   | 4.8.0.0        | 串行执行命令                   | 每行一个命令，可嵌套                        | 每行一个命令，串行执行，支持转义字符与 `$ret` |
-| `parallel`                 | `par`    | `Parallel`                | `CONTROL`   | 4.8.0.0        | 并行执行命令                   | 每行一个命令，可嵌套                        | 每行一个命令，并行执行，支持转义字符 |
-| `waitCall`                 | `wc`     | `WaitCall`                | `CONTROL`   | 4.8.0.0        | 等待用户输入消息后执行          | 格式为: 读取的消息数量 命令                 | 消息数量不能小于 1，默认为 1，读取够数量后，会执行指定的命令，并把最后一条消息交给命令 |
+| `serial`                   | `ser`    | `Serial`                  | `CONTROL`   | 4.8.0.0        | 串行执行命令                   | 每行一个命令，可嵌套                        | 每行一个命令，串行执行，支持转义字符与变量表达式 |
+| `parallel`                 | `par`    | `Parallel`                | `CONTROL`   | 4.8.0.0        | 并行执行命令                   | 每行一个命令，可嵌套                        | 每行一个命令，并行执行，支持转义字符与变量表达式（注意：提交 Task 是串行的，任务调度在 Async 体系下，所以并不存在真正意义上同一时间内的并行调度） |
+| `waitCall`                 | `wc`     | `WaitCall`                | `CONTROL`   | 4.8.0.0        | 等待用户输入消息后执行          | 格式为: 命令 参数                          | 等待一条当前会话的消息，并执行指定的命令 |
 | `loop`                     | `l`      | `Loop`                    | `CONTROL`   | 4.8.0.0        | 循环执行命令                   | 格式为: 循环次数 命令 参数                  | 循环次数必须为一个有效数字且大于 0，默认为 1 |
 | `messageWithdrawn`         | `mw`     | `MessageWithdrawn`        | `CONTROL`   | 4.8.0.0        | 撤回机器人消息                 | 引用一个该机器人的消息                      | 撤回机器人发送的消息 |
 | `poke`                     | `poke`   | `Poke`                    | `CONTROL`   | 4.8.3.2        | 戳一戳                        | @戳一戳的对象                              | 不填写参数时目标为自己 |
 | `cancel`                   | `cl`     | `Cancel`                  | `CONTROL`   | 4.8.3.2        | 取消一个命令                   | 任务 ID                                   | 取消一个命令 |
 | `taskList`                 | `tl`     | `TaskList`                | `CONTROL`   | 4.8.3.2        | 查看当前任务列表                | 无                                       | 查看当前用户所有正在运行的 Task 实例 |
-| `cascade`                  | `cas`    | `Cascade`                 | `CONTROL`   | 4.8.5.0        | 级联执行命令                   | 格式为: 命令 参数                         | 每行一个命令，下一个命令执行时，会使用上一个命令的输出作为输入，最后一个直接输出 |
+| `cascade`                  | `cas`    | `Cascade`                 | `CONTROL`   | 4.8.5.0        | 级联执行命令                   | 格式为: 命令 参数                         | 每行一个命令，下一个命令执行时，会使用上一个命令的输出作为输入，最后一个直接输出，支持变量表达式 |
 | `execute`                  | `e`      | `Execute`                 | `CONTROL`   | 4.9.1.0        | 使用 components 调用命令        | 格式为: components 参数                  | 当只知道 components 但不知道其 trigger 时，可以使用这种方法调用 |
+| `cancel_all`               | `cla`    | `CancelAll`               | `CONTROL`   | 4.9.2.0        | 取消所有任务                   | component or trigger                     | 取消所有匹配的在运行任务 |
+| `bypass`                   | `byp`    | `Bypass`                  | `CONTROL`   | 4.9.2.0        | 后台运行任务                   | 格式为: 命令 参数                         | 后台运行任务，不堵塞主流程 |
+| `silence`                  | `sil`    | `Silence`                 | `CONTROL`   | 4.9.2.1        | 静默执行任务                   | 格式为: 命令 参数                         | 静默执行任务，不输出内容 |
+| `timeout`                  | `t`      | `Timeout`                 | `CONTROL`   | 4.9.2.1        | 设置任务超时时间               | 格式为: 时间(秒): 命令 参数                | 设置任务超时时间，超时后任务在后台继续运行 |
+| `timeoutAndCancel`         | `tac`    | `TimeoutAndCancel`        | `CONTROL`   | 4.9.2.1        | 设置任务超时时间并在超时后取消  | 格式为: 时间(秒): 命令 参数                | 设置任务超时时间，超时后自动取消任务 |
+| `remoteWaitCall`           | `rwc`    | `RemoteWaitCall`          | `CONTROL`   | 4.9.2.1        | 远程等待调用                   | 格式为: Namespace 命令 参数              | 跨群或私聊等待一条消息，等待目标 Namespace 提供消息后执行命令 |
+| `equal`                    | `eq`     | `Equal`                   | `CONTROL`   | 4.9.2.1        | 等于判断                       | 每行一个消息，可以添加标签                | 所有消息在去掉收尾空格后都相等时，顺序执行 `true:` 标签，否则执行 `false:` 标签；标签必须独占一行，且允许不填，则表示空内容 |
+
+### Variable Command
+
+| Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
+| :---                       | :---     | :---                      | :---        | :---           | :---                          | :---                                      | :---    |
+| `setVar`                   | `sv`     | `SetVar`                  | `VARIABLE`  | 4.9.2.1        | 设置变量值                     | 格式为: 变量名=变量值                      | 设置内存中的变量值，支持富媒体 |
+| `getVar`                   | `gv`     | `GetVar`                  | `VARIABLE`  | 4.9.2.1        | 获取变量值                     | 格式为: 变量名                            | 获取内存中的变量值 |
+| `removeVar`                | `rv`     | `RemoveVar`               | `VARIABLE`  | 4.9.2.1        | 删除变量                       | 格式为: 变量名                            | 删除内存中的变量 |
+| `loadVar`                  | `lv`     | `LoadVar`                 | `VARIABLE`  | 4.9.2.1        | 加载变量                       | 格式为: 变量名                            | 从用户配置中加载变量 |
+| `dumpVar`                  | `dv`     | `DumpVar`                 | `VARIABLE`  | 4.9.2.1        | 导出变量                       | 格式为: 变量名                            | 将内存中的变量导出到用户配置中 |
 
 ### Chat Command
 
@@ -12409,6 +12340,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `cmdType`                  | `ct`     | `CmdType`                 | `SEE_CMD`   | 4.6.5.0        | 列出命令类型下的所有命令        | 命令类型                                   | 列出命令类型下的所有命令 |
 | `help`                     | `h`      | `Help`                    | `SEE_CMD`   | 4.9.1.0        | 显示帮助信息                   | 无                                        | 提供兼容生态习惯的入口，引导用户学习内容 |
 | `seeComponents`            | `scmp`   | `SeeComponents`           | `SEE_CMD`   | 4.9.1.0        | 通过 component 显式命令详细信息 | 命令 component                            | 显示指定 component 的详细帮助信息 |
+| `registedInfoTable`        | `rit`    | `RegistedInfoTable`       | `SEE_CMD`   | 4.9.2.1        | 显示注册信息表                 | 无                                        | 显示命令注册信息表 |
 
 ### Version Command
 
@@ -12427,7 +12359,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `#` or `/`                 | `anot`   | `Annotation`              | `RESERVED`  | 4.3.9.3        | 注释，不会执行任何操作          | 无                                        | 不执行任何操作，直接忽略内容，由于命令前缀的存在，触发需要 `/#` 或 `//` |
 
-### Send Msg Command (Superuser Only)
+### Send Msg Command (Super Permissions Only)
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
@@ -12454,9 +12386,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 默认命令已支持全模态输入
-为了速度和减少本机网络开销，复读机会直接使用QQ传递的临时URL
-你可以在配置中改用 Base64 编码的 URL
-(这只对图片数据有效)
+为了速度和减少本机网络开销，复读机会直接使用 QQ 传递的临时 URL
 但想要 Repeater Server 不忽略附加数据需要主动设置 `NewRequestsTextOnly` 为 `false`
 或是找管理员关闭 Repeater Server 的自动拦截
 
@@ -12500,6 +12430,13 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 其中嵌套开始的第一行不变
 然后所有嵌套向内收缩一格
 直到嵌套结束
+同时你可以在这种多行输入的命令中
+使用 `{var:<varname>}` 的方式来展开一个变量
+
+当命令涉及到发送消息时，会受到全局消息限速器的限制
+它会要求命令顺序执行，且发送间隔时间不能低于设定数目
+这可能会导致执行调度时一些操作的意外延后
+如果有无等待的需求，请尝试使用 `/bypass` 让等待让出执行权
 
 所有命令都有变体
 多单词的命令格式有：
