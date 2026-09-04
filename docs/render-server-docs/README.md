@@ -5,7 +5,7 @@
 ## 安装
 
 ```bash
-git clone https://github.com/qeggs-dev/repeater-render-server.git
+git clone https://github.com/repeater-bot/repeater-render-server.git
 cd repeater-render-server
 curl https://raw.githubusercontent.com/qeggs-dev/Sloves_Starter/refs/heads/main/Sloves_Starter.py -o run.py
 python3 run.py

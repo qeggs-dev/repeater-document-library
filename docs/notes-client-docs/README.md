@@ -120,10 +120,10 @@ Note Client 专门为多 Server 做了一定优化
 ## 使用到的后端接口
 | 请求 | URL | 使用到的参数 | 描述 |
 | :---: | :---: | :---: | :---: |
-| `POST` | `/chat/completion/{user_id:str}` | `message`, `cross_user_data_routing`, `save_context` | 获取AI生成内容 |
+| `POST` | `/generate/chat/completion/{user_id:str}` | `message`, `cross_user_data_routing`, `save_context` | 获取AI生成内容 |
 | `GET` | `/userdata/context/userlist` | | 获取Context类型的用户列表 |
 
 ---
 
 ## 相关仓库
-- [Repeater Server](https://github.com/qeggs-dev/repeater-ai-chatbot)
+- [Repeater Server](https://github.com/repeater-bot/repeater-ai-chatbot)

@@ -514,16 +514,16 @@ Repeater 还有一个自动化客户端，负责生成日记
 
 #### 主要仓库
 
-- [Repeater Server](https://github.com/qeggs-dev/repeater-ai-chatbot) Repeater 主服务
-- [Nonebot Repeater Client](https://github.com/qeggs-dev/repeater-onebot-v11-client) 基于 Nonebot OneBot v11 的 Repeater 客户端实现
-- [Repeater Nexus](https://github.com/qeggs-dev/repeater-nexus) Repeater 数据共享服务
-- [Repeater Notes Client](https://github.com/qeggs-dev/repeater-notes-client) Repeater 自动化日记客户端
+- [Repeater Server](https://github.com/repeater-bot/repeater-ai-chatbot) Repeater 主服务
+- [Nonebot Repeater Client](https://github.com/repeater-bot/repeater-onebot-v11-client) 基于 Nonebot OneBot v11 的 Repeater 客户端实现
+- [Repeater Nexus](https://github.com/repeater-bot/repeater-nexus) Repeater 数据共享服务
+- [Repeater Notes Client](https://github.com/repeater-bot/repeater-notes-client) Repeater 自动化日记客户端
 - [Auto Backup](https://github.com/qeggs-dev/auto-backup) 自动数据备份程序
-- [Repeater Document Library](https://github.com/qeggs-dev/repeater-document-library) Repeater 综合文档库
-- [Repeater Model INFO Server](https://github.com/qeggs-dev/repeater-model-info-server) Repeater 模型信息服务，集中化管理模型与 API Key 并对 Repeater 开放接口
+- [Repeater Document Library](https://github.com/repeater-bot/repeater-document-library) Repeater 综合文档库
+- [Repeater Model INFO Server](https://github.com/repeater-bot/repeater-model-info-server) Repeater 模型信息服务，集中化管理模型与 API Key 并对 Repeater 开放接口
 - [Static Resources Server](https://github.com/qeggs-dev/static-resources-server) 静态资源服务器，用于存放 Repeater 的静态资源
-- [Repeater Static Resources Data](https://github.com/qeggs-dev/repeater-static-data) Repeater 静态资源数据存储库
-- [Repeater Render Server](https://github.com/qeggs-dev/repeater-render-server) Repeater 渲染服务，用于将 HTML 渲染为图片输出
+- [Repeater Static Resources Data](https://github.com/repeater-bot/repeater-static-data) Repeater 静态资源数据存储库
+- [Repeater Render Server](https://github.com/repeater-bot/repeater-render-server) Repeater 渲染服务，用于将 HTML 渲染为图片输出
 
 #### 辅助仓库
 
