@@ -14,7 +14,7 @@ Because it's really long.
 A single file just because it's convenient to do so when handing over to LLM.
 The Repeater system is so complex that I think you probably don't have the patience to explore it in depth.
 Just leave it to the LLM, that's what they're good at.
-If you really want to look, please go to the [original document library](https://github.com/qeggs-dev/repeater-document-library/tree/main/docs) instead of this single file.
+If you really want to look, please go to the [original document library](https://github.com/repeater-bot/repeater-document-library/tree/main/docs) instead of this single file.
 This single-file version is too long,
 if you're human,
 read the document library if you want to.
@@ -32,7 +32,7 @@ Humans please go to document library to read, this single file version is for LL
 一个文件就足够了，因为这样交给 LLM 会很方便。
 Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索它的每一个地方吧。
 交给 LLM 就好，这是它们擅长的事情。
-如果你真的想看，请去查看[原版文档库](https://github.com/qeggs-dev/repeater-document-library/tree/main/docs)而非此单文件。
+如果你真的想看，请去查看[原版文档库](https://github.com/repeater-bot/repeater-document-library/tree/main/docs)而非此单文件。
 这个单文件版本太长了，
 如果你是人类，
 想要读就去请去读文档库。
@@ -47,8 +47,8 @@ Repeater 系统太复杂了，我认为你大概率没有耐心去深度探索�
 
 ## Version
 
-Adapted Repeater v4.9.3.0
-Last Update Time: 2026-08-30 16:56:13
+Adapted Repeater v4.9.3.1
+Last Update Time: 2026-09-04 18:51:33
 
 ---
 
@@ -551,16 +551,16 @@ Repeater 还有一个自动化客户端，负责生成日记
 
 #### 主要仓库
 
-- [Repeater Server](https://github.com/qeggs-dev/repeater-ai-chatbot) Repeater 主服务
-- [Nonebot Repeater Client](https://github.com/qeggs-dev/repeater-onebot-v11-client) 基于 Nonebot OneBot v11 的 Repeater 客户端实现
-- [Repeater Nexus](https://github.com/qeggs-dev/repeater-nexus) Repeater 数据共享服务
-- [Repeater Notes Client](https://github.com/qeggs-dev/repeater-notes-client) Repeater 自动化日记客户端
+- [Repeater Server](https://github.com/repeater-bot/repeater-ai-chatbot) Repeater 主服务
+- [Nonebot Repeater Client](https://github.com/repeater-bot/repeater-onebot-v11-client) 基于 Nonebot OneBot v11 的 Repeater 客户端实现
+- [Repeater Nexus](https://github.com/repeater-bot/repeater-nexus) Repeater 数据共享服务
+- [Repeater Notes Client](https://github.com/repeater-bot/repeater-notes-client) Repeater 自动化日记客户端
 - [Auto Backup](https://github.com/qeggs-dev/auto-backup) 自动数据备份程序
-- [Repeater Document Library](https://github.com/qeggs-dev/repeater-document-library) Repeater 综合文档库
-- [Repeater Model INFO Server](https://github.com/qeggs-dev/repeater-model-info-server) Repeater 模型信息服务，集中化管理模型与 API Key 并对 Repeater 开放接口
+- [Repeater Document Library](https://github.com/repeater-bot/repeater-document-library) Repeater 综合文档库
+- [Repeater Model INFO Server](https://github.com/repeater-bot/repeater-model-info-server) Repeater 模型信息服务，集中化管理模型与 API Key 并对 Repeater 开放接口
 - [Static Resources Server](https://github.com/qeggs-dev/static-resources-server) 静态资源服务器，用于存放 Repeater 的静态资源
-- [Repeater Static Resources Data](https://github.com/qeggs-dev/repeater-static-data) Repeater 静态资源数据存储库
-- [Repeater Render Server](https://github.com/qeggs-dev/repeater-render-server) Repeater 渲染服务，用于将 HTML 渲染为图片输出
+- [Repeater Static Resources Data](https://github.com/repeater-bot/repeater-static-data) Repeater 静态资源数据存储库
+- [Repeater Render Server](https://github.com/repeater-bot/repeater-render-server) Repeater 渲染服务，用于将 HTML 渲染为图片输出
 
 #### 辅助仓库
 
@@ -10543,7 +10543,7 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
 
 ## Prompt
 
-该项目在 [`repeater-static-data/prompt/presets/official`](https://github.com/qeggs-dev/repeater-static-data/tree/main/prompt/presets/official) 中
+该项目在 [`repeater-static-data/prompt/presets/official`](https://github.com/repeater-bot/repeater-static-data/tree/main/prompt/presets/official) 中
 提供了多个预设的Prompt
 通常你可以用这些文件作为模板
 
@@ -10585,7 +10585,7 @@ PS: 首行必须是`[REGEX PARALLEL FILE]`或`[REGEX SERIES FILE]`
 `资源服务器数据` 则需要部署[资源服务器](https://github.com/qeggs-dev/static-resources-server)
 并让 Repeater 访问资源服务器的数据
 **注意：静态资源本身并不与服务器属于一个仓库**
-**需要从[静态资源存储库](https://github.com/qeggs-dev/repeater-static-data)中下载静态资源**
+**需要从[静态资源存储库](https://github.com/repeater-bot/repeater-static-data)中下载静态资源**
 
 也将资源放在 Repeater 主机的 `./static` 目录中
 Repeater 内置了一个简单的静态资源服务器
@@ -10627,7 +10627,7 @@ LICENSES/
 用户配置总会优先使用
 而在用户配置未定义的情况下
 会使用全局配置进行兜底
-实际文件请查看：[https://github.com/qeggs-dev/repeater-static-data/tree/main/styles](https://github.com/qeggs-dev/repeater-static-data/tree/main/styles)
+实际文件请查看：[https://github.com/repeater-bot/repeater-static-data/tree/main/styles](https://github.com/repeater-bot/repeater-static-data/tree/main/styles)
 啊因为我不会写前端，所以此处的所有 CSS 其实全是由AI生成的
 如果你不喜欢，可以不将其放在资源服务器中，而是自己手动编写
 [file content end]
@@ -10671,10 +10671,10 @@ LICENSES/
 
 | 组件名称                | 版本号     | 描述        | 链接  |
 | :---                   | :---:      | :---        | :--- |
-| Model INFO Server      | `1.0.12.0` | 模型信息服务 | [Github](https://github.com/qeggs-dev/repeater-modelinfo-server) |
+| Model INFO Server      | `1.0.12.0` | 模型信息服务 | [Github](https://github.com/repeater-bot/repeater-modelinfo-server) |
 | Static Resource Server | `1.0.0`    | 静态资源服务 | [Github](https://github.com/qeggs-dev/static-resources-server) |
-| Nexus                  | `1.0.0.0`  | 数据共享服务 | [Github](https://github.com/qeggs-dev/repeater-nexus) |
-| Render Server          | `1.0.0`    | 渲染服务     | [Github](https://github.com/qeggs-dev/repeater-render-server) |
+| Nexus                  | `1.0.0.0`  | 数据共享服务 | [Github](https://github.com/repeater-bot/repeater-nexus) |
+| Render Server          | `1.0.0`    | 渲染服务     | [Github](https://github.com/repeater-bot/repeater-render-server) |
 [file content end]
 
 [file: "./server-docs/docs/template_engine/functions/age.md"]
@@ -11536,7 +11536,7 @@ AI 在调用该工具时，会传递以下参数：
 # @复读机Repeater
 **- Only Chat, Focus Chat. -**
 
-[![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue.svg?logo=python)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-63b9ff.svg)](https://opensource.org/licenses/MIT) [![Protocol](https://img.shields.io/badge/Protocol-Repeater%20API-brightgreen.svg)](https://github.com/qeggs-dev/repeater-ai-chatbot)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue.svg?logo=python)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-63b9ff.svg)](https://opensource.org/licenses/MIT) [![Protocol](https://img.shields.io/badge/Protocol-Repeater%20API-brightgreen.svg)](https://github.com/repeater-bot/repeater-ai-chatbot)
 
 </div>
 
@@ -11544,7 +11544,7 @@ AI 在调用该工具时，会传递以下参数：
 
 *注：本仓库仅为客户端实现，需要配合[后端项目](#相关仓库)使用*
 
-一个基于[`NoneBot`](https://nonebot.dev/)和[`Repeater Server`](https://github.com/qeggs-dev/repeater-ai-chatbot)开发的 AI QQ Bot
+一个基于[`NoneBot`](https://nonebot.dev/)和[`Repeater Server`](https://github.com/repeater-bot/repeater-ai-chatbot)开发的 AI QQ Bot
 **此仓库仅为 Repeater 的 NoneBot OneBot v11 适配客户端**
 
 ---
@@ -11681,7 +11681,7 @@ main_api.json
 ```json
 {
     // Text Length Score 配置
-    "text_length_score_config":{
+    "text_length_score_configs":{
 
         // 最大长度阈值
         "max_lines": 5,
@@ -11874,8 +11874,17 @@ main_api.json
     // 默认使用的 Repeater Server
     "default_backend": "repeater",
 
-    // 是否将用户ID哈希化
-    "hash_user_id": false,
+    // Client Pool 的大小
+    // 数量越多，缓存出现的概率越小
+    // 但会增加内存消耗
+    "client_pool_size": 10,
+
+    // Namespace 字符串序列化时 hash 的掺盐内容
+    "hash_namespace_salt": "",
+
+    // Namespace 字符串序列化时 hash 的迭代次数
+    // 为 0 时则不进行 hash
+    "hash_namespace_iterations": 100000,
 
     // 是否允许用户构造任意消息发送
     "allow_send_any_message": false,
@@ -11888,10 +11897,6 @@ main_api.json
     // 将其设置为 null 可以忽略超时检查
     "model_first_chunk_timeout": 90.0,
 
-    // 解析消息中的文本文件时
-    // 使用的编码
-    "text_file_encoding": "utf-8",
-    
     // 是否在注册时打印 Handler 名称
     // 默认为 true
     "log_registed_handler_name": true,
@@ -11901,6 +11906,21 @@ main_api.json
 
     // 在计算模型 Token 时，会显示多少个最常用的 Token
     "tokenizer_most_frequent_tokens": 5,
+
+    // 分析引用链时
+    // 最大的引用链长度
+    // 超过该长度后，即使仍然符合要求也不会继续分析
+    // 默认为 5
+    // 设置为 null 则不限制
+    "max_reply_chain_length": 5,
+
+    // 限制读取文本文件并展开时
+    // 允许读取的最大文件大小
+    "max_text_file_size": null,
+
+    // 解析消息中的文本文件时
+    // 使用的编码
+    "text_file_encoding": "utf-8",
 
     // 入口忽略配置
     "ignore_enter": {
@@ -12066,24 +12086,28 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
-| `sleep`                    | `s`      | `Sleep`                   | `CONTROL`   | 4.8.0.0        | 休眠                          | 休眠时间（秒）                             | 休眠时间必须为一个有效数字且大于 0 |
+| `sleep`                    | `s`      | `Sleep`                   | `CONTROL`   | 4.8.0.0        | 休眠                          | 休眠时间（秒）                              | 休眠时间必须为一个有效数字且大于 0 |
 | `serial`                   | `ser`    | `Serial`                  | `CONTROL`   | 4.8.0.0        | 串行执行命令                   | 每行一个命令，可嵌套                        | 每行一个命令，串行执行，支持转义字符与变量表达式 |
 | `parallel`                 | `par`    | `Parallel`                | `CONTROL`   | 4.8.0.0        | 并行执行命令                   | 每行一个命令，可嵌套                        | 每行一个命令，并行执行，支持转义字符与变量表达式（注意：提交 Task 是串行的，任务调度在 Async 体系下，所以并不存在真正意义上同一时间内的并行调度） |
 | `waitCall`                 | `wc`     | `WaitCall`                | `CONTROL`   | 4.8.0.0        | 等待用户输入消息后执行          | 格式为: 命令 参数                          | 等待一条当前会话的消息，并执行指定的命令 |
-| `loop`                     | `l`      | `Loop`                    | `CONTROL`   | 4.8.0.0        | 循环执行命令                   | 格式为: 循环次数 命令 参数                  | 循环次数必须为一个有效数字且大于 0，默认为 1 |
+| `loop`                     | `l`      | `Loop`                    | `CONTROL`   | 4.8.0.0        | 循环执行命令                   | 格式为: 循环次数 命令 参数                  | 循环次数不填时，重复执行直到命令返回 0 值结束，当循环次数前面添加 `*` 时，循环直到命令返回 0 值或到达最大次数时结束 |
 | `messageWithdrawn`         | `mw`     | `MessageWithdrawn`        | `CONTROL`   | 4.8.0.0        | 撤回机器人消息                 | 引用一个该机器人的消息                      | 撤回机器人发送的消息 |
 | `poke`                     | `poke`   | `Poke`                    | `CONTROL`   | 4.8.3.2        | 戳一戳                        | @戳一戳的对象                              | 不填写参数时目标为自己 |
 | `cancel`                   | `cl`     | `Cancel`                  | `CONTROL`   | 4.8.3.2        | 取消一个命令                   | 任务 ID                                   | 取消一个命令 |
 | `taskList`                 | `tl`     | `TaskList`                | `CONTROL`   | 4.8.3.2        | 查看当前任务列表                | 无                                       | 查看当前用户所有正在运行的 Task 实例 |
-| `cascade`                  | `cas`    | `Cascade`                 | `CONTROL`   | 4.8.5.0        | 级联执行命令                   | 格式为: 命令 参数                         | 每行一个命令，下一个命令执行时，会使用上一个命令的输出作为输入，最后一个直接输出，支持变量表达式 |
-| `execute`                  | `e`      | `Execute`                 | `CONTROL`   | 4.9.1.0        | 使用 components 调用命令        | 格式为: components 参数                  | 当只知道 components 但不知道其 trigger 时，可以使用这种方法调用 |
-| `cancel_all`               | `cla`    | `CancelAll`               | `CONTROL`   | 4.9.2.0        | 取消所有任务                   | component or trigger                     | 取消所有匹配的在运行任务 |
-| `bypass`                   | `byp`    | `Bypass`                  | `CONTROL`   | 4.9.2.0        | 后台运行任务                   | 格式为: 命令 参数                         | 后台运行任务，不堵塞主流程 |
-| `silence`                  | `sil`    | `Silence`                 | `CONTROL`   | 4.9.2.1        | 静默执行任务                   | 格式为: 命令 参数                         | 静默执行任务，不输出内容 |
-| `timeout`                  | `t`      | `Timeout`                 | `CONTROL`   | 4.9.2.1        | 设置任务超时时间               | 格式为: 时间(秒): 命令 参数                | 设置任务超时时间，超时后任务在后台继续运行 |
-| `timeoutAndCancel`         | `tac`    | `TimeoutAndCancel`        | `CONTROL`   | 4.9.2.1        | 设置任务超时时间并在超时后取消  | 格式为: 时间(秒): 命令 参数                | 设置任务超时时间，超时后自动取消任务 |
-| `remoteWaitCall`           | `rwc`    | `RemoteWaitCall`          | `CONTROL`   | 4.9.2.1        | 远程等待调用                   | 格式为: Namespace 命令 参数              | 跨群或私聊等待一条消息，等待目标 Namespace 提供消息后执行命令 |
-| `equal`                    | `eq`     | `Equal`                   | `CONTROL`   | 4.9.2.1        | 等于判断                       | 每行一个消息，可以添加标签                | 所有消息在去掉收尾空格后都相等时，顺序执行 `true:` 标签，否则执行 `false:` 标签；标签必须独占一行，且允许不填，则表示空内容 |
+| `cascade`                  | `cas`    | `Cascade`                 | `CONTROL`   | 4.8.5.0        | 级联执行命令                   | 格式为: 命令 参数                          | 每行一个命令，下一个命令执行时，会使用上一个命令的输出作为输入，最后一个直接输出，支持变量表达式 |
+| `execute`                  | `e`      | `Execute`                 | `CONTROL`   | 4.9.1.0        | 使用 components 调用命令        | 格式为: components 参数                   | 当只知道 components 但不知道其 trigger 时，可以使用这种方法调用 |
+| `cancel_all`               | `cla`    | `CancelAll`               | `CONTROL`   | 4.9.2.0        | 取消所有任务                   | component or trigger                      | 取消所有匹配的在运行任务 |
+| `bypass`                   | `byp`    | `Bypass`                  | `CONTROL`   | 4.9.2.0        | 后台运行任务                   | 格式为: 命令 参数                          | 后台运行任务，不堵塞主流程 |
+| `silence`                  | `sil`    | `Silence`                 | `CONTROL`   | 4.9.2.1        | 静默执行任务                   | 格式为: 命令 参数                          | 静默执行任务，不输出内容 |
+| `timeout`                  | `t`      | `Timeout`                 | `CONTROL`   | 4.9.2.1        | 设置任务超时时间               | 格式为: 时间(秒): 命令 参数                 | 设置任务超时时间，超时后任务在后台继续运行 |
+| `timeoutAndCancel`         | `tac`    | `TimeoutAndCancel`        | `CONTROL`   | 4.9.2.1        | 设置任务超时时间并在超时后取消  | 格式为: 时间(秒): 命令 参数                 | 设置任务超时时间，超时后自动取消任务 |
+| `remoteWaitCall`           | `rwc`    | `RemoteWaitCall`          | `CONTROL`   | 4.9.2.1        | 远程等待调用                   | 格式为: Namespace 命令 参数                | 跨群或私聊等待一条消息，等待目标 Namespace 提供消息后执行命令，**需要 super_permissions** |
+| `equal`                    | `eq`     | `Equal`                   | `CONTROL`   | 4.9.2.1        | 等于判断                       | 每行一个消息，可以添加标签                  | 所有消息在去掉收尾空格后都相等时，顺序执行 `true:` 标签，否则执行 `false:` 标签；标签必须独占一行，且允许不填，则表示空内容 |
+| `flipResult`               | `fr`     | `FlipResult`              | `CONTROL`   | 4.9.3.0        | 反转结果                       | 格式为：命令 参数                          | 当命令执行结果为 0 时返回 1，否则返回 0 |
+| `terminate`                | `ter`    | `Terminate`               | `CONTROL`   | 4.9.3.0        | 终止任务                       | 无                                        | 终止当前任务以及所在父级的整条任务树 |
+| `debugMode`                | `dm`     | `DebugMode`               | `CONTROL`   | 4.9.3.0        | 调试模式                       | 格式为：命令 参数                          | 启用调试模式运行一个命令 |
+| `scheduling`               | `scdl`   | `Scheduling`              | `CONTROL`   | 4.9.3.0        | 定时任务                       | 格式为：{cron 表达式} 命令 参数             | 创建一个定时任务，注意花括号需要保留以告知程序 cron 表达式的边界 |
 
 ### Variable Command
 
@@ -12103,14 +12127,14 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `chat`                     | `c`      | `Chat`                    | `CHAT`      | 4.0 Beta       | 与机器人对话                   | 自然语言输入                               | 强制模型用文字输出，绕过Markdown渲染检查 |
 | `keepAnswering`            | `ka`     | `KeepAnswering`           | `CHAT`      | 4.0 Beta       | 持续对话(常规)                 | 无                                        | 无须输入，AI再次回复 |
 | `keepReasoning`            | `kr`     | `KeepReasoning`           | `CHAT`      | 4.0 Beta       | 持续对话(推理)                 | 无                                        | 无须输入，AI再次使用推理回复 |
-| `renderChat`               | `rc`     | `RenderChat`              | `CHAT`      | 4.0 Beta       | 渲染Markdown回复               | 自然语言输入                               | 强制渲染图片输出 |
-| `npChat`                   | `np`     | `NoPromptChat`            | `CHAT`      | 4.0 Beta       | 不加载提示词进行对话            | 自然语言输入                               | 使用常规模型 |
-| `reason`                   | `r`      | `Reason`                  | `CHAT`      | 4.0 Beta       | 使用 Thinking 模式进行推理      | 自然语言输入                               | 开启 `thinking` 参数以激活 Thinking 模式 |
+| `renderChat`               | `rc`     | `RenderChat`              | `CHAT`      | 4.0 Beta       | 渲染Markdown回复               | 自然语言输入                              | 强制渲染图片输出 |
+| `npChat`                   | `np`     | `NoPromptChat`            | `CHAT`      | 4.0 Beta       | 不加载提示词进行对话            | 自然语言输入                              | 使用常规模型 |
+| `reason`                   | `r`      | `Reason`                  | `CHAT`      | 4.0 Beta       | 使用 Thinking 模式进行推理     | 自然语言输入                               | 开启 `thinking` 参数以激活 Thinking 模式 |
 | `publicSpaceChat`          | `psc`    | `PublicSpaceChat`         | `CHAT`      | 4.0.2.1 Beta   | 公共空间聊天                   | 自然语言输入                               | 公共空间聊天 |
-| `reference`                | `ref`    | `Reference`               | `CHAT`      | 4.1.2.0        | 引用上下文                     | @群成员并输入自然语言                       | 引用其他用户的上下文进行生成，并将结果保存到自己的聊天记录中 |
+| `reference`                | `ref`    | `Reference`               | `CHAT`      | 4.1.2.0        | 引用上下文                     | @群成员并输入自然语言                      | 引用其他用户的上下文进行生成，并将结果保存到自己的聊天记录中 |
 | `raw`                      | `raw`    | `Raw`                     | `CHAT`      | 4.2.5.1        | 发送消息且不包含任何元数据      | 自然语言输入                               | 发送消息且不包含任何元数据 |
 | `noSaveChat`               | `nsc`    | `NoSaveChat`              | `CHAT`      | 4.2.6.6        | 不保存的聊天对话               | 无                                        | 聊天后不保存最新聊天记录 |
-| `summarizeAndContract`     | `sac`    | `SummarizeAndContract`    | `CHAT`      | 4.3.7.6        | 摘要并压缩                     | 自定义提示词，可以为空                      | 摘要并压缩对话，并自动删除多余的历史记录 |
+| `summarizeAndContract`     | `sac`    | `SummarizeAndContract`    | `CHAT`      | 4.3.7.6        | 摘要并压缩                     | 自定义提示词，可以为空                     | 摘要并压缩对话，并自动删除多余的历史记录 |
 | `noReason`                 | `nr`     | `NoReason`                | `CHAT`      | 4.3.15.0       | 不使用 Thinking 进行对话       | 自然语言输入                               | 关闭 `thinking` 参数以阻止进入 Thinking 模式 |
 | `generateCandidateAnswer`  | `gca`    | `GenerateCandidateAnswer` | `CHAT`      | 4.3.18.0       | 生成候选答案                   | 无                                        | 生成候选答案（生成内容不保存） |
 | `generateCandidateReason`  | `gcr`    | `GenerateCandidateReason` | `CHAT`      | 4.3.23.1       | 生成候选推理                   | 无                                        | 生成候选回答并开启推理（生成内容不保存） |
@@ -12137,16 +12161,16 @@ PS：该配置文件是专门用于对接ChatTTS的
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `deleteContext`            | `dc`     | `DeleteContext`           | `CONTEXT`   | 4.0 Beta       | 删除上下文                     | 无                                        | 删除上下文 |
-| `getContextTotalLength`    | `gctl`   | `GetContextTotalLength`   | `CONTEXT`   | 4.0.1 Beta     | 获取上下文总长度               | 无                                        | 获取上下文总长度 |
+| `getContextTotalLength`    | `gctl`   | `GetContextTotalLength`   | `CONTEXT`   | 4.0.1 Beta     | 获取上下文总长度                | 无                                       | 获取上下文总长度 |
 | `deletePublicSpaceContext` | `dpsc`   | `DeletePublicSpaceContext`| `CONTEXT`   | 4.0.2.1 Beta   | 删除公共空间上下文              | 无                                       | 删除公共空间上下文 | 
 | `withdraw`                 | `w`      | `Withdraw`                | `CONTEXT`   | 4.2.3.0        | 撤回消息                       | 无                                       | 删除复读机上下文中保存的最新一回合对话 |
-| `checkRoleStructure`       | `crs`    | `CheckRoleStructure`      | `CONTEXT`   | 4.3.10.10      | 检查角色结构                   | 无                                         | 检查上下文中的角色结构是否符合 user-assistant 的规则 |
-| `injectUserContent`        | `iuc`    | `InjectUserContent`       | `CONTEXT`   | 4.4.7.0        | 注入用户消息内容               | 消息内容                                    | 插入用户消息内容 |
-| `injectAssistantContent`   | `iac`    | `InjectAssistantContent`  | `CONTEXT`   | 4.4.7.0        | 插入 AI 消息内容               | 消息内容                                    | 插入 AI 消息内容 |
-| `injectSystemContent`      | `isc`    | `InjectSystemContent`     | `CONTEXT`   | 4.4.7.0        | 插入系统消息内容               | 消息内容                                    | 插入系统消息内容 |
-| `getLastContent`           | `glc`    | `GetLastContent`          | `CONTEXT`   | 4.4.8.0        | 获取最后一条消息内容            | 无                                        | 获取当前会话的最后一条消息内容 |
-| `singleWithdraw`           | `sw`     | `SingleWithdraw`          | `CONTEXT`   | 4.4.13.0       | 单条撤回                      | 消息条数                                    | 直接按条撤回消息（而不是按对撤回） |
-| `sendContextFile`          | `scf`    | `SendContextFile`         | `CONTEXT`   | 4.5.5.0-beta   | 发送聊天记录文件               | 无                                          | 获取当前活动分支的聊天记录文件 |
+| `checkRoleStructure`       | `crs`    | `CheckRoleStructure`      | `CONTEXT`   | 4.3.10.10      | 检查角色结构                   | 无                                        | 检查上下文中的角色结构是否符合 user-assistant 的规则 |
+| `injectUserContent`        | `iuc`    | `InjectUserContent`       | `CONTEXT`   | 4.4.7.0        | 注入用户消息内容               | 消息内容                                   | 插入用户消息内容 |
+| `injectAssistantContent`   | `iac`    | `InjectAssistantContent`  | `CONTEXT`   | 4.4.7.0        | 插入 AI 消息内容               | 消息内容                                   | 插入 AI 消息内容 |
+| `injectSystemContent`      | `isc`    | `InjectSystemContent`     | `CONTEXT`   | 4.4.7.0        | 插入系统消息内容               | 消息内容                                   | 插入系统消息内容 |
+| `getLastContent`           | `glc`    | `GetLastContent`          | `CONTEXT`   | 4.4.8.0        | 获取最后一条消息内容           | 无                                         | 获取当前会话的最后一条消息内容 |
+| `singleWithdraw`           | `sw`     | `SingleWithdraw`          | `CONTEXT`   | 4.4.13.0       | 单条撤回                      | 消息条数                                   | 直接按条撤回消息（而不是按对撤回） |
+| `sendContextFile`          | `scf`    | `SendContextFile`         | `CONTEXT`   | 4.5.5.0-beta   | 发送聊天记录文件               | 无                                        | 获取当前活动分支的聊天记录文件 |
 
 ### Prompt Command
 
@@ -12154,8 +12178,8 @@ PS：该配置文件是专门用于对接ChatTTS的
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `setPrompt`                | `sp`     | `SetPrompt`               | `PROMPT`    | 4.0 Beta       | 设置提示词                     | 自然语言输入                               | 设置提示词 |
 | `deletePrompt`             | `dp`     | `DeletePrompt`            | `PROMPT`    | 4.0 Beta       | 删除提示词                     | 无                                        | 删除提示词 |
-| `getPrompt`                | `gp`     | `GetPrompt`               | `PROMPT`    | 4.4.8.0        | 获取提示词                     | 无                                         | 获取当前会话的提示词 |
-| `sendPromptFile`           | `spf`    | `SendPromptFile`          | `PROMPT`    | 4.5.5.0-beta   | 获取提示词文件                 | 无                                         | 获取当前活动分支的提示词文件 |
+| `getPrompt`                | `gp`     | `GetPrompt`               | `PROMPT`    | 4.4.8.0        | 获取提示词                     | 无                                        | 获取当前会话的提示词 |
+| `sendPromptFile`           | `spf`    | `SendPromptFile`          | `PROMPT`    | 4.5.5.0-beta   | 获取提示词文件                 | 无                                        | 获取当前活动分支的提示词文件 |
 
 ### Config Command
 
@@ -12169,7 +12193,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `setDefaultModel`          | `sdm`    | `SetDefaultModel`         | `CONFIG`    | 4.0 Beta       | 设置默认模型                   | 模型UID                                   | 设置默认使用的模型 |
 | `setTopP`                  | `stp`    | `SetTopP`                 | `CONFIG`    | 4.0.1 Beta     | 设置Top_P参数                  | 0\~1的浮点数<br/>或`0%`\~`100%`的百分比    | 设置Top_P参数 |
 | `setMaxTokens`             | `smt`    | `SetMaxTokens`            | `CONFIG`    | 4.0.1 Beta     | 设置最大生成tokens数           | 整数，通常最大可达模型上下文窗口长度的一半    | 设置最大生成tokens数 |
-| `setAutoShrinkLength`      | `sasl`   | `SetAutoShrinkLength`     | `CONFIG`    | 4.2.4.0        | 设置自动缩减长度上限            | 目标消息字数                              | 如果你的聊天总字数超过该值，系统会尝试自动删除最旧的直到满足该值 |
+| `setAutoShrinkLength`      | `sasl`   | `SetAutoShrinkLength`     | `CONFIG`    | 4.2.4.0        | 设置自动缩减长度上限            | 目标消息字数                               | 如果你的聊天总字数超过该值，系统会尝试自动删除最旧的直到满足该值 |
 | `setAutoLoadPrompt`        | `salp`   | `SetAutoLoadPrompt`       | `CONFIG`    | 4.3.1.0        | 设置自动加载提示词              | `true`/`false`                           | 设置请求时是否自动加载Prompt |
 | `setAutoSaveContext`       | `sasc`   | `SetAutoSaveContext`      | `CONFIG`    | 4.3.1.0        | 设置自动保存上下文              | `true`/`false`                           | 设置生成完毕后是否自动保存Context |
 | `setRenderTitle`           | `srt`    | `SetRenderTitle`          | `CONFIG`    | 4.3.2.1        | 设置渲染标题                   | 任意文本                                  | 渲染时显示的标题内容 |
@@ -12177,30 +12201,30 @@ PS：该配置文件是专门用于对接ChatTTS的
 | `writeUserProfile`         | `wup`    | `WriteUserProfile`        | `CONFIG`    | 4.3.3.6        | 写入用户人设数据                | 任意文本                                  | 该部分会被嵌入到用户提示词中，告诉AI用户的基础设定 |
 | `setHtmlTemplate`          | `sht`    | `SetHtmlTemplate`         | `CONFIG`    | 4.3.3.6        | 设置HTML模板                   | 预设模板名称                              | 可以用于切换Markdown渲染时使用的HTML模板 |
 | `setSaveTextOnly`          | `ssto`   | `SetSaveTextOnly`         | `CONFIG`    | 4.3.6.0        | 在保存时丢弃除文本以外的内容     | `true`/`false`                           | 设为`true`可以更快速的保存与读取，但模型将无法再获取到上下文中的附加数据 |
-| `crossUserDataAccess`      | `cuda`   | `CrossUserDataAccess`     | `CONFIG`    | 4.3.10.3       | 允许跨用户数据访问              | `true`/`false`                             | 允许跨用户数据访问，如果设置为`false`则只能访问自己的数据 |
-| `newRequestsTextOnly`      | `nrto`   | `NewRequestsTextOnly`     | `CONFIG`    | 4.3.10.7       | 忽略请求里的非文本数据          | `true`/`false`                             | 如果设置为`true`，复读机将把所有消息当成普通文本消息处理 |
-| `setCustomName`            | `scn`    | `SetCustomName`           | `CONFIG`    | 4.3.12.1       | 设置个性化名称                 | 用户名                                      | 设置后模型看到的将是设置的名称而非用户名 |
-| `thinkingMode`             | `tm`     | `ThinkingMode`            | `CONFIG`    | 4.3.14.0       | 设置思考模式                   | `true`/`false`/`null`                      | 用于在不指定 Thinking 参数时 启用/禁用/恢复默认 思考模式 |
-| `setModelTimeout`          | `smto`   | `SetModelTimeout`         | `CONFIG`    | 4.3.25.0       | 设置模型超时时间               | 超时秒数                                    | 设置模型超时时间 |
-| `removeReasoningPrompt`    | `rrp`    | `RemoveReasoningPrompt`   | `CONFIG`    | 4.3.26.0       | 删除推理内容                   | 删除推理内容 |                              | 设置是否在提交时移除模型输出的思考内容（不影响保存） |
-| `renderDocBottomComment`   | `rdbc`   | `RenderDocBottomComment`  | `CONFIG`    | 4.4.4.0        | 渲染文档底部注释               | 文本内容                                    | 在渲染图片的底部添加一小段文本 |
-| `fastStatisticsTemplate`   | `fst`    | `FastStatisticsTemplate`  | `CONFIG`    | 4.4.5.0        | 快速统计模板                   | 模板内容                                    | 可以在生成的图片结尾展示一些统计数据 |
-| `setMultipleModel`         | `smm`    | `SetMultipleModel`        | `CONFIG`    | 4.4.6.0        | 设置多个模型                   | *多个模型名称*                              | 设置多个模型，当访问时随机选择一个模型 |
-| `setStopKeywords`          | `ssk`    | `SetStopKeywords`         | `CONFIG`    | 4.4.6.0        | 设置停止关键词                 | *多个停止关键词*                             | 当模型生成出这个词时，暂停模型生成并即刻返回结果 |
-| `getConfigs`               | `gcfg`   | `GetConfigs`              | `CONFIG`    | 4.4.8.0        | 获取配置                      | `JSON`/`YAML`                              | 获取当前会话的配置 |
-| `setCustomAge`             | `sca`    | `SetCustomAge`            | `CONFIG`    | 4.4.9.0        | 设置自定义年龄                 | 年龄                                        | 设置自定义年龄 (需要提示词支持) |
-| `setCustomGender`          | `scg`    | `SetCustomGender`         | `CONFIG`    | 4.4.9.0        | 设置自定义性别                 | 性别                                        | 设置自定义性别 (需要提示词支持) |
-| `sendConfigFile`           | `scfgf`  | `SendConfigFile`          | `CONFIG`    | 4.5.5.0-beta   | 获取配置文件                   | 无                                          | 获取当前活动分支的配置文件 |
-| `setReasoningEffort`       | `sre`    | `SetReasoningEffort`      | `CONFIG`    | 4.5.6.0        | 设置推理强度                   | `low`/`medium`/`high`/`xhigh`/`max`         | 设置推理强度 (需要模型支持) |
-| `resetConfigField`         | `rcf`    | `ResetConfigField`        | `CONFIG`    | 4.5.6.0        | 重置配置字段                   | 配置字段名称                                 | 设置指定配置字段到 null |
-| `makeMultimodalMessage`    | `mmm`    | `MakeMultimodalMessage`   | `CONFIG`    | 4.5.8.0        | 是否创建多模态消息              | `true`/`false`                             | 设置是否创建多模态消息 |
-| `allowedToolCalls`         | `atc`    | `AllowedToolCalls`        | `CONFIG`    | 4.5.8.0        | 批准使用工具                   | *\*多个工具注册名*                           | 指定 AI 能使用哪些工具 |
-| `allowTools`               | `at`     | `AllowTools`              | `CONFIG`    | 4.5.8.0        | 允许使用工具                   | *\*多个工具注册名*                           | 增加工具使用权限 |
-| `disallowTools`            | `dt`     | `DisallowTools`           | `CONFIG`    | 4.5.8.0        | 禁止使用工具                   | *\*多个工具注册名*                           | 移除工具使用权限 |
-| `setPresetDirectives`      | `spd`    | `SetPresetDirectives`     | `CONFIG`    | 4.6.1.0        | 设置 Directive 预设           | *\*多个 Directive*                          | 添加 Directive |
-| `addPresetDirectives`      | `apd`    | `AddPresetDirectives`     | `CONFIG`    | 4.6.1.0        | 添加 Directive 预设           | `<type>: <name>`                            | 添加 Directive |
-| `removePresetDirectives`   | `rpd`    | `RemovePresetDirectives`  | `CONFIG`    | 4.6.1.0        | 移除 Directive 预设           | `<type>: <name>`                            | 移除 Directive |
-| `setImageModel`            | `sim`    | `SetImageModel`           | `CONFIG`    | 4.8.0.0        | 设置 Image Model              | 模型名称                                    | 设置 Image Model |
+| `crossUserDataAccess`      | `cuda`   | `CrossUserDataAccess`     | `CONFIG`    | 4.3.10.3       | 允许跨用户数据访问              | `true`/`false`                            | 允许跨用户数据访问，如果设置为`false`则只能访问自己的数据 |
+| `newRequestsTextOnly`      | `nrto`   | `NewRequestsTextOnly`     | `CONFIG`    | 4.3.10.7       | 忽略请求里的非文本数据          | `true`/`false`                            | 如果设置为`true`，复读机将把所有消息当成普通文本消息处理 |
+| `setCustomName`            | `scn`    | `SetCustomName`           | `CONFIG`    | 4.3.12.1       | 设置个性化名称                 | 用户名                                     | 设置后模型看到的将是设置的名称而非用户名 |
+| `thinkingMode`             | `tm`     | `ThinkingMode`            | `CONFIG`    | 4.3.14.0       | 设置思考模式                   | `true`/`false`/`null`                     | 用于在不指定 Thinking 参数时 启用/禁用/恢复默认 思考模式 |
+| `setModelTimeout`          | `smto`   | `SetModelTimeout`         | `CONFIG`    | 4.3.25.0       | 设置模型超时时间               | 超时秒数                                   | 设置模型超时时间 |
+| `removeReasoningPrompt`    | `rrp`    | `RemoveReasoningPrompt`   | `CONFIG`    | 4.3.26.0       | 删除推理内容                   | 删除推理内容 |                             | 设置是否在提交时移除模型输出的思考内容（不影响保存） |
+| `renderDocBottomComment`   | `rdbc`   | `RenderDocBottomComment`  | `CONFIG`    | 4.4.4.0        | 渲染文档底部注释               | 文本内容                                   | 在渲染图片的底部添加一小段文本 |
+| `fastStatisticsTemplate`   | `fst`    | `FastStatisticsTemplate`  | `CONFIG`    | 4.4.5.0        | 快速统计模板                   | 模板内容                                   | 可以在生成的图片结尾展示一些统计数据 |
+| `setMultipleModel`         | `smm`    | `SetMultipleModel`        | `CONFIG`    | 4.4.6.0        | 设置多个模型                   | *多个模型名称*                             | 设置多个模型，当访问时随机选择一个模型 |
+| `setStopKeywords`          | `ssk`    | `SetStopKeywords`         | `CONFIG`    | 4.4.6.0        | 设置停止关键词                 | *多个停止关键词*                           | 当模型生成出这个词时，暂停模型生成并即刻返回结果 |
+| `getConfigs`               | `gcfg`   | `GetConfigs`              | `CONFIG`    | 4.4.8.0        | 获取配置                      | `JSON`/`YAML`                             | 获取当前会话的配置 |
+| `setCustomAge`             | `sca`    | `SetCustomAge`            | `CONFIG`    | 4.4.9.0        | 设置自定义年龄                 | 年龄                                      | 设置自定义年龄 (需要提示词支持) |
+| `setCustomGender`          | `scg`    | `SetCustomGender`         | `CONFIG`    | 4.4.9.0        | 设置自定义性别                 | 性别                                      | 设置自定义性别 (需要提示词支持) |
+| `sendConfigFile`           | `scfgf`  | `SendConfigFile`          | `CONFIG`    | 4.5.5.0-beta   | 获取配置文件                   | 无                                        | 获取当前活动分支的配置文件 |
+| `setReasoningEffort`       | `sre`    | `SetReasoningEffort`      | `CONFIG`    | 4.5.6.0        | 设置推理强度                   | `low`/`medium`/`high`/`xhigh`/`max`       | 设置推理强度 (需要模型支持) |
+| `resetConfigField`         | `rcf`    | `ResetConfigField`        | `CONFIG`    | 4.5.6.0        | 重置配置字段                   | 配置字段名称                               | 设置指定配置字段到 null |
+| `makeMultimodalMessage`    | `mmm`    | `MakeMultimodalMessage`   | `CONFIG`    | 4.5.8.0        | 是否创建多模态消息              | `true`/`false`                           | 设置是否创建多模态消息 |
+| `allowedToolCalls`         | `atc`    | `AllowedToolCalls`        | `CONFIG`    | 4.5.8.0        | 批准使用工具                   | *\*多个工具注册名*                         | 指定 AI 能使用哪些工具 |
+| `allowTools`               | `at`     | `AllowTools`              | `CONFIG`    | 4.5.8.0        | 允许使用工具                   | *\*多个工具注册名*                         | 增加工具使用权限 |
+| `disallowTools`            | `dt`     | `DisallowTools`           | `CONFIG`    | 4.5.8.0        | 禁止使用工具                   | *\*多个工具注册名*                         | 移除工具使用权限 |
+| `setPresetDirectives`      | `spd`    | `SetPresetDirectives`     | `CONFIG`    | 4.6.1.0        | 设置 Directive 预设           | *\*多个 Directive*                        | 添加 Directive |
+| `addPresetDirectives`      | `apd`    | `AddPresetDirectives`     | `CONFIG`    | 4.6.1.0        | 添加 Directive 预设           | `<type>: <name>`                          | 添加 Directive |
+| `removePresetDirectives`   | `rpd`    | `RemovePresetDirectives`  | `CONFIG`    | 4.6.1.0        | 移除 Directive 预设           | `<type>: <name>`                          | 移除 Directive |
+| `setImageModel`            | `sim`    | `SetImageModel`           | `CONFIG`    | 4.8.0.0        | 设置 Image Model              | 模型名称                                  | 设置 Image Model |
 
 ### Branch Command
 
@@ -12208,7 +12232,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
-| `changeContextBranch`      | `ccb`    | `ChangeContextBranch`     | `BRANCH`    | 4.1.2.0        | 切换上下文分支                 | 分支名称                                  | 切换上下文分支 |
+| `changeContextBranch`      | `ccb`    | `ChangeContextBranch`     | `BRANCH`    | 4.1.2.0        | 切换上下文分支                 | 分支名称                                   | 切换上下文分支 |
 | `contextBranchClone`       | `cbc`    | `ContextBranchClone`      | `BRANCH`    | 4.3.9.1        | 克隆上下文分支                 | 目标分支名称                               | 将当前活动分支复制到一个新的分支下 |
 | `contextBranchCloneFrom`   | `cbcf`   | `ContextBranchCloneFrom`  | `BRANCH`    | 4.3.9.1        | 从分支克隆上下文               | 源分支名称                                 | 将指定分支复制到当前活动分支下 |
 | `contextBranchBind`        | `cbb`    | `ContextBranchBind`       | `BRANCH`    | 4.3.9.1        | 绑定上下文分支                 | 目标分支名称                               | 创建一个新的分支，使其硬链接到当前活动分支 |
@@ -12232,7 +12256,7 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
-| `changeConfigBranch`       | `ccfgb`  | `ChangeConfigBranch`      | `BRANCH`    | 4.1.2.0        | 切换配置分支                   | 分支名称                                  | 切换配置分支 |
+| `changeConfigBranch`       | `ccfgb`  | `ChangeConfigBranch`      | `BRANCH`    | 4.1.2.0        | 切换配置分支                   | 分支名称                                   | 切换配置分支 |
 | `configBranchClone`        | `cfgbc`  | `ConfigBranchClone`       | `BRANCH`    | 4.3.9.1        | 克隆配置分支                   | 目标分支名称                               | 将当前活动分支复制到一个新的分支下 |
 | `configBranchCloneFrom`    | `cfgbcf` | `ConfigBranchCloneFrom`   | `BRANCH`    | 4.3.9.1        | 从分支克隆配置                 | 源分支名称                                 | 将指定分支复制到当前活动分支下 |
 | `configBranchBind`         | `cfgbb`  | `ConfigBranchBind`        | `BRANCH`    | 4.3.9.1        | 绑定配置分支                   | 目标分支名称                               | 创建一个新的分支，使其硬链接到当前活动分支 |
@@ -12256,23 +12280,23 @@ PS：该配置文件是专门用于对接ChatTTS的
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `generatePrompt`           | `genp`   | `GeneratePrompt`          | `MIXED`     | 4.3.7.5        | 生成提示词                     | 角色描述                                   | 生成提示词，并自动保存到用户提示词数据中 |
-| `rewrite`                  | `rew`    | `Rewrite`                 | `MIXED`     | 4.6.6.2        | 重写                          | 自然语言文本                                | 撤回上一条并使用当前内容修改重新发送 |
+| `rewrite`                  | `rew`    | `Rewrite`                 | `MIXED`     | 4.6.6.2        | 重写                          | 自然语言文本                               | 撤回上一条并使用当前内容修改重新发送 |
 | `regenerate`               | `reg`    | `Regenerate`              | `MIXED`     | 4.6.6.2        | 重新生成                       | 无                                        | 撤回上条并使用当前内容重新生成 |
 
 ### User File Command
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
-| `sendUserDataFile`         | `sudf`   | `SendUserDataFile`        | `USERFILE`  | 4.0.2.1 Beta   | 发送用户数据文件               | 无                                         | 发送用户数据文件 |
+| `sendUserDataFile`         | `sudf`   | `SendUserDataFile`        | `USERFILE`  | 4.0.2.1 Beta   | 发送用户数据文件               | 无                                        | 发送用户数据文件 |
 | `packageUserSpace`         | `pus`    | `PackageUserSpace`        | `USERFILE`  | 4.5.5.0        | 打包用户空间                   | 无                                        | 与 `sendUserDataFile` 类似，但它会打包所有分支 |
 
 ### Template Command
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
-| `templateRender`           | `tr`     | `TemplateRender`          | `TEMPLATE`  | 4.0 Beta       | 变量展开                       | 文本模板                                  | 变量展开 |
-| `templateRenderText`       | `trt`    | `TemplateRenderText`      | `TEMPLATE`  | 4.2.7.0        | 变量展开(文本)                 | 文本模板                                  | 强制使用文本输出 |
-| `templateRenderImage`      | `tri`    | `TemplateRenderImage`     | `TEMPLATE`  | 4.2.7.0        | 变量展开(图片)                 | 文本模板                                  | 强制使用图片输出 |
+| `templateRender`           | `tr`     | `TemplateRender`          | `TEMPLATE`  | 4.0 Beta       | 变量展开                       | 文本模板                                   | 变量展开 |
+| `templateRenderText`       | `trt`    | `TemplateRenderText`      | `TEMPLATE`  | 4.2.7.0        | 变量展开(文本)                 | 文本模板                                   | 强制使用文本输出 |
+| `templateRenderImage`      | `tri`    | `TemplateRenderImage`     | `TEMPLATE`  | 4.2.7.0        | 变量展开(图片)                 | 文本模板                                   | 强制使用图片输出 |
 
 ### Render Command
 
@@ -12302,10 +12326,10 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 ### Client Config Command
 
-| Command                    | Abridge  | Full Name                 | Type            | Joined Version | Description                   | Parameter Description                     | Remarks |
-| :---                       | :---     | :--                       | :--             | :--            | :--                           | :--                                       | :--     |
-| `changeBackend`            | `cb`     | `ChangeBackend`           | `CLIENT_CONFIG` | 4.7.4.0        | 更改后端                       | 后端 ID                                   | 更换用于处理请求的后端 |
-| `setHelloContent`          | `shc`    | `SetHelloContent`         | `CLIENT_CONFIG` | 4.8.0.0        | 设置欢迎内容                   | 欢迎内容配置                               | 设置客户端启动时的欢迎内容 |
+| Command                    | Abridge  | Full Name                 | Type            | Joined Version | Description               | Parameter Description                     | Remarks |
+| :---                       | :---     | :--                       | :--             | :--            | :--                       | :--                                       | :--     |
+| `changeBackend`            | `cb`     | `ChangeBackend`           | `CLIENT_CONFIG` | 4.7.4.0        | 更改后端                   | 后端 ID                                   | 更换用于处理请求的后端 |
+| `setHelloContent`          | `shc`    | `SetHelloContent`         | `CLIENT_CONFIG` | 4.8.0.0        | 设置欢迎内容               | 欢迎内容配置                               | 设置客户端启动时的欢迎内容 |
 
 ### Licenses Command
 
@@ -12313,14 +12337,14 @@ PS：该配置文件是专门用于对接ChatTTS的
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `getRequirementLicenses`   | `grl`    | `GetRequirementLicenses`  | `LICENSES`  | 4.3.10.8       | 获取依赖许可证                 | 依赖项名称                                 | 获取指定依赖的许可证信息 |
 | `getRequirementList`       | `grls`   | `GetRequirementList`      | `LICENSES`  | 4.3.10.8       | 获取依赖列表                   | 无                                        | 获取所有记录了License的依赖项名称 |
-| `getServerLicense`         | `gsl`    | `GetServerLicense`        | `LICENSES`  | 4.3.10.8       | 获取服务端许可证               | 无                                        | 获取服务端许可证信息 |
+| `getServerLicense`         | `gsl`    | `GetServerLicense`        | `LICENSES`  | 4.3.10.8       | 获取服务端许可证               | 无                                         | 获取服务端许可证信息 |
 
 ### Status Command
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
 | `getCoreTaskStatus`        | `gcts`   | `GetCoreTaskStatus`       | `STATUS`    | 4.3.17.0       | 获取当前任务状态               | 无                                         | 获取当前核心任务状态 (Free or Task Stack) |
-| `breakChatTask`            | `bct`    | `BreakChatTask`           | `STATUS`    | 4.4.4.0        | 中止当前所有生成任务            | 任务 ID，不填中止所有任务                   | 中止当前所有生成任务，中止后模型已生成内容将不会保存和显示 |
+| `breakChatTask`            | `bct`    | `BreakChatTask`           | `STATUS`    | 4.4.4.0        | 中止当前所有生成任务           | 任务 ID，不填中止所有任务                    | 中止当前所有生成任务，中止后模型已生成内容将不会保存和显示 |
 | `getChatBuffer`            | `gcb`    | `GetChatBuffer`           | `STATUS`    | 4.4.8.0        | 获取聊天缓冲区                 | 无                                         | 获取当前会话的聊天缓冲区 |
 
 ### Statistic Command
@@ -12363,8 +12387,9 @@ PS：该配置文件是专门用于对接ChatTTS的
 
 | Command                    | Abridge  | Full Name                 | Type        | Joined Version | Description                   | Parameter Description                     | Remarks |
 | :---                       | :---     | :---                      | :---:       | :---           | :---                          | :---                                      | :---    |
-| `sendMessage`              | `smsg`   | `SendMessage`             | `SENDMSG`   | 4.4.12.0       | 发送消息，使用结构体            | OneBot 消息结构                           | 发送一条自定义消息（需要 `allow_send_any_message` 字段为 `true`） |
-| `sendMessageCQ`            | `smsgcq` | `SendMessageCQ`           | `SENDMSG`   | 4.9.1.0        | 发送消息，使用 CQ 码           | 包含 CQ 码的消息结构                        | 发送一条自定义消息（需要 `allow_send_any_message` 字段为 `true`） |
+| `sendMessage`              | `smsg`   | `SendMessage`             | `SENDMSG`   | 4.4.12.0       | 发送消息，使用结构体            | OneBot 消息结构                            | 发送一条自定义消息（需要 `allow_send_any_message` 字段为 `true`） |
+| `sendMessageCQ`            | `smsgcq` | `SendMessageCQ`           | `SENDMSG`   | 4.9.1.0        | 发送消息，使用 CQ 码            | 包含 CQ 码的消息结构                       | 发送一条自定义消息（需要 `allow_send_any_message` 字段为 `true`） |
+| `getCQ`                    | `gcq`    | `GetCQ`                   | `SENDMSG`   | 4.9.3.0        | 获取 CQ 码                     | 任意消息                                  | 获取当前 CQ 码 |
 
 ### Games Command
 
@@ -12461,7 +12486,7 @@ PS：`CHAT` 类型命令大部分都做到了支持视觉输入
 ---
 
 ## 相关仓库
-- [Repeater Server](https://github.com/qeggs-dev/repeater-ai-chatbot)
+- [Repeater Server](https://github.com/repeater-bot/repeater-ai-chatbot)
 [file content end]
 
 #### Model INFO Server
@@ -12820,7 +12845,7 @@ PS: 除了 Alived API
 ## 安装
 
 ```bash
-git clone https://github.com/qeggs-dev/repeater-render-server.git
+git clone https://github.com/repeater-bot/repeater-render-server.git
 cd repeater-render-server
 curl https://raw.githubusercontent.com/qeggs-dev/Sloves_Starter/refs/heads/main/Sloves_Starter.py -o run.py
 python3 run.py
@@ -13735,13 +13760,13 @@ Note Client 专门为多 Server 做了一定优化
 ## 使用到的后端接口
 | 请求 | URL | 使用到的参数 | 描述 |
 | :---: | :---: | :---: | :---: |
-| `POST` | `/chat/completion/{user_id:str}` | `message`, `cross_user_data_routing`, `save_context` | 获取AI生成内容 |
+| `POST` | `/generate/chat/completion/{user_id:str}` | `message`, `cross_user_data_routing`, `save_context` | 获取AI生成内容 |
 | `GET` | `/userdata/context/userlist` | | 获取Context类型的用户列表 |
 
 ---
 
 ## 相关仓库
-- [Repeater Server](https://github.com/qeggs-dev/repeater-ai-chatbot)
+- [Repeater Server](https://github.com/repeater-bot/repeater-ai-chatbot)
 [file content end]
 
 #### Auto Backup
